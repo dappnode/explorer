@@ -1,0 +1,64 @@
+:root {
+  // Colors
+  // Background
+  --color-background_3: #363b40; // Card level 2
+  --color-background_2: #2c3034; // Card level 2
+  --color-background_15: #2a2e32; // Card level 1.5
+  --color-background_1: #282c30; // Card level 1
+  --color-background_0: #202326; // Lowest level of the page
+  --color-background_-1: #1b1d20; // Darker color for hero section
+  // Test
+  --color-text-main: #ffffff;
+  --color-text-soft: #767e86;
+  // Brand
+  --color-brand_0: #2fbcb2;
+
+  // Spacing
+  --spacing_0: 1rem;
+  --border-radius: 8px;
+
+  // Sizes
+  h1 {
+    margin: 0;
+  }
+}
+
+// Layout
+
+@mixin layout-container {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: var(--spacing_0);
+}
+
+.app-body {
+  @include layout-container;
+
+  margin-top: 2rem;
+  > *:not(:last-child) {
+    margin-bottom: var(--spacing_0);
+  }
+}
+
+.app-container {
+  @include layout-container;
+}
+
+// Component styles
+
+.card {
+  background-color: var(--color-background_1);
+  padding: var(--spacing_0);
+  border-radius: var(--border-radius);
+}
+
+// Base styles
+
+body {
+  background-color: var(--color-background_0);
+  color: var(--color-text-main);
+}
+
+a {
+  color: #2c7be5;
+}

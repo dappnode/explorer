@@ -1,0 +1,79 @@
+table.summary-table {
+  table-layout: auto;
+  width: 100%;
+  // To not show an ugly little edge
+  border-collapse: collapse;
+  // Hide overflow to show border-radius
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+  --logo-size: 2rem;
+
+  th,
+  td {
+    padding: var(--spacing_0);
+    text-align: left;
+  }
+
+  tr {
+    transition: background-color ease 150ms;
+    background-color: var(--color-background_1);
+  }
+  thead {
+    tr {
+      background-color: var(--color-background_15);
+    }
+    th {
+      color: var(--color-text-soft);
+    }
+  }
+  tbody {
+    tr:nth-child(even) {
+      background-color: var(--color-background_15);
+    }
+    tr:hover {
+      background-color: var(--color-background_3);
+    }
+  }
+
+  svg {
+    font-size: 26px;
+  }
+
+  .logo {
+    width: var(--logo-size);
+    padding: calc(var(--spacing_0) / 3) var(--spacing_0);
+  }
+
+  img {
+    // Add some extra room to grow
+    max-width: 120%;
+    max-height: 120%;
+  }
+
+  .last-update {
+    .ago {
+      color: var(--color-text-soft);
+      font-size: 80%;
+    }
+  }
+  .light {
+    color: var(--color-text-soft);
+    font-size: 80%;
+  }
+
+  .registry {
+    span {
+      padding: 6px 10px;
+      border-radius: 8px;
+      color: black;
+      background-color: #a1a1a1;
+      &.dnp {
+        background-color: #76cfb8;
+      }
+      &.public {
+        background-color: #a376cf;
+      }
+    }
+  }
+}

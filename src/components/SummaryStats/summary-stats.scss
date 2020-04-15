@@ -1,0 +1,32 @@
+.summary-stats {
+  display: grid;
+  // Use auto-fit to prevent emptyness in the right area
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: var(--spacing_0);
+
+  .card {
+    display: grid;
+    grid-gap: 0.25rem;
+    grid-template:
+      "title icon" auto
+      "stat  icon" auto / auto min-content;
+
+    .title {
+      grid-area: title;
+      color: var(--color-text-soft);
+      font-size: 80%;
+    }
+    .stat {
+      grid-area: stat;
+      font-size: 200%;
+      font-weight: 600;
+    }
+    .icon {
+      grid-area: icon;
+      font-size: 3.5rem;
+      color: var(--color-text-soft);
+      // Center svg icon
+      display: flex;
+    }
+  }
+}
