@@ -1,0 +1,16 @@
+{
+  "name": "ethereum-classic",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878840,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x0257b5da5715e198ceeeaee68fed9dbd46406b7bfbe80578f17f38bf5c2da410",
+      "blockNumber": 9274830,
+      "contentUri": "/ipfs/QmRRfWKrapJfGxri2KPqRQwvQgUYDywidwqXPji37LBaDu",
+      "timestamp": 1578947556,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

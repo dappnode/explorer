@@ -1,0 +1,17 @@
+{
+  "name": "apm-enssub",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "versionId": 1,
+      "txHash": "0xf918268783df5dcf0ff2d51c8c7c7ee4f10f8ad88c76e24b1d685985b4eb3333",
+      "blockNumber": 6311951,
+      "contractAddress": "0x22ee96d6770A233b7d4363f770999331DD7c0fad",
+      "contentUri": "ipfs:enssub",
+      "timestamp": 1536667724,
+      "sender": "0x1DBA1131000664b884A1Ba238464159892252D3a"
+    }
+  ]
+}

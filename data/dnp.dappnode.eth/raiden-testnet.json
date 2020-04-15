@@ -1,0 +1,25 @@
+{
+  "name": "raiden-testnet",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x55b8c11f727a188e211db9f9b1cf7c76ff647e860a33040d8cf900349fe3d34c",
+      "blockNumber": 7956067,
+      "contentUri": "/ipfs/QmQZSXYuPLdG5Gw5i5K9zg6Q59iesL35FCx1qPUMeSHgzX",
+      "timestamp": 1560505915,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0x736a575d696610f38bb75a5b96f91e1159b3d439cd24b4c06c5c0c631a73b0a7",
+      "blockNumber": 8489791,
+      "contentUri": "/ipfs/QmcaoHnqpWbmMTPLCFwz767S2urz8aAExwDWLwbCVF8ovd",
+      "timestamp": 1567682982,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

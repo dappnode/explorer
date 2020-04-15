@@ -1,0 +1,25 @@
+{
+  "name": "archipel-ui",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x3aa1e29cc8578c9ce7f629fdbee79d31b7e0b7b7dfded4552605c67c752651de",
+      "blockNumber": 9742131,
+      "contentUri": "/ipfs/QmZsLUbBsLFfGXstYo7GHV56ZK42QNRjNAfNFDBAh3rWgL",
+      "timestamp": 1585161491,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    },
+    {
+      "version": "1.0.0",
+      "versionId": 2,
+      "txHash": "0x528f5ecf0977d7ba88f16474238f7f91a4baef746b20ed6651275c6ecebe0b91",
+      "blockNumber": 9773703,
+      "contentUri": "/ipfs/QmXo7KtDytsjLuP7iwX4ocWX8s8aXk5hcSPRPB3ivrsMHL",
+      "timestamp": 1585580041,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    }
+  ]
+}

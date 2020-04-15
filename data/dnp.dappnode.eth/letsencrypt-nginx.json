@@ -1,0 +1,43 @@
+{
+  "name": "letsencrypt-nginx",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x4ffdb3dcdf54d9cf858bce70150696bb3d457b83b4d1f6dd7d7b00ea1c433668",
+      "blockNumber": 5504523,
+      "contentUri": "/ipfs/QmZRft49zFT88jXNDnW6yzUihoSJAzU1SqJeXNWHWB88AD",
+      "timestamp": 1524678416,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0x5a67db04e5caeddc2c6194bec66f32b4083cf49a22dfd642895807cab761ab0f",
+      "blockNumber": 5504923,
+      "contentUri": "/ipfs/QmXpujT8joyHtXb6p82HBjUG53CHRUdF86HSheFNgvhokx",
+      "timestamp": 1524684539,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.3",
+      "versionId": 3,
+      "txHash": "0x583c24933f432c6ab5ed3b20d307c3acf61e90df4459c66f0b23d7d736713532",
+      "blockNumber": 5505016,
+      "contentUri": "/ipfs/QmZRft49zFT88jXNDnW6yzUihoSJAzU1SqJeXNWHWB88AD",
+      "timestamp": 1524685865,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.4",
+      "versionId": 4,
+      "txHash": "0x50f329b81a7c94c3e5691d6a8b69bc5ce6ed2d5966420903d798e196393d6375",
+      "blockNumber": 5635398,
+      "contentUri": "/ipfs/QmR6M4AwY6T1biFKPVuRbL6mHWCJhUQjc4tvmzYg5Yx4ND",
+      "timestamp": 1526654749,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

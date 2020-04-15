@@ -1,0 +1,34 @@
+{
+  "name": "pocket-core",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x349ad78fe80beb9072e071ded7d805ca8eec9a86683c6578dded824735981f0a",
+      "blockNumber": 7984582,
+      "contentUri": "/ipfs/QmaVJN9xCiSaB2LFLPjyDaCPA1CGvymEMaHLgriVWr3ySs",
+      "timestamp": 1560891650,
+      "sender": "0x75F6F5269DF0F58A865890c4d9949af2fB620b7A"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0x9cf3da3239acd763c8fb5dab4afac48a11f994798873910d08ea357337695650",
+      "blockNumber": 7990810,
+      "contentUri": "/ipfs/QmfNH8CjbNzVmhjfhUxMNAZfcSYA3b4Mp1rA9TZfkgRmoW",
+      "timestamp": 1560975210,
+      "sender": "0x75F6F5269DF0F58A865890c4d9949af2fB620b7A"
+    },
+    {
+      "version": "0.0.3",
+      "versionId": 3,
+      "txHash": "0xe296c88129051473573e1e66528673c0e531c1f322a7aef583d1d206dd81beca",
+      "blockNumber": 8028063,
+      "contentUri": "/ipfs/QmU2nTN3etEdokdNg34kjVZC4qrZV8s4p65hV37Yf7pWiB",
+      "timestamp": 1561477779,
+      "sender": "0x75F6F5269DF0F58A865890c4d9949af2fB620b7A"
+    }
+  ]
+}

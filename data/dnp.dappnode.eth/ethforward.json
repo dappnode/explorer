@@ -1,0 +1,97 @@
+{
+  "name": "ethforward",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0x70cbf2ffe8efcd95ca15d0a93be8b409137ccf54c1aacd0e5b60e45a4055a38e",
+      "blockNumber": 5707029,
+      "contentUri": "/ipfs/QmcRsjrLFyp2ZNydncmwuzjQ9frTJ4pA9vLqkGCWcWRP7L",
+      "timestamp": 1527751292,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.1",
+      "versionId": 2,
+      "txHash": "0xee7b80903e56563443ba1ce4d40e1c42c58b9967b9863474165819bac0b0d157",
+      "blockNumber": 5793828,
+      "contentUri": "/ipfs/QmdMXbHTeZs1EVUZbt6AAJiFRTA1BtVKnKqcXs5ZZhV4BP",
+      "timestamp": 1529075278,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.2",
+      "versionId": 3,
+      "txHash": "0xad89c9589cb0183f6cc762ef2fe9395c6252d866070194a4a90cca528a266e06",
+      "blockNumber": 6164503,
+      "contentUri": "/ipfs/QmQXiuU6zXLvfxQVMif9TCdZv1jcWg12Av6HvwwaxXz1Uv",
+      "timestamp": 1534520904,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.3",
+      "versionId": 4,
+      "txHash": "0x7aad18a0e5d670ac094128c631a6cec1530f1abc7e92a49138db4dfa92239a14",
+      "blockNumber": 7115253,
+      "contentUri": "/ipfs/QmVvUTwWgyFywF5Madd1gr14UiCQkLPCUZSFDgZNkrYBDA",
+      "timestamp": 1548270722,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.4",
+      "versionId": 5,
+      "txHash": "0x09dfcc0fa4543908067b00401ed8ed2072af359b006a1097569803b4ca7f1c4c",
+      "blockNumber": 7129927,
+      "contentUri": "/ipfs/QmYVJeByK98t2ZbVeKy9Z1btbBQJy63KZsWgRHdw6i38op",
+      "timestamp": 1548520742,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.5",
+      "versionId": 6,
+      "txHash": "0x771592740c552cf5fb96925826c0f8a9ff8a2624f581d6663669d5591bb2d983",
+      "blockNumber": 7184337,
+      "contentUri": "/ipfs/Qmcwfe17C1qoKPk3qrrRNxzftrhAsN2cah8QgTteQEE6AW",
+      "timestamp": 1549477205,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.0",
+      "versionId": 7,
+      "txHash": "0x4db3575ef334c7f0ac23c8c293855d9fb3c8cb200a548de8b9a0a5343c26db1e",
+      "blockNumber": 7714601,
+      "contentUri": "/ipfs/QmQiziZkfGiEUj45yCaGjYST81sc6YFgPtw61tGryDXN9H",
+      "timestamp": 1557244126,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.1",
+      "versionId": 8,
+      "txHash": "0xcd67d5fa344bbd747386d06c4d6eb257c0e774caca373db0b56ed999f0f8f40e",
+      "blockNumber": 7849673,
+      "contentUri": "/ipfs/QmPijaGSYWeHQLog1hX5w1RMB5PrEpBdK2UHrac3ZggMdM",
+      "timestamp": 1559068331,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.2",
+      "versionId": 9,
+      "txHash": "0x6280d3d0b32271e3e1ed31589eb38694baf356b3ae9d8714194f44e4fc5527ed",
+      "blockNumber": 8160626,
+      "contentUri": "/ipfs/QmWizS4HP5SqFwmsMCmTs9kQoSRAGZMT37U67VAP8F77zA",
+      "timestamp": 1563262611,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.3",
+      "versionId": 10,
+      "txHash": "0x36495b044ea66210b484755cccbab4c07e27acde3d3569e6b4d7dc7713b34cfd",
+      "blockNumber": 8693273,
+      "contentUri": "/ipfs/QmeWo2hva3hqcn3hbeVEFEvVr6WE5V1FpQKfwRdFno9dpF",
+      "timestamp": 1570428338,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

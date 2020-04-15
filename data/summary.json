@@ -1,0 +1,837 @@
+[
+  {
+    "name": "apm-registry",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1521047104,
+      "contentUri": "ipfs:apm"
+    }
+  },
+  {
+    "name": "apm-enssub",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1521047104,
+      "contentUri": "ipfs:enssub"
+    }
+  },
+  {
+    "name": "apm-repo",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1521047104,
+      "contentUri": "ipfs:repo"
+    }
+  },
+  {
+    "name": "rinkeby",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 15,
+    "latest": {
+      "version": "0.4.4",
+      "timestamp": 1584383332,
+      "contentUri": "/ipfs/QmNSK6Ev8ZMvnGjq6osehUggJK2WeHeensginfVu2rwTSd"
+    }
+  },
+  {
+    "name": "testing",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.0.3",
+      "timestamp": 1524171804,
+      "contentUri": "/ipfs/Qmc9mDd2nBmo7E4sHtNbsjVHeP9aAR2qSbzypVvM6YqmFV"
+    }
+  },
+  {
+    "name": "nginx-proxy",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.0.3",
+      "timestamp": 1526654167,
+      "contentUri": "/ipfs/QmPqhkpQvyP6WynVG9H3nNgJDyoNPfUYw7MeBJrcJL4coh"
+    }
+  },
+  {
+    "name": "letsencrypt-nginx",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 4,
+    "latest": {
+      "version": "0.0.4",
+      "timestamp": 1526654749,
+      "contentUri": "/ipfs/QmR6M4AwY6T1biFKPVuRbL6mHWCJhUQjc4tvmzYg5Yx4ND"
+    }
+  },
+  {
+    "name": "otpweb",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.0.3",
+      "timestamp": 1526045968,
+      "contentUri": "/ipfs/QmUHFxFbYdJDueBWzYZnvpzkjwBmMt3bmNDLQBTZzY18UZ"
+    }
+  },
+  {
+    "name": "kovan",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 10,
+    "latest": {
+      "version": "0.1.8",
+      "timestamp": 1573250182,
+      "contentUri": "/ipfs/QmTdBmUPHjxjA9pa8NaHVypCYiFMfz37URGGHnWRBjjUvS"
+    }
+  },
+  {
+    "name": "ropsten",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 7,
+    "latest": {
+      "version": "0.3.2",
+      "timestamp": 1586935891,
+      "contentUri": "/ipfs/QmfVhGDHG1ooMqxXjdS1oDxNE8DWyc3XKPmPruAbWTMh6J"
+    }
+  },
+  {
+    "name": "bind",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 9,
+    "latest": {
+      "version": "0.2.1",
+      "timestamp": 1573669072,
+      "contentUri": "/ipfs/QmRyrMYzrBHYZvCY6s1j2QEBab3z6aZLABNX1KEwrzxur9"
+    }
+  },
+  {
+    "name": "ipfs",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 12,
+    "latest": {
+      "version": "0.2.4",
+      "timestamp": 1566922676,
+      "contentUri": "/ipfs/QmT7fcE7KKYF5PfNiAq9Z3NyqqijsZF5azErzixNiYdzmL"
+    }
+  },
+  {
+    "name": "vpn",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 28,
+    "latest": {
+      "version": "0.2.4",
+      "timestamp": 1574184835,
+      "contentUri": "/ipfs/QmaP4xFLPXiNzcMCWoSboQZgrDLicrohs7SbfaFcJJMEPD"
+    }
+  },
+  {
+    "name": "ethchain",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 37,
+    "latest": {
+      "version": "0.2.20",
+      "timestamp": 1582902286,
+      "contentUri": "/ipfs/QmaHVhEpmWV35cQ9Q43sThzZfZjDRRT5EqbjXhond1j4xB"
+    }
+  },
+  {
+    "name": "ethforward",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 10,
+    "latest": {
+      "version": "0.2.3",
+      "timestamp": 1570428338,
+      "contentUri": "/ipfs/QmeWo2hva3hqcn3hbeVEFEvVr6WE5V1FpQKfwRdFno9dpF"
+    }
+  },
+  {
+    "name": "wamp",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.2.0",
+      "timestamp": 1557245126,
+      "contentUri": "/ipfs/QmcP7JjWbQRa6FmPqsJXTxir5BShyxuZPENpy9YJUvtzAj"
+    }
+  },
+  {
+    "name": "dappmanager",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 48,
+    "latest": {
+      "version": "0.2.24",
+      "timestamp": 1582901609,
+      "contentUri": "/ipfs/QmNfRmZq7Nv7s9FXULxFyuUaZsyGRR4Uw9dFGK9oiscmaD"
+    }
+  },
+  {
+    "name": "admin",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 35,
+    "latest": {
+      "version": "0.2.15",
+      "timestamp": 1582905556,
+      "contentUri": "/ipfs/QmccdGpLJ7TTXRC1XCJNU9ejyRgy5pfkE6jE3gA9FsDqNp"
+    }
+  },
+  {
+    "name": "telegram-mtpproto.dnp.dappnode.eth",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1530103873,
+      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN"
+    }
+  },
+  {
+    "name": "telegram-mtpproto",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1530104625,
+      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN"
+    }
+  },
+  {
+    "name": "monero",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 5,
+    "latest": {
+      "version": "0.2.1",
+      "timestamp": 1580116632,
+      "contentUri": "/ipfs/QmXDpWL2smjSmgtVMmRL6jfUknYdHeS3QSkF3LMsprFokK"
+    }
+  },
+  {
+    "name": "core",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 49,
+    "latest": {
+      "version": "0.2.26",
+      "timestamp": 1583388531,
+      "contentUri": "/ipfs/QmPPYHUJd34Cb3B2e3EzYipPu62M4eCsxTwq93HFXYdu3v"
+    }
+  },
+  {
+    "name": "livepeer",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.0.2",
+      "timestamp": 1536693825,
+      "contentUri": "/ipfs/QmeMRXex4qwFj85XDP7bjFbNRq4rSAbiBDbPRuDF8XqdQ4"
+    }
+  },
+  {
+    "name": "livepeer",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.0.2",
+      "timestamp": 1536693825,
+      "contentUri": "/ipfs/QmeMRXex4qwFj85XDP7bjFbNRq4rSAbiBDbPRuDF8XqdQ4"
+    }
+  },
+  {
+    "name": "swarm",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 8,
+    "latest": {
+      "version": "0.3.2",
+      "timestamp": 1580918136,
+      "contentUri": "/ipfs/QmaUbyiqb8SX3ANmGCZpVBbtZVKYk4eaB4U93H3FfhbVie"
+    }
+  },
+  {
+    "name": "goerli-geth",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 10,
+    "latest": {
+      "version": "0.4.3",
+      "timestamp": 1586939089,
+      "contentUri": "/ipfs/QmWAF3Pqbc2D2LuXrTha2v36K4E4SRaQ3uAhpAptkazbX8"
+    }
+  },
+  {
+    "name": "goerli-pantheon",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.1.0",
+      "timestamp": 1541707173,
+      "contentUri": "/ipfs/QmdW5xZJVN7xonNvAjQJsNcUDJSbapggXN4gDJg2v2USd9"
+    }
+  },
+  {
+    "name": "bitcoin",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 6,
+    "latest": {
+      "version": "0.1.5",
+      "timestamp": 1574698937,
+      "contentUri": "/ipfs/QmWzNqeGK7BZ2L3J5yeA6FmTPscuub2qYiWKoQo4ia8ZVJ"
+    }
+  },
+  {
+    "name": "wifi",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.2.0",
+      "timestamp": 1557246014,
+      "contentUri": "/ipfs/QmQsuY3frcS7zivWcTor9HTyfPjnWvJ6BemVwrvK9ig6KV"
+    }
+  },
+  {
+    "name": "ln",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1548192871,
+      "contentUri": "/ipfs/QmaokAG8ECxpbLp4bqE6A3tBXsATZS7aN8RPd3DsE1haKz"
+    }
+  },
+  {
+    "name": "goerli-parity",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1548351153,
+      "contentUri": "/ipfs/QmUsK7niWPTeSLv8Zqhwdn2GtTDgDcC5v6PiCVDgiEc8Vn"
+    }
+  },
+  {
+    "name": "vipnode",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 4,
+    "latest": {
+      "version": "0.1.0",
+      "timestamp": 1568883475,
+      "contentUri": "/ipfs/QmcQPSzajUUKP1j4rsnGRCcAqfnuGSFnCcC4fnmf6eUqcy"
+    }
+  },
+  {
+    "name": "raiden-testnet",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.0.2",
+      "timestamp": 1567682982,
+      "contentUri": "/ipfs/QmcaoHnqpWbmMTPLCFwz767S2urz8aAExwDWLwbCVF8ovd"
+    }
+  },
+  {
+    "name": "raiden",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1560506744,
+      "contentUri": "/ipfs/QmfVHE7vUTi3UVcWk7JfgxdgFHG4K1JvKog2zy3SjUKz2y"
+    }
+  },
+  {
+    "name": "lightning-network",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.2.0",
+      "timestamp": 1574760529,
+      "contentUri": "/ipfs/QmcUTeDzb7CoKLNKcz6xynNFzaggC29dfxZzWAsY1vXdip"
+    }
+  },
+  {
+    "name": "geth",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 5,
+    "latest": {
+      "version": "0.1.4",
+      "timestamp": 1583506536,
+      "contentUri": "/ipfs/QmNqDvqAyy3pN3PvymB6chM7S1FgYyive8LosVKUuaDdfd"
+    }
+  },
+  {
+    "name": "trustlines-monitor",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.1.2",
+      "timestamp": 1578642157,
+      "contentUri": "/ipfs/QmTvhWDrQHZ31vPFqqVfpSN9NDaSTqmhTMEi4SK98JsivH"
+    }
+  },
+  {
+    "name": "trustlines",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1577389713,
+      "contentUri": "/ipfs/QmUxQVLYtGcEDNJ3yHKJmhACtbXC44EyiCPQdxudrYU5TN"
+    }
+  },
+  {
+    "name": "trustlines-bridge",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.1.0",
+      "timestamp": 1574347181,
+      "contentUri": "/ipfs/Qmc1Gexd4M5GnfucRwgp1gYMzo131c8BKopiE8VSnAKESe"
+    }
+  },
+  {
+    "name": "trustlines-netstats",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.1.2",
+      "timestamp": 1574436383,
+      "contentUri": "/ipfs/QmT9mWFGadQMGp8tyWYT3PK1vXi9QoZBMjken3zeVuwDA6"
+    }
+  },
+  {
+    "name": "trustlines-validator",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.1.2",
+      "timestamp": 1577389896,
+      "contentUri": "/ipfs/QmSC7dnP4zbtTj3fyUNu1fbhftjwuQjSW8Xmd9ZqYjUCvn"
+    }
+  },
+  {
+    "name": "ipfs-cluster",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1575298938,
+      "contentUri": "/ipfs/QmSV42YKjT2Qz6qdcHpSxjqvFKc7XvrmxhJ1y8F16yS338"
+    }
+  },
+  {
+    "name": "ipfs-pinner",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.1.2",
+      "timestamp": 1585229379,
+      "contentUri": "/ipfs/QmRnBSFa4uA92qPG7h8qzEzqFKtwGdMx7AgBrL7Lh4A3v2"
+    }
+  },
+  {
+    "name": "ethereum-classic",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1578947556,
+      "contentUri": "/ipfs/QmRRfWKrapJfGxri2KPqRQwvQgUYDywidwqXPji37LBaDu"
+    }
+  },
+  {
+    "name": "openethereum",
+    "registry": "dnp.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.1.0",
+      "timestamp": 1586882281,
+      "contentUri": "/ipfs/QmSdUekSdr5z5oceYnJGfLnSiUuuUkipFdNAC6MgUwATnA"
+    }
+  },
+  {
+    "name": "apm-registry",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1536667724,
+      "contentUri": "ipfs:apm"
+    }
+  },
+  {
+    "name": "apm-enssub",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1536667724,
+      "contentUri": "ipfs:enssub"
+    }
+  },
+  {
+    "name": "apm-repo",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1536667724,
+      "contentUri": "ipfs:repo"
+    }
+  },
+  {
+    "name": "jbaylina",
+    "registry": "public.dappnode.eth",
+    "versionCount": 0
+  },
+  {
+    "name": "bitcoin",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.0.2",
+      "timestamp": 1536851544,
+      "contentUri": "/ipfs/QmdEJA6DinzX8JQC5ucuU3eitpSgrMXyDskUU5zjNrgdNo"
+    }
+  },
+  {
+    "name": "peepin",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1536934668,
+      "contentUri": "/ipfs/QmZdDL9p8WDMBqqSbEGW2KQJBoycgYQoZMSgEW8tY6dzrK"
+    }
+  },
+  {
+    "name": "peepin2",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.0.2",
+      "timestamp": 1536951834,
+      "contentUri": "/ipfs/QmRJ2hJ3ob9aPioYPZFBiLuXHvkLU6YEu73GpxGExVSVtD"
+    }
+  },
+  {
+    "name": "dnpinner",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1538126004,
+      "contentUri": "/ipfs/QmZjpwyP7yBqd1vbPaxgpTyFKKHKdx9T4SFEcRRh8Mrwvr"
+    }
+  },
+  {
+    "name": "status",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1539083963,
+      "contentUri": "/ipfs/Qmc2gPLzKyqNUniyUvmcAP3NchBo257AyVCGSKyt4bUThH"
+    }
+  },
+  {
+    "name": "timenode",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1543338354,
+      "contentUri": "/ipfs/Qme34oXQab9GkaD4RLCyp9H3VtUzJQeSePZpxNXQaxp4Vd"
+    }
+  },
+  {
+    "name": "nextcloud",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1546863318,
+      "contentUri": "/ipfs/Qme5UPXEApV9yxu7EXM28AymjBEmpbgvBVYKnSgh7Axr9S"
+    }
+  },
+  {
+    "name": "goerli-parity",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1548678431,
+      "contentUri": "/ipfs/QmZrDwjBSdrZoU3V1P5QMGiwA8wReLqwfPMqwxjFEAjx7L"
+    }
+  },
+  {
+    "name": "artis-sigma1",
+    "registry": "public.dappnode.eth",
+    "versionCount": 5,
+    "latest": {
+      "version": "0.1.4",
+      "timestamp": 1551104588,
+      "contentUri": "/ipfs/QmcAbsHPmU8oWZt8VCBjpPrmwrTJXVUv9SyMuF8wfrRUYy"
+    }
+  },
+  {
+    "name": "goerli-tesseracts",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1556302672,
+      "contentUri": "/ipfs/QmWo7buuQhAC32WY2hgxhD8Pnc4fBap9TV9BgGfYYnsVAD"
+    }
+  },
+  {
+    "name": "eth-net-intelligence-api",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1557516221,
+      "contentUri": "/ipfs/QmRLdb2GWXtMrmYCT3RYKCk3nMzSEcKWVKEc2ioq9hQkjm"
+    }
+  },
+  {
+    "name": "fairdrop-network",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1558594111,
+      "contentUri": "/ipfs/QmewKKuiow7ZLbmLHVuKun3K8JTcsiRhdUuhrccAhrgHy1"
+    }
+  },
+  {
+    "name": "fairdrop",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1558608794,
+      "contentUri": "/ipfs/QmbJ4BF36iHVVpNivNUxrWHnj3CdoLUEe5PhAXFYz7aXwZ"
+    }
+  },
+  {
+    "name": "pocket-core",
+    "registry": "public.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.0.3",
+      "timestamp": 1561477779,
+      "contentUri": "/ipfs/QmU2nTN3etEdokdNg34kjVZC4qrZV8s4p65hV37Yf7pWiB"
+    }
+  },
+  {
+    "name": "lightning-network",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1561182497,
+      "contentUri": "/ipfs/QmPX9tDxUtpChVxh31mShxtZwqQX7LTD2XRWDrubAQrbme"
+    }
+  },
+  {
+    "name": "cosmos",
+    "registry": "public.dappnode.eth",
+    "versionCount": 4,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1576593415,
+      "contentUri": "/ipfs/QmaxSVrvuSBe43vevqkYG9BVVAXq4mway8f8EvQxEkDu18"
+    }
+  },
+  {
+    "name": "trinity",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1568382619,
+      "contentUri": "/ipfs/QmTrxRUCK84ofVjoDHGAHrmcFrWwqB4623wPxGfyPaQ1ZD"
+    }
+  },
+  {
+    "name": "masterethereum",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1569082532,
+      "contentUri": "/ipfs/QmbjBSCDCsy2nRiy9bnbeXqaVHbE29rtLxTpYqY7HjJjwN"
+    }
+  },
+  {
+    "name": "zcash",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.1.1",
+      "timestamp": 1576330412,
+      "contentUri": "/ipfs/QmTPgKki7ofMrnSom1vv5Jh1peD7JPq14JExKruKYGDTSW"
+    }
+  },
+  {
+    "name": "polkadot",
+    "registry": "public.dappnode.eth",
+    "versionCount": 10,
+    "latest": {
+      "version": "1.2.7",
+      "timestamp": 1573773838,
+      "contentUri": "/ipfs/Qmb9Uqh7CQ9Ggq9fD1qiguD7eH3qhaxEigwwAtWL8BXvhG"
+    }
+  },
+  {
+    "name": "prysm-beacon-chain",
+    "registry": "public.dappnode.eth",
+    "versionCount": 22,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1586961182,
+      "contentUri": "/ipfs/QmXkjuZswwM3UqJ9v2S9opMJneMFoaDo7edRug6o6PkA1A"
+    }
+  },
+  {
+    "name": "prysm-validator",
+    "registry": "public.dappnode.eth",
+    "versionCount": 25,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1586961798,
+      "contentUri": "/ipfs/QmQFqB4himf6GGBZTYMfktdyTT1djddUgu5Fv62feayDGo"
+    }
+  },
+  {
+    "name": "polkadot-apps",
+    "registry": "public.dappnode.eth",
+    "versionCount": 6,
+    "latest": {
+      "version": "0.0.6",
+      "timestamp": 1580917340,
+      "contentUri": "/ipfs/QmRkwgyVkHnMNCYP9MwwoykKbrdNPWAb1GMwtDBkgg3be3"
+    }
+  },
+  {
+    "name": "polkadot-kusama",
+    "registry": "public.dappnode.eth",
+    "versionCount": 12,
+    "latest": {
+      "version": "0.0.12",
+      "timestamp": 1580916725,
+      "contentUri": "/ipfs/QmZrCkGTirPUj89DHeBe1zx32Em2xbKAbtRepS3tjjMXN2"
+    }
+  },
+  {
+    "name": "beaconcha-in",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1575066382,
+      "contentUri": "/ipfs/QmVN5MspjEXMw2RCGAYQptxB2PyQD5AM4bmoPCLNqTjRCm"
+    }
+  },
+  {
+    "name": "nethermind",
+    "registry": "public.dappnode.eth",
+    "versionCount": 7,
+    "latest": {
+      "version": "0.0.7",
+      "timestamp": 1586882408,
+      "contentUri": "/ipfs/QmR2J9tFwWp38Bc8V4Qj1wwaWtskSR4WBnwbT5rMd8q8WM"
+    }
+  },
+  {
+    "name": "storj",
+    "registry": "public.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "0.0.3",
+      "timestamp": 1580917809,
+      "contentUri": "/ipfs/QmbZcqmptDnSCUVJECqpsTKqSKwQLFrLH9XzsZMTMKznve"
+    }
+  },
+  {
+    "name": "tornado-cash-relayer",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "0.0.2",
+      "timestamp": 1578480804,
+      "contentUri": "/ipfs/QmbyUHbKMRCtFeaWNQPqbxqJk865idBnMWw3b5xiJSESwu"
+    }
+  },
+  {
+    "name": "archipel",
+    "registry": "public.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1585580997,
+      "contentUri": "/ipfs/QmXvCAAtrA9uBoarW6srVy3RWNo7insxXYKcomjEP19Cgf"
+    }
+  },
+  {
+    "name": "substrate-telemetry-backend-archipel",
+    "registry": "public.dappnode.eth",
+    "versionCount": 4,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1585500864,
+      "contentUri": "/ipfs/QmZ4TnKLrgLarc5jk3eyse8ymoMpMbCEfXWsAMweUTfMoz"
+    }
+  },
+  {
+    "name": "substrate-telemetry-archipel",
+    "registry": "public.dappnode.eth",
+    "versionCount": 3,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1585500263,
+      "contentUri": "/ipfs/QmeayGM9ZiT6eikhETdQh6AicJcm4EEjrsPwtuCP5hjqoG"
+    }
+  },
+  {
+    "name": "boinc",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "0.0.1",
+      "timestamp": 1584435345,
+      "contentUri": "/ipfs/QmcMBMNM8DWcSR2ErMkrSs1S2d7ciqKc2VEgcjwb6C3ZjM"
+    }
+  },
+  {
+    "name": "archipel-ui",
+    "registry": "public.dappnode.eth",
+    "versionCount": 2,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1585580041,
+      "contentUri": "/ipfs/QmXo7KtDytsjLuP7iwX4ocWX8s8aXk5hcSPRPB3ivrsMHL"
+    }
+  },
+  {
+    "name": "x-core",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1585299500,
+      "contentUri": "/ipfs/QmcoVNmKpR3hBz975CxbQWDiNwHrUcq61kicFUQoR1Pv4E"
+    }
+  },
+  {
+    "name": "folding-at-home",
+    "registry": "public.dappnode.eth",
+    "versionCount": 1,
+    "latest": {
+      "version": "1.0.0",
+      "timestamp": 1585851377,
+      "contentUri": "/ipfs/QmegCcgrksxL2JweJbCziiZCRPyA8u3eRXN1ZQLpBXUybh"
+    }
+  }
+]

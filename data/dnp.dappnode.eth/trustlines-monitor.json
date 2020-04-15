@@ -1,0 +1,34 @@
+{
+  "name": "trustlines-monitor",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0x1e50879e31384cc983bdd0384334c7c32ebc88de30c16d5f0f9237acfe4cbe65",
+      "blockNumber": 8974837,
+      "contentUri": "/ipfs/QmWFkGP6LCiBgh1eNXZxcVPxjR8wDDVPFLEc4StXwKrsD5",
+      "timestamp": 1574345644,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.1",
+      "versionId": 2,
+      "txHash": "0xcde932ce3bec949ae1af0ca5981e03356b04b9305e4263bc506fef879cba7c80",
+      "blockNumber": 9167109,
+      "contentUri": "/ipfs/Qme6CqStBUFh346vjRhVJFhStKkiaykMq2uXHKcLMGfZkh",
+      "timestamp": 1577387063,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.2",
+      "versionId": 3,
+      "txHash": "0x9c16c3190df8bedf8201e1406d56630d69fc7aff689ab7838cb4bf1c7ee96390",
+      "blockNumber": 9251742,
+      "contentUri": "/ipfs/QmTvhWDrQHZ31vPFqqVfpSN9NDaSTqmhTMEi4SK98JsivH",
+      "timestamp": 1578642157,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

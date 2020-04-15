@@ -1,0 +1,25 @@
+{
+  "name": "wifi",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0xaead30d658cd7263dab92022b05ee3673e212507935956cc95568e355928770c",
+      "blockNumber": 7038733,
+      "contentUri": "/ipfs/QmULtqy3xJUHJGK6gLZx3tHachKVoV9tNy7vAymwCdXgVB",
+      "timestamp": 1547066398,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.0",
+      "versionId": 2,
+      "txHash": "0x260a372ce973a319f99eb83f2b181e1a131ced9f4355bf2149e0a66b2be5ca6f",
+      "blockNumber": 7714749,
+      "contentUri": "/ipfs/QmQsuY3frcS7zivWcTor9HTyfPjnWvJ6BemVwrvK9ig6KV",
+      "timestamp": 1557246014,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

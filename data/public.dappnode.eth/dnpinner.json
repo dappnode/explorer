@@ -1,0 +1,16 @@
+{
+  "name": "dnpinner",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x1e1d2ac009359c57097d8f64559d60f0f6d7dc6daae77057b3c3b1b3be2de66c",
+      "blockNumber": 6414297,
+      "contentUri": "/ipfs/QmZjpwyP7yBqd1vbPaxgpTyFKKHKdx9T4SFEcRRh8Mrwvr",
+      "timestamp": 1538126004,
+      "sender": "0xCA7A1A193a02e0520B6b745cD2eb24967c27cA00"
+    }
+  ]
+}

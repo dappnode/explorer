@@ -1,0 +1,34 @@
+{
+  "name": "archipel",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x3a9dd7e13f8a387fc586ccec66f8f158db3d494e29951a150205e267860e11d0",
+      "blockNumber": 9377395,
+      "contentUri": "/ipfs/QmTzidFzHKPSsNDuZRni6t6tMxgX5FBrDHyX9TscwA1L7i",
+      "timestamp": 1580305315,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0x9dde2b4adb9cc2eea7f1392323bb32d7d92f52daa9f3cb6c8e915e05895cf74b",
+      "blockNumber": 9384232,
+      "contentUri": "/ipfs/QmetwyRcPwFFgKYR2ipy9H9UMqKoKr32uigPajKoLXExuM",
+      "timestamp": 1580396749,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    },
+    {
+      "version": "1.0.0",
+      "versionId": 3,
+      "txHash": "0xb788878037d1fd21bf73e4ed2618a4c57e11c2864afc7cc27b79067b9790e336",
+      "blockNumber": 9773779,
+      "contentUri": "/ipfs/QmXvCAAtrA9uBoarW6srVy3RWNo7insxXYKcomjEP19Cgf",
+      "timestamp": 1585580997,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "bitcoin",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0x6172f0ed4e91c57b5d6c59b120369620a5327171cecaec5e8f7efab2d4ffa6f5",
+      "blockNumber": 6818587,
+      "contentUri": "/ipfs/QmYt42JnxrkZrgLgNVEBGcsPG1MT6gZQa7Lvk7eWQrjGkF",
+      "timestamp": 1543841983,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.1",
+      "versionId": 2,
+      "txHash": "0x9062e2f6760644513c1d01b8459843f33043685bab7b8432906915ddbdc2ba9e",
+      "blockNumber": 7036183,
+      "contentUri": "/ipfs/QmWzHNZnmj3ZrSLNUGTNCvefRjZXRkyHSMtq9169pLskUh",
+      "timestamp": 1547026583,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.2",
+      "versionId": 3,
+      "txHash": "0xde8628a2ab3a445e727c3a76a8beb897368ccadd27d29261aa5325a92e4178e7",
+      "blockNumber": 7739300,
+      "contentUri": "/ipfs/QmXD2UsPi2GgbRyrTZG2jeHWMCYvc6bZFEtKkvmpKGAV7Z",
+      "timestamp": 1557578917,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.3",
+      "versionId": 4,
+      "txHash": "0x0074b4f25d5923800759ad0e936f11e440600b946364f6b8939d498d2817583a",
+      "blockNumber": 7760110,
+      "contentUri": "/ipfs/QmUCJWPvV44sMLbofQV1bip8myyHjrgbFm65R8vYcCpp9V",
+      "timestamp": 1557859125,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.4",
+      "versionId": 5,
+      "txHash": "0xc27a4b8054549373afba7ec8c38e9b230b6e122474290c0766ab20f9f8d1e872",
+      "blockNumber": 8541077,
+      "contentUri": "/ipfs/QmcMtuy2AQFnSE2sWYBGPYNdNiqzyJoMCAa5gqo4A285Ds",
+      "timestamp": 1568374532,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.5",
+      "versionId": 6,
+      "txHash": "0x8903131e1796106640d459b0cc04596ddea0374c90e839fe45b0fcb839b9f010",
+      "blockNumber": 8999467,
+      "contentUri": "/ipfs/QmWzNqeGK7BZ2L3J5yeA6FmTPscuub2qYiWKoQo4ia8ZVJ",
+      "timestamp": 1574698937,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

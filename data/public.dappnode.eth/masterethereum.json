@@ -1,0 +1,16 @@
+{
+  "name": "masterethereum",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x508478ce46c94cec853361d777feaed6bb429ff909d53bca44f97c09f4a1d3d6",
+      "blockNumber": 8593620,
+      "contentUri": "/ipfs/QmbjBSCDCsy2nRiy9bnbeXqaVHbE29rtLxTpYqY7HjJjwN",
+      "timestamp": 1569082532,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

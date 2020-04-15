@@ -1,0 +1,25 @@
+{
+  "name": "livepeer",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xc7f015317081887c0d097b01982de4d6112cf4b04439f23a3df5c8783da20730",
+      "blockNumber": 6311667,
+      "contentUri": "/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH",
+      "timestamp": 1536663290,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0xdc308f89b291a43cabcdaccb80be19ab5bf6e15df1281cea7d1b84a15659d039",
+      "blockNumber": 6313737,
+      "contentUri": "/ipfs/QmeMRXex4qwFj85XDP7bjFbNRq4rSAbiBDbPRuDF8XqdQ4",
+      "timestamp": 1536693825,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

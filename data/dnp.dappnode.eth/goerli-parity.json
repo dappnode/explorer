@@ -1,0 +1,16 @@
+{
+  "name": "goerli-parity",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x43b5a650e015e9db4d1b17885bcdfa70c40773198465403d3232740c168b66b5",
+      "blockNumber": 7119964,
+      "contentUri": "/ipfs/QmUsK7niWPTeSLv8Zqhwdn2GtTDgDcC5v6PiCVDgiEc8Vn",
+      "timestamp": 1548351153,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

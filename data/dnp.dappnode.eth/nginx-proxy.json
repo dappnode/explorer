@@ -1,0 +1,34 @@
+{
+  "name": "nginx-proxy",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xee1a9a18a65b3fd4663c3d43cce98f03f491c44976f828919f8121a1774cc5cd",
+      "blockNumber": 5504268,
+      "contentUri": "2f697066732f516d506e4a426f4b79324e694c6b39644e7346536d446837434e34366957514e797653585039694e716e5558594b",
+      "timestamp": 1524674482,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0x864990a19e7fb1b2e713c8749a371a70819be429ab57d4b89eeee6063fc4917a",
+      "blockNumber": 5504386,
+      "contentUri": "/ipfs/QmPnJBoKy2NiLk9dNsFSmDh7CN46iWQNyvSXP9iNqnUXYK",
+      "timestamp": 1524676092,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.3",
+      "versionId": 3,
+      "txHash": "0xf91d25c24ae40cf060d3e92ce4d30c9265ea3eac09e3b80ae47e897572f663ea",
+      "blockNumber": 5635370,
+      "contentUri": "/ipfs/QmPqhkpQvyP6WynVG9H3nNgJDyoNPfUYw7MeBJrcJL4coh",
+      "timestamp": 1526654167,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

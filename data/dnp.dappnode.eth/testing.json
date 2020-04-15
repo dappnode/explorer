@@ -1,0 +1,34 @@
+{
+  "name": "testing",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xe4420fd0e4020a7ae36a8c5661ce89bbdc77e995d7408e7b307512980cc32849",
+      "blockNumber": 5420237,
+      "contentUri": "/ipfs/QmWPcG7SMTpzeqBZLtX7nBKHQ8JxcKBFxeCMV3BPJQnqT9",
+      "timestamp": 1523434418,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.2",
+      "versionId": 2,
+      "txHash": "0x9523a9e347ba84ccdbc24dc52743ea57cd8316076fa4fbe8efedceba13732592",
+      "blockNumber": 5470409,
+      "contentUri": "/ipfs/QmbFMke1KXqnYyBBWxB74N4c5SBnJMVAiMNRcGu6x1AwQH",
+      "timestamp": 1524171136,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.0.3",
+      "versionId": 3,
+      "txHash": "0x4a0edee5ea2994e55761e6bc8bfc9188c5b0d174734b60829494f55b41b186ad",
+      "blockNumber": 5470453,
+      "contentUri": "/ipfs/Qmc9mDd2nBmo7E4sHtNbsjVHeP9aAR2qSbzypVvM6YqmFV",
+      "timestamp": 1524171804,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

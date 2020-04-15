@@ -1,0 +1,17 @@
+{
+  "name": "apm-registry",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "versionId": 1,
+      "txHash": "0xa1ce5838e42756070aa538b366dc2276fb4ca421f17c03d4d9e9bbe9c02e493b",
+      "blockNumber": 5254891,
+      "contractAddress": "0x1d9Bdf492e59A306DDa59E5aA13E7F1C7D89197A",
+      "contentUri": "ipfs:apm",
+      "timestamp": 1521047104,
+      "sender": "0x1DBA1131000664b884A1Ba238464159892252D3a"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "fairdrop-network",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xad507a4141f327bc8df961460154872ff122fb897ede5be843833c889d547254",
+      "blockNumber": 7814490,
+      "contentUri": "/ipfs/QmewKKuiow7ZLbmLHVuKun3K8JTcsiRhdUuhrccAhrgHy1",
+      "timestamp": 1558594111,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

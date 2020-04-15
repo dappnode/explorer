@@ -1,0 +1,16 @@
+{
+  "name": "boinc",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878840,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x4fa8724b45059bb6d8b5a1c1016f191496ca1b40e4275108d6ab3a3b7c974d60",
+      "blockNumber": 9688051,
+      "contentUri": "/ipfs/QmcMBMNM8DWcSR2ErMkrSs1S2d7ciqKc2VEgcjwb6C3ZjM",
+      "timestamp": 1584435345,
+      "sender": "0xE13AB43fF6f45C223749faa05F7aa5721CcC59F6"
+    }
+  ]
+}

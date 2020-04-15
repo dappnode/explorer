@@ -1,0 +1,34 @@
+{
+  "name": "trustlines-netstats",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0xe5866770f8fff8fa270f13d8afd6dbdf1226a167baff0b04931f8f2066c92254",
+      "blockNumber": 8974961,
+      "contentUri": "/ipfs/QmPX2j2fnCCYLGjPwLFFbCBbMtv8wcuBMxziCpftAaffuZ",
+      "timestamp": 1574347699,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.1",
+      "versionId": 2,
+      "txHash": "0xc7c8424b66670328f16ee50050e0b87377f55146ce54c2c758ba0e6aa89ff8e3",
+      "blockNumber": 8975235,
+      "contentUri": "/ipfs/QmRNCEHh7SK2o97UphGaqyaiUkpqg23CYxVNUJNYVWuNne",
+      "timestamp": 1574351504,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.2",
+      "versionId": 3,
+      "txHash": "0x41210b0ec7bc7d824c679ca878f37823395d72ef6047223cf99a3e33c0da0c33",
+      "blockNumber": 8981130,
+      "contentUri": "/ipfs/QmT9mWFGadQMGp8tyWYT3PK1vXi9QoZBMjken3zeVuwDA6",
+      "timestamp": 1574436383,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

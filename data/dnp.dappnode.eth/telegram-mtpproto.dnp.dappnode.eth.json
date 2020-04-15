@@ -1,0 +1,16 @@
+{
+  "name": "telegram-mtpproto.dnp.dappnode.eth",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x7a9259a5493c8ea2de7ae8731fc6e2fb96308cc7f26753dababbf2a5f41a6a8a",
+      "blockNumber": 5863293,
+      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN",
+      "timestamp": 1530103873,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "goerli-pantheon",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878840,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0x6c24eeecf7c7cb1c7f8377c94839629b507819f628f2c3df4151e67bc3c7d741",
+      "blockNumber": 6668172,
+      "contentUri": "/ipfs/QmdW5xZJVN7xonNvAjQJsNcUDJSbapggXN4gDJg2v2USd9",
+      "timestamp": 1541707173,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

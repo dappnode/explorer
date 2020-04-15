@@ -1,0 +1,16 @@
+{
+  "name": "raiden",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xce16e34f0ec0295621c605f19ab0b6f1364a99609acdcfe9b30f02167c0439d4",
+      "blockNumber": 7956129,
+      "contentUri": "/ipfs/QmfVHE7vUTi3UVcWk7JfgxdgFHG4K1JvKog2zy3SjUKz2y",
+      "timestamp": 1560506744,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

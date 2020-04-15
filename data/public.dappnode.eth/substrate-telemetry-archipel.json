@@ -1,0 +1,34 @@
+{
+  "name": "substrate-telemetry-archipel",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xc6cb2832588a024041f3f6e873145b88341ef3190c45efd49f05b4b622b725b6",
+      "blockNumber": 9449867,
+      "contentUri": "/ipfs/QmT7wQqS9AUWBxEtGnhpP9CPQFZSjY1fRrBpJ95TYR4GQo",
+      "timestamp": 1581268189,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    },
+    {
+      "version": "0.1.0",
+      "versionId": 2,
+      "txHash": "0x8d79e0ef1b74ef84a39eefa1ab55081a19a30656f8b10f9d5737f165a682cca6",
+      "blockNumber": 9468994,
+      "contentUri": "/ipfs/QmdRt8pmKxfPMrCRgAVB9v3QMtN98nwQzSVNrktnescSUQ",
+      "timestamp": 1581521950,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    },
+    {
+      "version": "1.0.0",
+      "versionId": 3,
+      "txHash": "0x35f0f653746d7aec62684cdb65e461debe6c5ebfb1257b2481d441cab5a676e4",
+      "blockNumber": 9767682,
+      "contentUri": "/ipfs/QmeayGM9ZiT6eikhETdQh6AicJcm4EEjrsPwtuCP5hjqoG",
+      "timestamp": 1585500263,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    }
+  ]
+}

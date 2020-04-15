@@ -1,0 +1,16 @@
+{
+  "name": "ipfs-cluster",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0x4087d76b686748d2ae6626a032614ce2a402a207fbbf099451d17f6b2cade4e8",
+      "blockNumber": 9038675,
+      "contentUri": "/ipfs/QmSV42YKjT2Qz6qdcHpSxjqvFKc7XvrmxhJ1y8F16yS338",
+      "timestamp": 1575298938,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

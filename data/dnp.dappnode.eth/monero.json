@@ -1,0 +1,52 @@
+{
+  "name": "monero",
+  "registry": "dnp.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.0.1",
+      "versionId": 1,
+      "txHash": "0xc2589085830a93086ae9e133b613005a1e3d1b6aaa863631eec606d5e3d6b028",
+      "blockNumber": 5864878,
+      "contentUri": "/ipfs/QmYLd6zhgtMQMv4anSb8x4kkpqEco4kRduBUq4UfXktSmV",
+      "timestamp": 1530126321,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.0",
+      "versionId": 2,
+      "txHash": "0x0c36d78d9eabfffd636695df665bb50b7382baae6f24d3704fa47b9642ba85b2",
+      "blockNumber": 6716097,
+      "contentUri": "/ipfs/QmbPVaVVLHoFyJyzxHmok9kJYFAzq6R2UBvhEAuAQYc3ws",
+      "timestamp": 1542384305,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.1.1",
+      "versionId": 3,
+      "txHash": "0x2b8808502a18df5d1b81d03cef3a07cf69b6d58cc631a08feaf079f50530b3f9",
+      "blockNumber": 7407519,
+      "contentUri": "/ipfs/QmWw1yGjFjrtu7eesv83uPU5tHVkSYRgEtbaGGx8h3Addr",
+      "timestamp": 1553108907,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.0",
+      "versionId": 4,
+      "txHash": "0xb60f6e41a78ec2d678ff1c3a507266c89ca5b71bd0a24acf90afede46cb16cea",
+      "blockNumber": 8956963,
+      "contentUri": "/ipfs/QmTtHbkpD3QFpXKRpA9dj8H52tMZfBMU6hqX1EinN599xk",
+      "timestamp": 1574087076,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "0.2.1",
+      "versionId": 5,
+      "txHash": "0x9034b0f2fd861a8c8637d4f9f6d825537b498c76f5baf644fc0d2650489f4da5",
+      "blockNumber": 9363160,
+      "contentUri": "/ipfs/QmXDpWL2smjSmgtVMmRL6jfUknYdHeS3QSkF3LMsprFokK",
+      "timestamp": 1580116632,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    }
+  ]
+}

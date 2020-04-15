@@ -1,0 +1,16 @@
+{
+  "name": "folding-at-home",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "versionId": 1,
+      "txHash": "0x1910ef69d27b9e2699acf3d3c4b6a9c1884b76ebe2908e2427cde782b4981a5b",
+      "blockNumber": 9794113,
+      "contentUri": "/ipfs/QmegCcgrksxL2JweJbCziiZCRPyA8u3eRXN1ZQLpBXUybh",
+      "timestamp": 1585851377,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    }
+  ]
+}

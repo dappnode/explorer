@@ -1,0 +1,25 @@
+{
+  "name": "goerli-tesseracts",
+  "registry": "public.dappnode.eth",
+  "fromBlock": 9878839,
+  "versions": [
+    {
+      "version": "0.1.0",
+      "versionId": 1,
+      "txHash": "0x0c9db52879386dd9b39121fa648e273a2c4efb5e0f0a00319b70ff635e94e098",
+      "blockNumber": 7639201,
+      "contentUri": "/ipfs/QmYfjAoe32yxkQqHWPQzaQ7DXpoDKsdk1U6WvahRFxjFBL",
+      "timestamp": 1556230507,
+      "sender": "0xaD41a7558A54BdcBafC4F9Ca9909A09E7ba4e127"
+    },
+    {
+      "version": "0.1.1",
+      "versionId": 2,
+      "txHash": "0x8d49e2f39cd164c0cea1b5c3fd4e1a5e5adaba36e2e49e7e651adb8979bd03c0",
+      "blockNumber": 7644550,
+      "contentUri": "/ipfs/QmWo7buuQhAC32WY2hgxhD8Pnc4fBap9TV9BgGfYYnsVAD",
+      "timestamp": 1556302672,
+      "sender": "0xaD41a7558A54BdcBafC4F9Ca9909A09E7ba4e127"
+    }
+  ]
+}
