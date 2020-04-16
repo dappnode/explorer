@@ -31,7 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "fetch": "ts-node src/fetch/node",
+    "fetch": "ts-node --project tsconfig.server.json src/fetch/node",
     "predeploy": "npm run fetch && npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
@@ -58,6 +58,7 @@
     "@types/recharts": "^1.8.9",
     "@types/semver": "^7.1.0",
     "@types/xml2js": "^0.4.5",
+    "gh-pages": "^2.2.0",
     "ts-node": "^8.8.2"
   }
 }
