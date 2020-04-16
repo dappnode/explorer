@@ -8,7 +8,8 @@ export interface RepoSummary {
   latest?: {
     version: string;
     timestamp?: number;
-    contentUri: string; // To get the logo
+    contentUri: string;
+    logo: string | null; // To get the logo: "avatar/dnp.dappnode.eth/bitcoin"
   };
 }
 

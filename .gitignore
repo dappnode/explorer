@@ -13,7 +13,7 @@
 
 # Data build
 /public/data
-/data
+/public/avatar
 
 # misc
 .DS_Store

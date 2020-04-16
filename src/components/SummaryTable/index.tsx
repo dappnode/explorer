@@ -1,19 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { prettyName } from "../../utils/format";
 import { RepoSummary } from "../../fetch/types";
 import { sortBy } from "lodash";
 import { TimeDisplay } from "../Generic/TimeDisplay";
 import "./summary-table.scss";
-import { joinIpfsLocation, urlJoin } from "../../utils/url";
-import SettingsContext from "../../settingsContext";
+import { urlJoin } from "../../utils/url";
+import { rootUrlFromBrowser } from "../../fetch/params";
 
 export default function SummaryTable({
   repoSummary,
 }: {
   repoSummary: RepoSummary[];
 }) {
-  const { ipfsGateway } = useContext(SettingsContext);
   const history = useHistory();
   function goToRepoView(registry: string, repo: string) {
     history.push(`/${registry}/${repo}`);
@@ -39,12 +38,9 @@ export default function SummaryTable({
               onClick={() => goToRepoView(registry, name)}
             >
               <td className="logo">
-                {latest && (
+                {latest && latest.logo && (
                   <img
-                    src={joinIpfsLocation(
-                      ipfsGateway,
-                      urlJoin(latest.contentUri, "avatar.png")
-                    )}
+                    src={urlJoin(rootUrlFromBrowser, latest.logo)}
                     alt="logo"
                   />
                 )}
