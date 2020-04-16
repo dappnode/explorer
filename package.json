@@ -31,9 +31,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "fetch": "ts-node --project tsconfig.server.json src/fetch/node",
+    "fetch": "ts-node --project tsconfig.server.json src/scripts/fetch",
     "predeploy": "npm run fetch && npm run build",
     "deploy": "gh-pages -d build",
+    "postinstall": "patch-package",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -59,6 +60,7 @@
     "@types/semver": "^7.1.0",
     "@types/xml2js": "^0.4.5",
     "gh-pages": "^2.2.0",
+    "patch-package": "^6.2.2",
     "ts-node": "^8.8.2"
   }
 }
