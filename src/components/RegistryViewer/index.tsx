@@ -21,7 +21,16 @@ export const RegistryView: React.FC<RouteComponentProps<{
     const filepath = getRegistryFile(registry);
     fetch(urlJoin(rootUrlFromBrowser, filepath))
       .then((res) => res.json())
-      .then(setRegistryData);
+      .then((_data: LocalRegistry) => {
+        // Sanitize data, and sort versions
+        if (!_data) return;
+        // Sort repos
+        _data.repos = sortBy(
+          Array.isArray(_data.repos) ? _data.repos : [],
+          (r) => r.blockNumber || 0
+        ).reverse();
+        setRegistryData(_data);
+      });
   }, [registry]);
 
   function goToRepoView(repo: string) {
@@ -29,6 +38,9 @@ export const RegistryView: React.FC<RouteComponentProps<{
   }
 
   if (!registryData) return <p className="soft">Loading...</p>;
+
+  // Alias
+  const repos = registryData.repos;
 
   return (
     <>
@@ -43,22 +55,20 @@ export const RegistryView: React.FC<RouteComponentProps<{
           </tr>
         </thead>
         <tbody>
-          {sortBy(registryData.repos, (repo) => repo.blockNumber || 0)
-            .reverse()
-            .map(({ name, timestamp, sender, txHash }) => (
-              <tr key={name} onClick={() => goToRepoView(name)}>
-                <td>{prettyName(name)}</td>
-                <td>
-                  <TimeDisplay timestamp={timestamp} />
-                </td>
-                <td>
-                  <AddressDisplay address={sender} />
-                </td>
-                <td>
-                  <ExternalLink url={`${txViewer}/${txHash}`} />
-                </td>
-              </tr>
-            ))}
+          {repos.map(({ name, timestamp, sender, txHash }) => (
+            <tr key={name} onClick={() => goToRepoView(name)}>
+              <td>{prettyName(name)}</td>
+              <td>
+                <TimeDisplay timestamp={timestamp} />
+              </td>
+              <td>
+                <AddressDisplay address={sender} />
+              </td>
+              <td>
+                <ExternalLink url={`${txViewer}/${txHash}`} />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>

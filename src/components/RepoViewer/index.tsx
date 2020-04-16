@@ -38,17 +38,22 @@ export const RepoView: React.FC<RouteComponentProps<{
     const filepath = getRepoFile(registry, repo);
     fetch(urlJoin(rootUrlFromBrowser, filepath))
       .then((res) => res.json())
-      .then(setRepoData);
+      .then((_data: LocalRepo) => {
+        // Sanitize data, and sort versions
+        if (!_data) return;
+        // Sort versions
+        _data.versions = sortBy(
+          Array.isArray(_data.versions) ? _data.versions : [],
+          (v) => v.versionId
+        ).reverse();
+        setRepoData(_data);
+      });
   }, [registry, repo]);
 
   useEffect(() => {
     async function checkVersionAvailability() {
       if (repoData) {
-        const versions = sortBy(
-          repoData.versions,
-          (version) => version.versionId
-        ).reverse();
-        for (const _version of versions) {
+        for (const _version of repoData.versions) {
           const available = await isVersionAvailable(_version, ipfsGateway);
           setIsAvailable((x) => ({ ...x, [_version.version]: available }));
         }
@@ -63,15 +68,13 @@ export const RepoView: React.FC<RouteComponentProps<{
 
   if (!repoData) return <p className="soft">Loading...</p>;
 
-  const sortedVersions = sortBy(
-    repoData.versions,
-    (version) => version.versionId
-  ).reverse();
+  // Alias
+  const versions = repoData.versions;
 
   // Add another "Creation" version if the creation tx is different
-  const firstVersion = sortedVersions[sortedVersions.length - 1];
+  const firstVersion = versions[versions.length - 1];
   if (firstVersion.txHash && repoData.creation.txHash !== firstVersion.txHash) {
-    sortedVersions.push({
+    versions.push({
       version: "Creation",
       versionId: -1,
       contentUri: "",
@@ -79,9 +82,9 @@ export const RepoView: React.FC<RouteComponentProps<{
     });
   }
 
-  const latestVersion = sortedVersions[0];
+  const latestVersion = versions[0];
   const versionDisplay =
-    sortedVersions.find((v) => v.version === version) || latestVersion;
+    versions.find((v) => v.version === version) || latestVersion;
   const isLatest = versionDisplay.versionId === latestVersion.versionId;
 
   return (
@@ -106,7 +109,7 @@ export const RepoView: React.FC<RouteComponentProps<{
           </tr>
         </thead>
         <tbody>
-          {sortedVersions.map(
+          {versions.map(
             ({ version, contentUri, txHash, timestamp, sender }) => (
               <tr key={version} onClick={() => selectVersion(version)}>
                 <td>{version}</td>

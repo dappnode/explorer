@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { omit } from "lodash";
+import retry from "async-retry";
 import {
   fetchNewVersions,
   fetchNewRepos,
@@ -48,7 +49,14 @@ export async function fetchRegistryList(
         const registryLocal = await db.registry.get(registryArg);
         const fromBlock = registryLocal ? registryLocal.fromBlock : undefined;
         const blockNumberNewRepos = await provider.getBlockNumber();
-        const newRepos = await fetchNewRepos(provider, registryName, fromBlock);
+        const newRepos = await retry(
+          () => fetchNewRepos(provider, registryName, fromBlock),
+          {
+            retries: 5,
+            onRetry: (e) =>
+              console.warn(`Retrying fetchNewRepos: ${e.message}`),
+          }
+        );
         const repos = uniqueSortedRepos(
           registryLocal ? registryLocal.repos : [],
           newRepos
@@ -58,10 +66,14 @@ export async function fetchRegistryList(
           fromBlock: blockNumberNewRepos,
           repos,
         });
+        // Log results
+        const newReposList = newRepos.map((r) => r.name).join(", ");
+        console.log(`Fetched new repos from ${registryName}: ${newReposList}`);
 
         // Fetch new versions
         await Promise.all(
           repos.map(async (repo) => {
+            const repoId = `${registryName} / ${(repo || {}).name}`; // For consistent debugging
             try {
               const repoArg = {
                 registry: registryName,
@@ -71,10 +83,18 @@ export async function fetchRegistryList(
               const repoLocal = await db.repo.get(repoArg);
               const fromBlock = repoLocal ? repoLocal.fromBlock : undefined;
               const blockNumberNewVersions = await provider.getBlockNumber();
-              const newVersions = await fetchNewVersions(
-                provider,
-                repo.repo, // Use the address since the ENS name may not be configured
-                fromBlock
+              const newVersions = await retry(
+                () =>
+                  fetchNewVersions(
+                    provider,
+                    repo.repo, // Use the address since the ENS name may not be configured
+                    fromBlock
+                  ),
+                {
+                  retries: 5,
+                  onRetry: (e) =>
+                    console.warn(`Retrying fetchNewVersions: ${e.message}`),
+                }
               );
               const versions = uniqueSortedVersions(
                 repoLocal ? repoLocal.versions : [],
@@ -87,15 +107,16 @@ export async function fetchRegistryList(
                 creation: omit(repo, "name"),
                 versions,
               });
+              // Log results
+              const newVList = newVersions.map((v) => v.version).join(", ");
+              console.log(`Fetched new versions from ${repoId}: ${newVList}`);
             } catch (e) {
-              console.error(
-                `Error fetching new versions ${(repo || {}).name}: ${e.stack}`
-              );
+              console.error(`Error fetching versions ${repoId}: ${e.stack}`);
             }
           })
         );
       } catch (e) {
-        console.error(`Error fetching new repos ${registryName}: ${e.stack}`);
+        console.error(`Error fetching repos ${registryName}: ${e.stack}`);
       }
     })
   );

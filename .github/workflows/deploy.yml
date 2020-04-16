@@ -6,23 +6,44 @@ on:
       - master
 
 jobs:
-  build:
+  deploy:
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      # - run: ./bin/update-gh-pages
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.github_token }}
-      - uses: actions/setup-node@v1
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v1
         with:
-          node-version: 12
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-build-${{ env.cache-name }}-
-      #       ${{ runner.os }}-build-
-      #       ${{ runner.os }}-
-      - run: yarn
-      - name:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install
+        run: yarn
+
+      - name: Copy previous pre-fetched content
+        run: |
+          git clone $(git config --get remote.origin.url) -b gh-pages dn-explorer-gh-pages
+          cp -r dn-explorer-gh-pages/data public/data
+
+      - name: Pre-fetch content
+        run: |
+          sudo apt-get install tree -qq
+          tree public 
+          yarn fetch
+          tree public
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

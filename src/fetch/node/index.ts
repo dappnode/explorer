@@ -25,15 +25,9 @@ import { NewVersion } from "../apm";
 import { joinIpfsLocation } from "../../utils/url";
 import { isPng } from "./utils";
 
-const ipfsGateway = "https://ipfs.infura.io";
-
-preFetchFromNode(new ethers.providers.InfuraProvider(), [
-  "dnp.dappnode.eth",
-  "public.dappnode.eth",
-]);
-
 export async function preFetchFromNode(
   provider: ethers.providers.Provider,
+  ipfsGateway: string,
   registryList: string[]
 ) {
   const localFile = LocalFile(rootDirFromNode);
@@ -47,6 +41,10 @@ export async function preFetchFromNode(
       set: ({ filepath }: RepoArg, data) => localFile.write(filepath, data),
     },
   };
+
+  console.log(`Testing provider...`);
+  const currentBlock = await provider.getBlockNumber();
+  console.log(`Current block number: ${currentBlock}`);
 
   // Store the registry list to start querying
   localFile.write<RegistryList>(registriesFile, registryList);
@@ -74,27 +72,6 @@ export async function preFetchFromNode(
     }
   }
 
-  /**
-   * Download avatars locally.
-   * Otherwise the client will encounter a ton of errors trying to fetch the avatars
-   * @param repo
-   */
-  async function fetchAndSaveAvatar(repo: LocalRepo): Promise<string | null> {
-    const { contentUri } = getLastVersion(repo) || {};
-    if (!contentUri) return null;
-
-    // Fetch avatar from directory or manifest, ignore all errors
-    const avatarBuffer =
-      (await fetchAvatarDirectory(contentUri).catch(() => null)) ||
-      (await fetchAvatarManifest(contentUri).catch(() => null));
-
-    if (!avatarBuffer) return null;
-
-    const avatarFile = getAvatarFile(repo.registry, repo.name);
-    localFile.writeBuffer(avatarFile, avatarBuffer);
-    return avatarFile;
-  }
-
   const repoSummary: RepoSummary[] = await Promise.all(
     allRepos.map(
       async (repo): Promise<RepoSummary> => {
@@ -105,16 +82,20 @@ export async function preFetchFromNode(
           versionCount: repo.versions.length,
         };
         if (latestVersion) {
+          // Download avatars locally.
+          // Otherwise the client will encounter a ton of errors trying to fetch the avatars
+          const avatarBuffer = await fetchAvatar(repo, ipfsGateway).catch((e) =>
+            console.warn(`Error saving avatar: ${e.stack}`)
+          );
+          const avatarFile = getAvatarFile(repo.registry, repo.name);
+          if (avatarBuffer) localFile.writeBuffer(avatarFile, avatarBuffer);
           return {
             ...baseData,
             latest: {
               version: latestVersion.version,
               timestamp: latestVersion.timestamp,
               contentUri: latestVersion.contentUri,
-              logo: await fetchAndSaveAvatar(repo).catch((e) => {
-                console.warn(`Error saving ${repo.name} avatar: ${e.stack}`);
-                return null;
-              }),
+              logo: avatarBuffer ? avatarFile : null,
             },
           };
         } else {
@@ -139,41 +120,59 @@ export async function preFetchFromNode(
   localFile.write<Activity>(activityFile, activityLast12Months);
 }
 
-async function fetchIpfs(contentUri: string) {
-  return await fetch(joinIpfsLocation(ipfsGateway, contentUri), {
-    timeout: 5000,
-  });
-}
-
 /**
- * Fetch avatar from release hash of type directory
- * @param contentUri
+ * Download avatars locally.
+ * Otherwise the client will encounter a ton of errors trying to fetch the avatars
+ * @param repo
  */
-async function fetchAvatarDirectory(
-  contentUri: string
+async function fetchAvatar(
+  repo: LocalRepo,
+  ipfsGateway: string
 ): Promise<Buffer | null> {
-  const res = await fetchIpfs(`${contentUri}/avatar.png`);
-  const buffer = await res.buffer();
-  return res.ok && buffer && isPng(buffer) ? buffer : null;
-}
+  async function fetchIpfs(contentUri: string) {
+    return await fetch(joinIpfsLocation(ipfsGateway, contentUri), {
+      timeout: 5000,
+    });
+  }
 
-/**
- * Fetch avatar from release hash of type manifest
- * @param contentUri
- */
-async function fetchAvatarManifest(contentUri: string): Promise<Buffer | null> {
-  const manifest = await fetchIpfs(contentUri).then((res) => res.json());
-  if (!manifest || !manifest.avatar) return null;
-  const res = await fetchIpfs(manifest.avatar);
-  const buffer = await res.buffer();
-  return res.ok && buffer && isPng(buffer) ? buffer : null;
+  /**
+   * Fetch avatar from release hash of type directory
+   * @param contentUri
+   */
+  async function fetchAvatarDirectory(
+    contentUri: string
+  ): Promise<Buffer | null> {
+    const res = await fetchIpfs(`${contentUri}/avatar.png`);
+    const buffer = await res.buffer();
+    return res.ok && buffer && isPng(buffer) ? buffer : null;
+  }
+
+  /**
+   * Fetch avatar from release hash of type manifest
+   * @param contentUri
+   */
+  async function fetchAvatarManifest(
+    contentUri: string
+  ): Promise<Buffer | null> {
+    const manifest = await fetchIpfs(contentUri).then((res) => res.json());
+    if (!manifest || !manifest.avatar) return null;
+    const res = await fetchIpfs(manifest.avatar);
+    const buffer = await res.buffer();
+    return res.ok && buffer && isPng(buffer) ? buffer : null;
+  }
+
+  const { contentUri } = getLastVersion(repo) || {};
+  if (!contentUri) return null;
+
+  // Fetch avatar from directory or manifest, ignore all errors
+  return (
+    (await fetchAvatarDirectory(contentUri).catch(() => null)) ||
+    (await fetchAvatarManifest(contentUri).catch(() => null))
+  );
 }
 
 function getLastVersion(repo: LocalRepo): NewVersion {
-  const latestVersion = sortBy(
-    repo.versions,
-    (version) => version.versionId
-  ).reverse()[0];
+  const latestVersion = sortBy(repo.versions, (v) => v.versionId).reverse()[0];
   if (latestVersion) return latestVersion;
 
   // Return creation as latest version
