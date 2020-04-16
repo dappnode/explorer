@@ -28,7 +28,7 @@ export const RegistryView: React.FC<RouteComponentProps<{
     history.push(`/${registry}/${repo}`);
   }
 
-  if (!registryData) return <p>No registry data</p>;
+  if (!registryData) return <p className="soft">Loading...</p>;
 
   return (
     <>

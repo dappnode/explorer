@@ -61,7 +61,7 @@ export const RepoView: React.FC<RouteComponentProps<{
     history.push(`/${registry}/${repo}/${_version}`);
   }
 
-  if (!repoData) return <p>No repo data</p>;
+  if (!repoData) return <p className="soft">Loading...</p>;
 
   const sortedVersions = sortBy(
     repoData.versions,
