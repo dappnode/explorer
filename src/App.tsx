@@ -28,13 +28,23 @@ export default function App() {
     0
   );
 
+  const activityData = [
+    { month: "Jan", versions: 13, packages: 2 },
+    { month: "Feb", versions: 4, packages: 4 },
+    { month: "Mar", versions: 20, packages: 0 },
+    { month: "Apr", versions: 22, packages: 2 },
+    { month: "May", versions: 9, packages: 0 },
+    { month: "Jun", versions: 11, packages: 1 },
+    { month: "Jul", versions: 14, packages: 0 },
+  ];
+
   return (
     <div className="App">
       <Header />
       <div className="app-body">
         {/* Home */}
         <Route path="/" exact>
-          <ActivityChart />
+          <ActivityChart data={activityData} />
           <SummaryStats
             packageCount={packageCount}
             versionCount={versionCount}
