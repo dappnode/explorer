@@ -6,7 +6,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1521047104,
-      "contentUri": "ipfs:apm"
+      "contentUri": "ipfs:apm",
+      "logo": null
     }
   },
   {
@@ -16,7 +17,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1521047104,
-      "contentUri": "ipfs:enssub"
+      "contentUri": "ipfs:enssub",
+      "logo": null
     }
   },
   {
@@ -26,7 +28,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1521047104,
-      "contentUri": "ipfs:repo"
+      "contentUri": "ipfs:repo",
+      "logo": null
     }
   },
   {
@@ -36,7 +39,8 @@
     "latest": {
       "version": "0.4.4",
       "timestamp": 1584383332,
-      "contentUri": "/ipfs/QmNSK6Ev8ZMvnGjq6osehUggJK2WeHeensginfVu2rwTSd"
+      "contentUri": "/ipfs/QmNSK6Ev8ZMvnGjq6osehUggJK2WeHeensginfVu2rwTSd",
+      "logo": "avatar/dnp.dappnode.eth/rinkeby.png"
     }
   },
   {
@@ -46,7 +50,8 @@
     "latest": {
       "version": "0.0.3",
       "timestamp": 1524171804,
-      "contentUri": "/ipfs/Qmc9mDd2nBmo7E4sHtNbsjVHeP9aAR2qSbzypVvM6YqmFV"
+      "contentUri": "/ipfs/Qmc9mDd2nBmo7E4sHtNbsjVHeP9aAR2qSbzypVvM6YqmFV",
+      "logo": null
     }
   },
   {
@@ -56,7 +61,8 @@
     "latest": {
       "version": "0.0.3",
       "timestamp": 1526654167,
-      "contentUri": "/ipfs/QmPqhkpQvyP6WynVG9H3nNgJDyoNPfUYw7MeBJrcJL4coh"
+      "contentUri": "/ipfs/QmPqhkpQvyP6WynVG9H3nNgJDyoNPfUYw7MeBJrcJL4coh",
+      "logo": "avatar/dnp.dappnode.eth/nginx-proxy.png"
     }
   },
   {
@@ -66,7 +72,8 @@
     "latest": {
       "version": "0.0.4",
       "timestamp": 1526654749,
-      "contentUri": "/ipfs/QmR6M4AwY6T1biFKPVuRbL6mHWCJhUQjc4tvmzYg5Yx4ND"
+      "contentUri": "/ipfs/QmR6M4AwY6T1biFKPVuRbL6mHWCJhUQjc4tvmzYg5Yx4ND",
+      "logo": "avatar/dnp.dappnode.eth/letsencrypt-nginx.png"
     }
   },
   {
@@ -76,7 +83,8 @@
     "latest": {
       "version": "0.0.3",
       "timestamp": 1526045968,
-      "contentUri": "/ipfs/QmUHFxFbYdJDueBWzYZnvpzkjwBmMt3bmNDLQBTZzY18UZ"
+      "contentUri": "/ipfs/QmUHFxFbYdJDueBWzYZnvpzkjwBmMt3bmNDLQBTZzY18UZ",
+      "logo": null
     }
   },
   {
@@ -86,7 +94,8 @@
     "latest": {
       "version": "0.1.8",
       "timestamp": 1573250182,
-      "contentUri": "/ipfs/QmTdBmUPHjxjA9pa8NaHVypCYiFMfz37URGGHnWRBjjUvS"
+      "contentUri": "/ipfs/QmTdBmUPHjxjA9pa8NaHVypCYiFMfz37URGGHnWRBjjUvS",
+      "logo": "avatar/dnp.dappnode.eth/kovan.png"
     }
   },
   {
@@ -96,7 +105,8 @@
     "latest": {
       "version": "0.3.2",
       "timestamp": 1586935891,
-      "contentUri": "/ipfs/QmfVhGDHG1ooMqxXjdS1oDxNE8DWyc3XKPmPruAbWTMh6J"
+      "contentUri": "/ipfs/QmfVhGDHG1ooMqxXjdS1oDxNE8DWyc3XKPmPruAbWTMh6J",
+      "logo": "avatar/dnp.dappnode.eth/ropsten.png"
     }
   },
   {
@@ -106,7 +116,8 @@
     "latest": {
       "version": "0.2.1",
       "timestamp": 1573669072,
-      "contentUri": "/ipfs/QmRyrMYzrBHYZvCY6s1j2QEBab3z6aZLABNX1KEwrzxur9"
+      "contentUri": "/ipfs/QmRyrMYzrBHYZvCY6s1j2QEBab3z6aZLABNX1KEwrzxur9",
+      "logo": "avatar/dnp.dappnode.eth/bind.png"
     }
   },
   {
@@ -116,7 +127,8 @@
     "latest": {
       "version": "0.2.4",
       "timestamp": 1566922676,
-      "contentUri": "/ipfs/QmT7fcE7KKYF5PfNiAq9Z3NyqqijsZF5azErzixNiYdzmL"
+      "contentUri": "/ipfs/QmT7fcE7KKYF5PfNiAq9Z3NyqqijsZF5azErzixNiYdzmL",
+      "logo": "avatar/dnp.dappnode.eth/ipfs.png"
     }
   },
   {
@@ -126,7 +138,8 @@
     "latest": {
       "version": "0.2.4",
       "timestamp": 1574184835,
-      "contentUri": "/ipfs/QmaP4xFLPXiNzcMCWoSboQZgrDLicrohs7SbfaFcJJMEPD"
+      "contentUri": "/ipfs/QmaP4xFLPXiNzcMCWoSboQZgrDLicrohs7SbfaFcJJMEPD",
+      "logo": "avatar/dnp.dappnode.eth/vpn.png"
     }
   },
   {
@@ -136,7 +149,8 @@
     "latest": {
       "version": "0.2.20",
       "timestamp": 1582902286,
-      "contentUri": "/ipfs/QmaHVhEpmWV35cQ9Q43sThzZfZjDRRT5EqbjXhond1j4xB"
+      "contentUri": "/ipfs/QmaHVhEpmWV35cQ9Q43sThzZfZjDRRT5EqbjXhond1j4xB",
+      "logo": "avatar/dnp.dappnode.eth/ethchain.png"
     }
   },
   {
@@ -146,7 +160,8 @@
     "latest": {
       "version": "0.2.3",
       "timestamp": 1570428338,
-      "contentUri": "/ipfs/QmeWo2hva3hqcn3hbeVEFEvVr6WE5V1FpQKfwRdFno9dpF"
+      "contentUri": "/ipfs/QmeWo2hva3hqcn3hbeVEFEvVr6WE5V1FpQKfwRdFno9dpF",
+      "logo": "avatar/dnp.dappnode.eth/ethforward.png"
     }
   },
   {
@@ -156,7 +171,8 @@
     "latest": {
       "version": "0.2.0",
       "timestamp": 1557245126,
-      "contentUri": "/ipfs/QmcP7JjWbQRa6FmPqsJXTxir5BShyxuZPENpy9YJUvtzAj"
+      "contentUri": "/ipfs/QmcP7JjWbQRa6FmPqsJXTxir5BShyxuZPENpy9YJUvtzAj",
+      "logo": "avatar/dnp.dappnode.eth/wamp.png"
     }
   },
   {
@@ -166,7 +182,8 @@
     "latest": {
       "version": "0.2.24",
       "timestamp": 1582901609,
-      "contentUri": "/ipfs/QmNfRmZq7Nv7s9FXULxFyuUaZsyGRR4Uw9dFGK9oiscmaD"
+      "contentUri": "/ipfs/QmNfRmZq7Nv7s9FXULxFyuUaZsyGRR4Uw9dFGK9oiscmaD",
+      "logo": "avatar/dnp.dappnode.eth/dappmanager.png"
     }
   },
   {
@@ -176,7 +193,8 @@
     "latest": {
       "version": "0.2.15",
       "timestamp": 1582905556,
-      "contentUri": "/ipfs/QmccdGpLJ7TTXRC1XCJNU9ejyRgy5pfkE6jE3gA9FsDqNp"
+      "contentUri": "/ipfs/QmccdGpLJ7TTXRC1XCJNU9ejyRgy5pfkE6jE3gA9FsDqNp",
+      "logo": "avatar/dnp.dappnode.eth/admin.png"
     }
   },
   {
@@ -186,7 +204,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1530103873,
-      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN"
+      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN",
+      "logo": "avatar/dnp.dappnode.eth/telegram-mtpproto.dnp.dappnode.eth.png"
     }
   },
   {
@@ -196,7 +215,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1530104625,
-      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN"
+      "contentUri": "/ipfs/QmVfBcB5fhjyd41CqyiP8JnH4TnGJKQwQ7tye6oa5HFYSN",
+      "logo": "avatar/dnp.dappnode.eth/telegram-mtpproto.png"
     }
   },
   {
@@ -206,7 +226,8 @@
     "latest": {
       "version": "0.2.1",
       "timestamp": 1580116632,
-      "contentUri": "/ipfs/QmXDpWL2smjSmgtVMmRL6jfUknYdHeS3QSkF3LMsprFokK"
+      "contentUri": "/ipfs/QmXDpWL2smjSmgtVMmRL6jfUknYdHeS3QSkF3LMsprFokK",
+      "logo": "avatar/dnp.dappnode.eth/monero.png"
     }
   },
   {
@@ -216,7 +237,8 @@
     "latest": {
       "version": "0.2.26",
       "timestamp": 1583388531,
-      "contentUri": "/ipfs/QmPPYHUJd34Cb3B2e3EzYipPu62M4eCsxTwq93HFXYdu3v"
+      "contentUri": "/ipfs/QmPPYHUJd34Cb3B2e3EzYipPu62M4eCsxTwq93HFXYdu3v",
+      "logo": "avatar/dnp.dappnode.eth/core.png"
     }
   },
   {
@@ -226,17 +248,8 @@
     "latest": {
       "version": "0.0.2",
       "timestamp": 1536693825,
-      "contentUri": "/ipfs/QmeMRXex4qwFj85XDP7bjFbNRq4rSAbiBDbPRuDF8XqdQ4"
-    }
-  },
-  {
-    "name": "livepeer",
-    "registry": "dnp.dappnode.eth",
-    "versionCount": 2,
-    "latest": {
-      "version": "0.0.2",
-      "timestamp": 1536693825,
-      "contentUri": "/ipfs/QmeMRXex4qwFj85XDP7bjFbNRq4rSAbiBDbPRuDF8XqdQ4"
+      "contentUri": "/ipfs/QmeMRXex4qwFj85XDP7bjFbNRq4rSAbiBDbPRuDF8XqdQ4",
+      "logo": null
     }
   },
   {
@@ -246,7 +259,8 @@
     "latest": {
       "version": "0.3.2",
       "timestamp": 1580918136,
-      "contentUri": "/ipfs/QmaUbyiqb8SX3ANmGCZpVBbtZVKYk4eaB4U93H3FfhbVie"
+      "contentUri": "/ipfs/QmaUbyiqb8SX3ANmGCZpVBbtZVKYk4eaB4U93H3FfhbVie",
+      "logo": "avatar/dnp.dappnode.eth/swarm.png"
     }
   },
   {
@@ -256,7 +270,8 @@
     "latest": {
       "version": "0.4.3",
       "timestamp": 1586939089,
-      "contentUri": "/ipfs/QmWAF3Pqbc2D2LuXrTha2v36K4E4SRaQ3uAhpAptkazbX8"
+      "contentUri": "/ipfs/QmWAF3Pqbc2D2LuXrTha2v36K4E4SRaQ3uAhpAptkazbX8",
+      "logo": "avatar/dnp.dappnode.eth/goerli-geth.png"
     }
   },
   {
@@ -266,7 +281,8 @@
     "latest": {
       "version": "0.1.0",
       "timestamp": 1541707173,
-      "contentUri": "/ipfs/QmdW5xZJVN7xonNvAjQJsNcUDJSbapggXN4gDJg2v2USd9"
+      "contentUri": "/ipfs/QmdW5xZJVN7xonNvAjQJsNcUDJSbapggXN4gDJg2v2USd9",
+      "logo": "avatar/dnp.dappnode.eth/goerli-pantheon.png"
     }
   },
   {
@@ -276,7 +292,8 @@
     "latest": {
       "version": "0.1.5",
       "timestamp": 1574698937,
-      "contentUri": "/ipfs/QmWzNqeGK7BZ2L3J5yeA6FmTPscuub2qYiWKoQo4ia8ZVJ"
+      "contentUri": "/ipfs/QmWzNqeGK7BZ2L3J5yeA6FmTPscuub2qYiWKoQo4ia8ZVJ",
+      "logo": "avatar/dnp.dappnode.eth/bitcoin.png"
     }
   },
   {
@@ -286,7 +303,8 @@
     "latest": {
       "version": "0.2.0",
       "timestamp": 1557246014,
-      "contentUri": "/ipfs/QmQsuY3frcS7zivWcTor9HTyfPjnWvJ6BemVwrvK9ig6KV"
+      "contentUri": "/ipfs/QmQsuY3frcS7zivWcTor9HTyfPjnWvJ6BemVwrvK9ig6KV",
+      "logo": null
     }
   },
   {
@@ -296,7 +314,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1548192871,
-      "contentUri": "/ipfs/QmaokAG8ECxpbLp4bqE6A3tBXsATZS7aN8RPd3DsE1haKz"
+      "contentUri": "/ipfs/QmaokAG8ECxpbLp4bqE6A3tBXsATZS7aN8RPd3DsE1haKz",
+      "logo": "avatar/dnp.dappnode.eth/ln.png"
     }
   },
   {
@@ -306,7 +325,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1548351153,
-      "contentUri": "/ipfs/QmUsK7niWPTeSLv8Zqhwdn2GtTDgDcC5v6PiCVDgiEc8Vn"
+      "contentUri": "/ipfs/QmUsK7niWPTeSLv8Zqhwdn2GtTDgDcC5v6PiCVDgiEc8Vn",
+      "logo": "avatar/dnp.dappnode.eth/goerli-parity.png"
     }
   },
   {
@@ -316,7 +336,8 @@
     "latest": {
       "version": "0.1.0",
       "timestamp": 1568883475,
-      "contentUri": "/ipfs/QmcQPSzajUUKP1j4rsnGRCcAqfnuGSFnCcC4fnmf6eUqcy"
+      "contentUri": "/ipfs/QmcQPSzajUUKP1j4rsnGRCcAqfnuGSFnCcC4fnmf6eUqcy",
+      "logo": "avatar/dnp.dappnode.eth/vipnode.png"
     }
   },
   {
@@ -326,7 +347,8 @@
     "latest": {
       "version": "0.0.2",
       "timestamp": 1567682982,
-      "contentUri": "/ipfs/QmcaoHnqpWbmMTPLCFwz767S2urz8aAExwDWLwbCVF8ovd"
+      "contentUri": "/ipfs/QmcaoHnqpWbmMTPLCFwz767S2urz8aAExwDWLwbCVF8ovd",
+      "logo": null
     }
   },
   {
@@ -336,7 +358,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1560506744,
-      "contentUri": "/ipfs/QmfVHE7vUTi3UVcWk7JfgxdgFHG4K1JvKog2zy3SjUKz2y"
+      "contentUri": "/ipfs/QmfVHE7vUTi3UVcWk7JfgxdgFHG4K1JvKog2zy3SjUKz2y",
+      "logo": null
     }
   },
   {
@@ -346,7 +369,8 @@
     "latest": {
       "version": "0.2.0",
       "timestamp": 1574760529,
-      "contentUri": "/ipfs/QmcUTeDzb7CoKLNKcz6xynNFzaggC29dfxZzWAsY1vXdip"
+      "contentUri": "/ipfs/QmcUTeDzb7CoKLNKcz6xynNFzaggC29dfxZzWAsY1vXdip",
+      "logo": "avatar/dnp.dappnode.eth/lightning-network.png"
     }
   },
   {
@@ -356,7 +380,8 @@
     "latest": {
       "version": "0.1.4",
       "timestamp": 1583506536,
-      "contentUri": "/ipfs/QmNqDvqAyy3pN3PvymB6chM7S1FgYyive8LosVKUuaDdfd"
+      "contentUri": "/ipfs/QmNqDvqAyy3pN3PvymB6chM7S1FgYyive8LosVKUuaDdfd",
+      "logo": "avatar/dnp.dappnode.eth/geth.png"
     }
   },
   {
@@ -366,7 +391,8 @@
     "latest": {
       "version": "0.1.2",
       "timestamp": 1578642157,
-      "contentUri": "/ipfs/QmTvhWDrQHZ31vPFqqVfpSN9NDaSTqmhTMEi4SK98JsivH"
+      "contentUri": "/ipfs/QmTvhWDrQHZ31vPFqqVfpSN9NDaSTqmhTMEi4SK98JsivH",
+      "logo": "avatar/dnp.dappnode.eth/trustlines-monitor.png"
     }
   },
   {
@@ -376,7 +402,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1577389713,
-      "contentUri": "/ipfs/QmUxQVLYtGcEDNJ3yHKJmhACtbXC44EyiCPQdxudrYU5TN"
+      "contentUri": "/ipfs/QmUxQVLYtGcEDNJ3yHKJmhACtbXC44EyiCPQdxudrYU5TN",
+      "logo": "avatar/dnp.dappnode.eth/trustlines.png"
     }
   },
   {
@@ -386,7 +413,8 @@
     "latest": {
       "version": "0.1.0",
       "timestamp": 1574347181,
-      "contentUri": "/ipfs/Qmc1Gexd4M5GnfucRwgp1gYMzo131c8BKopiE8VSnAKESe"
+      "contentUri": "/ipfs/Qmc1Gexd4M5GnfucRwgp1gYMzo131c8BKopiE8VSnAKESe",
+      "logo": "avatar/dnp.dappnode.eth/trustlines-bridge.png"
     }
   },
   {
@@ -396,7 +424,8 @@
     "latest": {
       "version": "0.1.2",
       "timestamp": 1574436383,
-      "contentUri": "/ipfs/QmT9mWFGadQMGp8tyWYT3PK1vXi9QoZBMjken3zeVuwDA6"
+      "contentUri": "/ipfs/QmT9mWFGadQMGp8tyWYT3PK1vXi9QoZBMjken3zeVuwDA6",
+      "logo": "avatar/dnp.dappnode.eth/trustlines-netstats.png"
     }
   },
   {
@@ -406,7 +435,8 @@
     "latest": {
       "version": "0.1.2",
       "timestamp": 1577389896,
-      "contentUri": "/ipfs/QmSC7dnP4zbtTj3fyUNu1fbhftjwuQjSW8Xmd9ZqYjUCvn"
+      "contentUri": "/ipfs/QmSC7dnP4zbtTj3fyUNu1fbhftjwuQjSW8Xmd9ZqYjUCvn",
+      "logo": "avatar/dnp.dappnode.eth/trustlines-validator.png"
     }
   },
   {
@@ -416,7 +446,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1575298938,
-      "contentUri": "/ipfs/QmSV42YKjT2Qz6qdcHpSxjqvFKc7XvrmxhJ1y8F16yS338"
+      "contentUri": "/ipfs/QmSV42YKjT2Qz6qdcHpSxjqvFKc7XvrmxhJ1y8F16yS338",
+      "logo": "avatar/dnp.dappnode.eth/ipfs-cluster.png"
     }
   },
   {
@@ -426,7 +457,8 @@
     "latest": {
       "version": "0.1.2",
       "timestamp": 1585229379,
-      "contentUri": "/ipfs/QmRnBSFa4uA92qPG7h8qzEzqFKtwGdMx7AgBrL7Lh4A3v2"
+      "contentUri": "/ipfs/QmRnBSFa4uA92qPG7h8qzEzqFKtwGdMx7AgBrL7Lh4A3v2",
+      "logo": "avatar/dnp.dappnode.eth/ipfs-pinner.png"
     }
   },
   {
@@ -436,7 +468,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1578947556,
-      "contentUri": "/ipfs/QmRRfWKrapJfGxri2KPqRQwvQgUYDywidwqXPji37LBaDu"
+      "contentUri": "/ipfs/QmRRfWKrapJfGxri2KPqRQwvQgUYDywidwqXPji37LBaDu",
+      "logo": "avatar/dnp.dappnode.eth/ethereum-classic.png"
     }
   },
   {
@@ -446,7 +479,8 @@
     "latest": {
       "version": "0.1.0",
       "timestamp": 1586882281,
-      "contentUri": "/ipfs/QmSdUekSdr5z5oceYnJGfLnSiUuuUkipFdNAC6MgUwATnA"
+      "contentUri": "/ipfs/QmSdUekSdr5z5oceYnJGfLnSiUuuUkipFdNAC6MgUwATnA",
+      "logo": "avatar/dnp.dappnode.eth/openethereum.png"
     }
   },
   {
@@ -456,7 +490,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1536667724,
-      "contentUri": "ipfs:apm"
+      "contentUri": "ipfs:apm",
+      "logo": null
     }
   },
   {
@@ -466,7 +501,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1536667724,
-      "contentUri": "ipfs:enssub"
+      "contentUri": "ipfs:enssub",
+      "logo": null
     }
   },
   {
@@ -476,13 +512,20 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1536667724,
-      "contentUri": "ipfs:repo"
+      "contentUri": "ipfs:repo",
+      "logo": null
     }
   },
   {
     "name": "jbaylina",
     "registry": "public.dappnode.eth",
-    "versionCount": 0
+    "versionCount": 0,
+    "latest": {
+      "version": "Created",
+      "timestamp": 1536669218,
+      "contentUri": "",
+      "logo": null
+    }
   },
   {
     "name": "bitcoin",
@@ -491,7 +534,8 @@
     "latest": {
       "version": "0.0.2",
       "timestamp": 1536851544,
-      "contentUri": "/ipfs/QmdEJA6DinzX8JQC5ucuU3eitpSgrMXyDskUU5zjNrgdNo"
+      "contentUri": "/ipfs/QmdEJA6DinzX8JQC5ucuU3eitpSgrMXyDskUU5zjNrgdNo",
+      "logo": null
     }
   },
   {
@@ -501,7 +545,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1536934668,
-      "contentUri": "/ipfs/QmZdDL9p8WDMBqqSbEGW2KQJBoycgYQoZMSgEW8tY6dzrK"
+      "contentUri": "/ipfs/QmZdDL9p8WDMBqqSbEGW2KQJBoycgYQoZMSgEW8tY6dzrK",
+      "logo": null
     }
   },
   {
@@ -511,7 +556,8 @@
     "latest": {
       "version": "0.0.2",
       "timestamp": 1536951834,
-      "contentUri": "/ipfs/QmRJ2hJ3ob9aPioYPZFBiLuXHvkLU6YEu73GpxGExVSVtD"
+      "contentUri": "/ipfs/QmRJ2hJ3ob9aPioYPZFBiLuXHvkLU6YEu73GpxGExVSVtD",
+      "logo": null
     }
   },
   {
@@ -521,7 +567,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1538126004,
-      "contentUri": "/ipfs/QmZjpwyP7yBqd1vbPaxgpTyFKKHKdx9T4SFEcRRh8Mrwvr"
+      "contentUri": "/ipfs/QmZjpwyP7yBqd1vbPaxgpTyFKKHKdx9T4SFEcRRh8Mrwvr",
+      "logo": "avatar/public.dappnode.eth/dnpinner.png"
     }
   },
   {
@@ -531,7 +578,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1539083963,
-      "contentUri": "/ipfs/Qmc2gPLzKyqNUniyUvmcAP3NchBo257AyVCGSKyt4bUThH"
+      "contentUri": "/ipfs/Qmc2gPLzKyqNUniyUvmcAP3NchBo257AyVCGSKyt4bUThH",
+      "logo": "avatar/public.dappnode.eth/status.png"
     }
   },
   {
@@ -541,7 +589,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1543338354,
-      "contentUri": "/ipfs/Qme34oXQab9GkaD4RLCyp9H3VtUzJQeSePZpxNXQaxp4Vd"
+      "contentUri": "/ipfs/Qme34oXQab9GkaD4RLCyp9H3VtUzJQeSePZpxNXQaxp4Vd",
+      "logo": null
     }
   },
   {
@@ -551,7 +600,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1546863318,
-      "contentUri": "/ipfs/Qme5UPXEApV9yxu7EXM28AymjBEmpbgvBVYKnSgh7Axr9S"
+      "contentUri": "/ipfs/Qme5UPXEApV9yxu7EXM28AymjBEmpbgvBVYKnSgh7Axr9S",
+      "logo": "avatar/public.dappnode.eth/nextcloud.png"
     }
   },
   {
@@ -561,7 +611,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1548678431,
-      "contentUri": "/ipfs/QmZrDwjBSdrZoU3V1P5QMGiwA8wReLqwfPMqwxjFEAjx7L"
+      "contentUri": "/ipfs/QmZrDwjBSdrZoU3V1P5QMGiwA8wReLqwfPMqwxjFEAjx7L",
+      "logo": "avatar/public.dappnode.eth/goerli-parity.png"
     }
   },
   {
@@ -571,7 +622,8 @@
     "latest": {
       "version": "0.1.4",
       "timestamp": 1551104588,
-      "contentUri": "/ipfs/QmcAbsHPmU8oWZt8VCBjpPrmwrTJXVUv9SyMuF8wfrRUYy"
+      "contentUri": "/ipfs/QmcAbsHPmU8oWZt8VCBjpPrmwrTJXVUv9SyMuF8wfrRUYy",
+      "logo": "avatar/public.dappnode.eth/artis-sigma1.png"
     }
   },
   {
@@ -581,7 +633,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1556302672,
-      "contentUri": "/ipfs/QmWo7buuQhAC32WY2hgxhD8Pnc4fBap9TV9BgGfYYnsVAD"
+      "contentUri": "/ipfs/QmWo7buuQhAC32WY2hgxhD8Pnc4fBap9TV9BgGfYYnsVAD",
+      "logo": null
     }
   },
   {
@@ -591,7 +644,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1557516221,
-      "contentUri": "/ipfs/QmRLdb2GWXtMrmYCT3RYKCk3nMzSEcKWVKEc2ioq9hQkjm"
+      "contentUri": "/ipfs/QmRLdb2GWXtMrmYCT3RYKCk3nMzSEcKWVKEc2ioq9hQkjm",
+      "logo": null
     }
   },
   {
@@ -601,7 +655,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1558594111,
-      "contentUri": "/ipfs/QmewKKuiow7ZLbmLHVuKun3K8JTcsiRhdUuhrccAhrgHy1"
+      "contentUri": "/ipfs/QmewKKuiow7ZLbmLHVuKun3K8JTcsiRhdUuhrccAhrgHy1",
+      "logo": "avatar/public.dappnode.eth/fairdrop-network.png"
     }
   },
   {
@@ -611,7 +666,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1558608794,
-      "contentUri": "/ipfs/QmbJ4BF36iHVVpNivNUxrWHnj3CdoLUEe5PhAXFYz7aXwZ"
+      "contentUri": "/ipfs/QmbJ4BF36iHVVpNivNUxrWHnj3CdoLUEe5PhAXFYz7aXwZ",
+      "logo": "avatar/public.dappnode.eth/fairdrop.png"
     }
   },
   {
@@ -621,7 +677,8 @@
     "latest": {
       "version": "0.0.3",
       "timestamp": 1561477779,
-      "contentUri": "/ipfs/QmU2nTN3etEdokdNg34kjVZC4qrZV8s4p65hV37Yf7pWiB"
+      "contentUri": "/ipfs/QmU2nTN3etEdokdNg34kjVZC4qrZV8s4p65hV37Yf7pWiB",
+      "logo": "avatar/public.dappnode.eth/pocket-core.png"
     }
   },
   {
@@ -631,7 +688,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1561182497,
-      "contentUri": "/ipfs/QmPX9tDxUtpChVxh31mShxtZwqQX7LTD2XRWDrubAQrbme"
+      "contentUri": "/ipfs/QmPX9tDxUtpChVxh31mShxtZwqQX7LTD2XRWDrubAQrbme",
+      "logo": "avatar/public.dappnode.eth/lightning-network.png"
     }
   },
   {
@@ -641,7 +699,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1576593415,
-      "contentUri": "/ipfs/QmaxSVrvuSBe43vevqkYG9BVVAXq4mway8f8EvQxEkDu18"
+      "contentUri": "/ipfs/QmaxSVrvuSBe43vevqkYG9BVVAXq4mway8f8EvQxEkDu18",
+      "logo": "avatar/public.dappnode.eth/cosmos.png"
     }
   },
   {
@@ -651,7 +710,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1568382619,
-      "contentUri": "/ipfs/QmTrxRUCK84ofVjoDHGAHrmcFrWwqB4623wPxGfyPaQ1ZD"
+      "contentUri": "/ipfs/QmTrxRUCK84ofVjoDHGAHrmcFrWwqB4623wPxGfyPaQ1ZD",
+      "logo": "avatar/public.dappnode.eth/trinity.png"
     }
   },
   {
@@ -661,7 +721,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1569082532,
-      "contentUri": "/ipfs/QmbjBSCDCsy2nRiy9bnbeXqaVHbE29rtLxTpYqY7HjJjwN"
+      "contentUri": "/ipfs/QmbjBSCDCsy2nRiy9bnbeXqaVHbE29rtLxTpYqY7HjJjwN",
+      "logo": "avatar/public.dappnode.eth/masterethereum.png"
     }
   },
   {
@@ -671,7 +732,8 @@
     "latest": {
       "version": "0.1.1",
       "timestamp": 1576330412,
-      "contentUri": "/ipfs/QmTPgKki7ofMrnSom1vv5Jh1peD7JPq14JExKruKYGDTSW"
+      "contentUri": "/ipfs/QmTPgKki7ofMrnSom1vv5Jh1peD7JPq14JExKruKYGDTSW",
+      "logo": "avatar/public.dappnode.eth/zcash.png"
     }
   },
   {
@@ -681,27 +743,30 @@
     "latest": {
       "version": "1.2.7",
       "timestamp": 1573773838,
-      "contentUri": "/ipfs/Qmb9Uqh7CQ9Ggq9fD1qiguD7eH3qhaxEigwwAtWL8BXvhG"
+      "contentUri": "/ipfs/Qmb9Uqh7CQ9Ggq9fD1qiguD7eH3qhaxEigwwAtWL8BXvhG",
+      "logo": "avatar/public.dappnode.eth/polkadot.png"
     }
   },
   {
     "name": "prysm-beacon-chain",
     "registry": "public.dappnode.eth",
-    "versionCount": 22,
+    "versionCount": 23,
     "latest": {
-      "version": "1.0.0",
-      "timestamp": 1586961182,
-      "contentUri": "/ipfs/QmXkjuZswwM3UqJ9v2S9opMJneMFoaDo7edRug6o6PkA1A"
+      "version": "1.0.1",
+      "timestamp": 1587034103,
+      "contentUri": "/ipfs/QmcVstNKpWtBRf7tPS5q5pHmfWrDwAjdQSQAWPSxZ9LTku",
+      "logo": "avatar/public.dappnode.eth/prysm-beacon-chain.png"
     }
   },
   {
     "name": "prysm-validator",
     "registry": "public.dappnode.eth",
-    "versionCount": 25,
+    "versionCount": 26,
     "latest": {
-      "version": "1.0.0",
-      "timestamp": 1586961798,
-      "contentUri": "/ipfs/QmQFqB4himf6GGBZTYMfktdyTT1djddUgu5Fv62feayDGo"
+      "version": "1.0.1",
+      "timestamp": 1587045523,
+      "contentUri": "/ipfs/QmUPJwSa867iJW2MQxrUY8Y72jaFkj7wk2RVMiPtWEotsy",
+      "logo": "avatar/public.dappnode.eth/prysm-validator.png"
     }
   },
   {
@@ -711,7 +776,8 @@
     "latest": {
       "version": "0.0.6",
       "timestamp": 1580917340,
-      "contentUri": "/ipfs/QmRkwgyVkHnMNCYP9MwwoykKbrdNPWAb1GMwtDBkgg3be3"
+      "contentUri": "/ipfs/QmRkwgyVkHnMNCYP9MwwoykKbrdNPWAb1GMwtDBkgg3be3",
+      "logo": "avatar/public.dappnode.eth/polkadot-apps.png"
     }
   },
   {
@@ -721,7 +787,8 @@
     "latest": {
       "version": "0.0.12",
       "timestamp": 1580916725,
-      "contentUri": "/ipfs/QmZrCkGTirPUj89DHeBe1zx32Em2xbKAbtRepS3tjjMXN2"
+      "contentUri": "/ipfs/QmZrCkGTirPUj89DHeBe1zx32Em2xbKAbtRepS3tjjMXN2",
+      "logo": "avatar/public.dappnode.eth/polkadot-kusama.png"
     }
   },
   {
@@ -731,7 +798,8 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1575066382,
-      "contentUri": "/ipfs/QmVN5MspjEXMw2RCGAYQptxB2PyQD5AM4bmoPCLNqTjRCm"
+      "contentUri": "/ipfs/QmVN5MspjEXMw2RCGAYQptxB2PyQD5AM4bmoPCLNqTjRCm",
+      "logo": "avatar/public.dappnode.eth/beaconcha-in.png"
     }
   },
   {
@@ -741,7 +809,8 @@
     "latest": {
       "version": "0.0.7",
       "timestamp": 1586882408,
-      "contentUri": "/ipfs/QmR2J9tFwWp38Bc8V4Qj1wwaWtskSR4WBnwbT5rMd8q8WM"
+      "contentUri": "/ipfs/QmR2J9tFwWp38Bc8V4Qj1wwaWtskSR4WBnwbT5rMd8q8WM",
+      "logo": "avatar/public.dappnode.eth/nethermind.png"
     }
   },
   {
@@ -751,7 +820,8 @@
     "latest": {
       "version": "0.0.3",
       "timestamp": 1580917809,
-      "contentUri": "/ipfs/QmbZcqmptDnSCUVJECqpsTKqSKwQLFrLH9XzsZMTMKznve"
+      "contentUri": "/ipfs/QmbZcqmptDnSCUVJECqpsTKqSKwQLFrLH9XzsZMTMKznve",
+      "logo": "avatar/public.dappnode.eth/storj.png"
     }
   },
   {
@@ -761,17 +831,19 @@
     "latest": {
       "version": "0.0.2",
       "timestamp": 1578480804,
-      "contentUri": "/ipfs/QmbyUHbKMRCtFeaWNQPqbxqJk865idBnMWw3b5xiJSESwu"
+      "contentUri": "/ipfs/QmbyUHbKMRCtFeaWNQPqbxqJk865idBnMWw3b5xiJSESwu",
+      "logo": "avatar/public.dappnode.eth/tornado-cash-relayer.png"
     }
   },
   {
     "name": "archipel",
     "registry": "public.dappnode.eth",
-    "versionCount": 3,
+    "versionCount": 4,
     "latest": {
-      "version": "1.0.0",
-      "timestamp": 1585580997,
-      "contentUri": "/ipfs/QmXvCAAtrA9uBoarW6srVy3RWNo7insxXYKcomjEP19Cgf"
+      "version": "1.0.1",
+      "timestamp": 1587041282,
+      "contentUri": "/ipfs/QmQLd1wHXcQJEJcPAJBw2Nw54krh4Y5t3bMcMoCf4BMij3",
+      "logo": "avatar/public.dappnode.eth/archipel.png"
     }
   },
   {
@@ -781,7 +853,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1585500864,
-      "contentUri": "/ipfs/QmZ4TnKLrgLarc5jk3eyse8ymoMpMbCEfXWsAMweUTfMoz"
+      "contentUri": "/ipfs/QmZ4TnKLrgLarc5jk3eyse8ymoMpMbCEfXWsAMweUTfMoz",
+      "logo": "avatar/public.dappnode.eth/substrate-telemetry-backend-archipel.png"
     }
   },
   {
@@ -791,7 +864,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1585500263,
-      "contentUri": "/ipfs/QmeayGM9ZiT6eikhETdQh6AicJcm4EEjrsPwtuCP5hjqoG"
+      "contentUri": "/ipfs/QmeayGM9ZiT6eikhETdQh6AicJcm4EEjrsPwtuCP5hjqoG",
+      "logo": "avatar/public.dappnode.eth/substrate-telemetry-archipel.png"
     }
   },
   {
@@ -801,17 +875,19 @@
     "latest": {
       "version": "0.0.1",
       "timestamp": 1584435345,
-      "contentUri": "/ipfs/QmcMBMNM8DWcSR2ErMkrSs1S2d7ciqKc2VEgcjwb6C3ZjM"
+      "contentUri": "/ipfs/QmcMBMNM8DWcSR2ErMkrSs1S2d7ciqKc2VEgcjwb6C3ZjM",
+      "logo": "avatar/public.dappnode.eth/boinc.png"
     }
   },
   {
     "name": "archipel-ui",
     "registry": "public.dappnode.eth",
-    "versionCount": 2,
+    "versionCount": 3,
     "latest": {
-      "version": "1.0.0",
-      "timestamp": 1585580041,
-      "contentUri": "/ipfs/QmXo7KtDytsjLuP7iwX4ocWX8s8aXk5hcSPRPB3ivrsMHL"
+      "version": "1.0.1",
+      "timestamp": 1587041823,
+      "contentUri": "/ipfs/QmVFzmpWQBKywrknRZyWuYpBrCJz2hSSb28PnLP94MNKPK",
+      "logo": "avatar/public.dappnode.eth/archipel-ui.png"
     }
   },
   {
@@ -821,7 +897,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1585299500,
-      "contentUri": "/ipfs/QmcoVNmKpR3hBz975CxbQWDiNwHrUcq61kicFUQoR1Pv4E"
+      "contentUri": "/ipfs/QmcoVNmKpR3hBz975CxbQWDiNwHrUcq61kicFUQoR1Pv4E",
+      "logo": "avatar/public.dappnode.eth/x-core.png"
     }
   },
   {
@@ -831,7 +908,8 @@
     "latest": {
       "version": "1.0.0",
       "timestamp": 1585851377,
-      "contentUri": "/ipfs/QmegCcgrksxL2JweJbCziiZCRPyA8u3eRXN1ZQLpBXUybh"
+      "contentUri": "/ipfs/QmegCcgrksxL2JweJbCziiZCRPyA8u3eRXN1ZQLpBXUybh",
+      "logo": "avatar/public.dappnode.eth/folding-at-home.png"
     }
   }
 ]

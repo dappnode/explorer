@@ -1,7 +1,14 @@
 {
   "name": "apm-registry",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 6311951,
+    "txHash": "0xf918268783df5dcf0ff2d51c8c7c7ee4f10f8ad88c76e24b1d685985b4eb3333",
+    "repo": "0xcE1Cf6b6F671DA234A869FA56226B6168a3e37d0",
+    "timestamp": 1536667724,
+    "sender": "0x1DBA1131000664b884A1Ba238464159892252D3a"
+  },
   "versions": [
     {
       "version": "1.0.0",

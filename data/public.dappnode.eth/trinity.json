@@ -1,7 +1,14 @@
 {
   "name": "trinity",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8497779,
+    "txHash": "0x76ec638a1fd642976274d501460de73e0eafdd90817e70b672e538718975ba6d",
+    "repo": "0xEE09d2B1772495028939cd8CEe59Ca0F0BC6bbA1",
+    "timestamp": 1567791454,
+    "sender": "0x903dDd91207f737255cA93eB5885C0E087Be0FC3"
+  },
   "versions": [
     {
       "version": "0.1.0",

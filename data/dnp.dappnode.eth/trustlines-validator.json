@@ -1,7 +1,14 @@
 {
   "name": "trustlines-validator",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8975282,
+    "txHash": "0x6168be4f1a30d2499eb5ef4f55c212d608ab4d62d387aa08c8bf21857c46c214",
+    "repo": "0xb191457a257C1734f18608d744DDfD120979Bb2F",
+    "timestamp": 1574352217,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

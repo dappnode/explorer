@@ -1,7 +1,14 @@
 {
   "name": "vipnode",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 7534349,
+    "txHash": "0x08b592c227a0e92a2e42499f282b6f0099349e328c8f22d836f3bb674b4c795e",
+    "repo": "0xB185207E58BDf71B6aaF9A4C3c47ddbadF614837",
+    "timestamp": 1554818311,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

@@ -1,7 +1,14 @@
 {
   "name": "core",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 6146064,
+    "txHash": "0x9272747ea795411fcfb3bea2e139886c06975f082d0a391b2929de9835e88e4f",
+    "repo": "0xdDf4639a18a74B199b6bFB502497EFFB50117707",
+    "timestamp": 1534251969,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

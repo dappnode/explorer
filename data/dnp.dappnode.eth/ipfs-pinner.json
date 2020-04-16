@@ -1,7 +1,14 @@
 {
   "name": "ipfs-pinner",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 9039010,
+    "txHash": "0xae20a4f86014d453b2480ecee692ae9dd182c64000a88b07738844dcb09d4dd7",
+    "repo": "0x32e1eF330df9840C4A689BA9AFfB22d6762aae2b",
+    "timestamp": 1575304299,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

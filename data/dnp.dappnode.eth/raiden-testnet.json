@@ -1,7 +1,14 @@
 {
   "name": "raiden-testnet",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 7956067,
+    "txHash": "0x55b8c11f727a188e211db9f9b1cf7c76ff647e860a33040d8cf900349fe3d34c",
+    "repo": "0xdE9b37b7267D237D4f87101cF1cCcaD2B304fADa",
+    "timestamp": 1560505915,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

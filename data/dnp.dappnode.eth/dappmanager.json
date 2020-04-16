@@ -1,7 +1,14 @@
 {
   "name": "dappmanager",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5725856,
+    "txHash": "0x308d355d42c09128ccc026179e8667e0088be4595caf0f75d9c8c5b860c2bd1d",
+    "repo": "0x0C564CA7B948008fB324268D8baEDAEb1bd47BcE",
+    "timestamp": 1528040224,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

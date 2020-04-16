@@ -1,7 +1,14 @@
 {
   "name": "monero",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5864878,
+    "txHash": "0xc2589085830a93086ae9e133b613005a1e3d1b6aaa863631eec606d5e3d6b028",
+    "repo": "0xe8332e80951c3020a5A8e529DF01C12Aa87f482f",
+    "timestamp": 1530126321,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

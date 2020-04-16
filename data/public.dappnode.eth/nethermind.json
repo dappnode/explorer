@@ -1,7 +1,14 @@
 {
   "name": "nethermind",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 9155386,
+    "txHash": "0x6f2144aeeb510af217af014ed80cf8e6d52687f555c38788d38b2de63ef97d75",
+    "repo": "0xF9a848b81D4396941375fA96ae279b7280d103A7",
+    "timestamp": 1577185124,
+    "sender": "0x02E61951f63C727e1B1daC5EdAb46a9EC3f6e54c"
+  },
   "versions": [
     {
       "version": "0.0.1",

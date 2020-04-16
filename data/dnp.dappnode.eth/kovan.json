@@ -1,7 +1,14 @@
 {
   "name": "kovan",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5652204,
+    "txHash": "0xd31c89c27200f2b9900c6341587d881f1e29f33ed1679e24b83ceb411d560240",
+    "repo": "0xc7748be3246fF59bA8E3aDA63fb4C42BE39DEb81",
+    "timestamp": 1526911381,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

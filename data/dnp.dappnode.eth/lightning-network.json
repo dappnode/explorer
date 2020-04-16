@@ -1,7 +1,14 @@
 {
   "name": "lightning-network",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8006859,
+    "txHash": "0xf329519b9a88c2ad5b82da769cf3479c48858e1d0058b5118c8eae61615cd1be",
+    "repo": "0xe1D145edA2845e0917C305525d8eE7cc208c0291",
+    "timestamp": 1561193349,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

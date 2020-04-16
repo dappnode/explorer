@@ -1,7 +1,14 @@
 {
   "name": "archipel-ui",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 9742131,
+    "txHash": "0x3aa1e29cc8578c9ce7f629fdbee79d31b7e0b7b7dfded4552605c67c752651de",
+    "repo": "0x2252c87C7f112ffB003BF93F998033751Eb80961",
+    "timestamp": 1585161491,
+    "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+  },
   "versions": [
     {
       "version": "0.0.1",
@@ -19,6 +26,15 @@
       "blockNumber": 9773703,
       "contentUri": "/ipfs/QmXo7KtDytsjLuP7iwX4ocWX8s8aXk5hcSPRPB3ivrsMHL",
       "timestamp": 1585580041,
+      "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
+    },
+    {
+      "version": "1.0.1",
+      "versionId": 3,
+      "txHash": "0x4b50eb056c005ba3b80dcf048cc80610dced9b94bf85f2f2c6157fcec31b4e30",
+      "blockNumber": 9883619,
+      "contentUri": "/ipfs/QmVFzmpWQBKywrknRZyWuYpBrCJz2hSSb28PnLP94MNKPK",
+      "timestamp": 1587041823,
       "sender": "0xF93a854a0D08C60C8ac9C63B7dde5abeB737A5ec"
     }
   ]

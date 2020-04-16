@@ -1,7 +1,14 @@
 {
   "name": "swarm",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 6605932,
+    "txHash": "0x1bdae8fe839f9aacb8d36c32688c0c102cfe25637513d03a2319e5a633e39673",
+    "repo": "0xC95874dc912473DCd83a629dF70697584d0FD5a6",
+    "timestamp": 1540825114,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

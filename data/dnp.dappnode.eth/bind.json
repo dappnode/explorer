@@ -1,7 +1,14 @@
 {
   "name": "bind",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5703387,
+    "txHash": "0x3994e04e5726ab19b3f0c2ddb56288158260439974130b25d9bfdfdfad7b69da",
+    "repo": "0xB7e15019b306B9d76068742330E10CDC61Bf5006",
+    "timestamp": 1527695670,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

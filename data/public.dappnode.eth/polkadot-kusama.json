@@ -1,7 +1,14 @@
 {
   "name": "polkadot-kusama",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 9000565,
+    "txHash": "0xffdeb6370cf1814c193b924309cb341682478f8e6d3d3ea2267a97b5675d40c0",
+    "repo": "0x81f40A88AfDD522Dc1e3Ff4e41DD062D00F38AC6",
+    "timestamp": 1574715533,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

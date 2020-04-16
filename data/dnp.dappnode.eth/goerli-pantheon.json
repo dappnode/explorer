@@ -1,7 +1,14 @@
 {
   "name": "goerli-pantheon",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 6668172,
+    "txHash": "0x6c24eeecf7c7cb1c7f8377c94839629b507819f628f2c3df4151e67bc3c7d741",
+    "repo": "0x1e9A82D2Ff91B3C1E1fF7c7F2d62F6Fb9F9C0684",
+    "timestamp": 1541707173,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

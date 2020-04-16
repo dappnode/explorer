@@ -1,7 +1,14 @@
 {
   "name": "prysm-beacon-chain",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8980421,
+    "txHash": "0xb3e26378b7a9a73572e1c157a2ea0225252673d00e7bc818f612504359f67c2d",
+    "repo": "0x1c53d47b8d6E3972fa5C9004a9C4487DA9A34e16",
+    "timestamp": 1574425830,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",
@@ -199,6 +206,15 @@
       "blockNumber": 9877533,
       "contentUri": "/ipfs/QmXkjuZswwM3UqJ9v2S9opMJneMFoaDo7edRug6o6PkA1A",
       "timestamp": 1586961182,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "1.0.1",
+      "versionId": 23,
+      "txHash": "0x3ee41d50802a4f48f3b5aeb348e97c1a6b3fac0c69c1688bc76f6164ade61d9f",
+      "blockNumber": 9883062,
+      "contentUri": "/ipfs/QmcVstNKpWtBRf7tPS5q5pHmfWrDwAjdQSQAWPSxZ9LTku",
+      "timestamp": 1587034103,
       "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
     }
   ]

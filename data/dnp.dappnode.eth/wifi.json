@@ -1,7 +1,14 @@
 {
   "name": "wifi",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 7038733,
+    "txHash": "0xaead30d658cd7263dab92022b05ee3673e212507935956cc95568e355928770c",
+    "repo": "0xBB0fE4bcC05D83617FF29219e46A7834BE9496D7",
+    "timestamp": 1547066398,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

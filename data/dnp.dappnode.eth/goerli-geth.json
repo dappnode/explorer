@@ -1,7 +1,14 @@
 {
   "name": "goerli-geth",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 6667063,
+    "txHash": "0x437d6ad76f4c5018934bfbe175167a98f125af5254be22542713a930e7f5a554",
+    "repo": "0x95cbf3e9465D364fDb05e7AA8CDd7A2DCfC46F93",
+    "timestamp": 1541691825,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

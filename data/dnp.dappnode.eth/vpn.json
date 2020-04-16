@@ -1,7 +1,14 @@
 {
   "name": "vpn",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5706658,
+    "txHash": "0x904bca7a9692f7c3067f1036d617dee9c4affd8d6ab25142f295bd0862bc3caa",
+    "repo": "0xE27438944187b49eF0005554A15b913B11BAA08C",
+    "timestamp": 1527745516,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

@@ -1,7 +1,14 @@
 {
   "name": "bitcoin",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 6818587,
+    "txHash": "0x6172f0ed4e91c57b5d6c59b120369620a5327171cecaec5e8f7efab2d4ffa6f5",
+    "repo": "0xd3933753Cf3C6E378e4909F5568A701f7A1F46eE",
+    "timestamp": 1543841983,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

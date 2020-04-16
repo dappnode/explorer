@@ -1,7 +1,14 @@
 {
   "name": "ethchain",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5706981,
+    "txHash": "0x85a2e1b6606536540b6f98ccdaf88663861df16883c0201624bcd29b463025b9",
+    "repo": "0x30a933d920bc4A71a446a0f15F0e80eaF2383Fc9",
+    "timestamp": 1527750406,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

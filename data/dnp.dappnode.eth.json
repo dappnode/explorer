@@ -1,6 +1,6 @@
 {
   "registryName": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
   "repos": [
     {
       "blockNumber": 5254891,
@@ -176,14 +176,6 @@
       "name": "core",
       "repo": "0xdDf4639a18a74B199b6bFB502497EFFB50117707",
       "timestamp": 1534251969,
-      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
-    },
-    {
-      "blockNumber": 6299631,
-      "txHash": "0x863b24845de0a49b47cf88eb2cfff0a86396b16e209b559f953e954f82b9634f",
-      "name": "livepeer",
-      "repo": "0xf655173FAfb85f9f2943b2F2518146a4c149c70b",
-      "timestamp": 1536489879,
       "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
     },
     {

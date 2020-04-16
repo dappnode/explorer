@@ -1,0 +1,102 @@
+{
+  "versions": [
+    {
+      "month": 4,
+      "count": 29
+    },
+    {
+      "month": 5,
+      "count": 19
+    },
+    {
+      "month": 6,
+      "count": 13
+    },
+    {
+      "month": 7,
+      "count": 10
+    },
+    {
+      "month": 8,
+      "count": 26
+    },
+    {
+      "month": 9,
+      "count": 24
+    },
+    {
+      "month": 10,
+      "count": 53
+    },
+    {
+      "month": 11,
+      "count": 38
+    },
+    {
+      "month": 0,
+      "count": 38
+    },
+    {
+      "month": 1,
+      "count": 21
+    },
+    {
+      "month": 2,
+      "count": 14
+    },
+    {
+      "month": 3,
+      "count": 14
+    }
+  ],
+  "packages": [
+    {
+      "month": 4,
+      "count": 3
+    },
+    {
+      "month": 5,
+      "count": 6
+    },
+    {
+      "month": 6,
+      "count": 0
+    },
+    {
+      "month": 7,
+      "count": 0
+    },
+    {
+      "month": 8,
+      "count": 3
+    },
+    {
+      "month": 9,
+      "count": 2
+    },
+    {
+      "month": 10,
+      "count": 10
+    },
+    {
+      "month": 11,
+      "count": 4
+    },
+    {
+      "month": 0,
+      "count": 3
+    },
+    {
+      "month": 1,
+      "count": 2
+    },
+    {
+      "month": 2,
+      "count": 3
+    },
+    {
+      "month": 3,
+      "count": 2
+    }
+  ]
+}

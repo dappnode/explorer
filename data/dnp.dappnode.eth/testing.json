@@ -1,7 +1,14 @@
 {
   "name": "testing",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5410774,
+    "txHash": "0xb3f6eff98e7c128c6ffedb9a6c1d8bfe78d0f817b2f3212895e3550d7f15e4fe",
+    "repo": "0xE4564de79F316B5556eAf1bDae221f3770cc3716",
+    "timestamp": 1523299614,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",

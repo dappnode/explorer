@@ -1,7 +1,14 @@
 {
   "name": "wamp",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5707656,
+    "txHash": "0x3ad936480cc2f91e71b0547b0d7a9a62766eba8f601619b61d4d9a9a66aec510",
+    "repo": "0x5dc20EafE63f8afAEdF75978e9362DE30458678F",
+    "timestamp": 1527760592,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

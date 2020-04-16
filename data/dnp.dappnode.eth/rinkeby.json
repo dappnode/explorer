@@ -1,7 +1,14 @@
 {
   "name": "rinkeby",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878840,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 5264766,
+    "txHash": "0x09331656eb6f569fac942d8ba5a7d820a617eebb25958187db7bb5f5990bb216",
+    "repo": "0x2dBC4622FDE0DC5D1D1c6fc908678CddbA81C189",
+    "timestamp": 1521192027,
+    "sender": "0x1DBA1131000664b884A1Ba238464159892252D3a"
+  },
   "versions": [
     {
       "version": "0.0.1",

@@ -1,7 +1,14 @@
 {
   "name": "zcash",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8656925,
+    "txHash": "0x37fcdc918a5109a636ccbe1e94be0d9d5b914eb8cd34ac82791d8a65bb0aebb7",
+    "repo": "0x191B717c27677b3dc8903230030b6747614C45F5",
+    "timestamp": 1569939028,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

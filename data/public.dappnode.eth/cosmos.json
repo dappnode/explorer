@@ -1,7 +1,14 @@
 {
   "name": "cosmos",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8046432,
+    "txHash": "0xdbe36f2243c92973643005a58621965c3d89de63e75c8b39652f2f9ef1f3aea9",
+    "repo": "0xa08b11ee2F258A9ba9db5F97f7F4E488f0CBBc84",
+    "timestamp": 1561726559,
+    "sender": "0x98f18A249f9e1292beA91404B9431724e4A6FA2e"
+  },
   "versions": [
     {
       "version": "0.0.1",

@@ -1,7 +1,14 @@
 {
   "name": "prysm-validator",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8982096,
+    "txHash": "0x4d32d8dd2ed1478e31301b58bead5a1022105b60a22ae285047f86dce5f307c7",
+    "repo": "0x6d7C115c59050a3ce70A9D656e72D366faE7fbF7",
+    "timestamp": 1574450690,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",
@@ -226,6 +233,15 @@
       "blockNumber": 9877575,
       "contentUri": "/ipfs/QmQFqB4himf6GGBZTYMfktdyTT1djddUgu5Fv62feayDGo",
       "timestamp": 1586961798,
+      "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+    },
+    {
+      "version": "1.0.1",
+      "versionId": 26,
+      "txHash": "0xf0260a9743e035b05751e8c352dbfca62b54b4beb7e45a34c2278bb926ee863d",
+      "blockNumber": 9883917,
+      "contentUri": "/ipfs/QmUPJwSa867iJW2MQxrUY8Y72jaFkj7wk2RVMiPtWEotsy",
+      "timestamp": 1587045523,
       "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
     }
   ]

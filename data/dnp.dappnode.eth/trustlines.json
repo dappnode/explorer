@@ -1,7 +1,14 @@
 {
   "name": "trustlines",
   "registry": "dnp.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 8974882,
+    "txHash": "0x10a76e0604bb5a6047bc8c1b60ec2723e79adcab456cda97b6cfebeaeaf7d546",
+    "repo": "0x38BCFc1a7B62CAe7970E04B08ED2b8d8b929Bbb0",
+    "timestamp": 1574346423,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.1.0",

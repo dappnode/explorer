@@ -1,7 +1,14 @@
 {
   "name": "storj",
   "registry": "public.dappnode.eth",
-  "fromBlock": 9878839,
+  "fromBlock": 9884261,
+  "creation": {
+    "blockNumber": 9167379,
+    "txHash": "0x07be6040275416e9e4b0226a4d56b551d4fdb6b23d252a30eb432945dc5fae48",
+    "repo": "0x1cdcD287551CEb32E3c3A3E4b79d66955A6663F8",
+    "timestamp": 1577391352,
+    "sender": "0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  },
   "versions": [
     {
       "version": "0.0.1",
