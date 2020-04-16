@@ -47,8 +47,27 @@ export function linspace(from: number, to: number, step = 1): number[] {
   return arr;
 }
 
+/**
+ * Deal with duplicated repos
+ * If two events have the same id, the latest will be pinned
+ * @param {array} events
+ */
+function filterOutDuplicatedRepos(events: NewRepo[]): NewRepo[] {
+  const uniqueIdEvents: { [repoId: string]: NewRepo } = {};
+  for (const event of events) {
+    const { name } = event;
+    if (uniqueIdEvents[name]) {
+      if ((event.blockNumber || 0) > (uniqueIdEvents[name].blockNumber || 0))
+        uniqueIdEvents[name] = event;
+    } else {
+      uniqueIdEvents[name] = event;
+    }
+  }
+  return Object.values(uniqueIdEvents);
+}
+
 export function uniqueSortedRepos(...reposArr: NewRepo[][]): NewRepo[] {
-  const repos = flatten(reposArr);
+  const repos = filterOutDuplicatedRepos(flatten(reposArr));
   return sortBy(
     uniqBy(repos, (repo) => repo.repo),
     (repo) => repo.blockNumber || 0
