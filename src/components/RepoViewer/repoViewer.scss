@@ -1,0 +1,14 @@
+.repo-name {
+  font-size: 2rem;
+}
+.registry {
+  color: var(--color-text-soft);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  > *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}

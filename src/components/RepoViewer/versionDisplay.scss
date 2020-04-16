@@ -1,0 +1,22 @@
+.version-display {
+  .header {
+    padding: var(--spacing_0);
+    background-color: var(--color-background_1);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    .title {
+      font-weight: 600;
+      font-size: 120%;
+    }
+    .contentUri {
+      color: var(--color-text-soft);
+      font-size: 80%;
+    }
+  }
+
+  iframe {
+    width: 100%;
+    min-height: 22rem;
+    background-color: white;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+}

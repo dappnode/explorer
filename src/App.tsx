@@ -4,10 +4,11 @@ import Header from "./components/Header";
 import ActivityChart from "./components/ActivityChart";
 import SummaryStats from "./components/SummaryStats";
 import SummaryTable from "./components/SummaryTable";
-import { RepoView } from "./components/RepoView";
+import { RepoView } from "./components/RepoViewer";
 import { repoSummaryFile, rootUrlFromBrowser } from "./fetch/params";
-import "./App.scss";
 import { RepoSummary } from "./fetch/types";
+import { RegistryView } from "./components/RegistryViewer";
+import { urlJoin } from "./utils/url";
 
 // fetchFromBrowser(new ethers.providers.InfuraProvider());
 
@@ -16,7 +17,7 @@ export default function App() {
   const ipfsGateway = "https://ipfs.io";
 
   useEffect(() => {
-    fetch(`${rootUrlFromBrowser}/${repoSummaryFile}`)
+    fetch(urlJoin(rootUrlFromBrowser, repoSummaryFile))
       .then((res) => res.json())
       .then(setRepoSummary);
   }, []);
@@ -40,7 +41,8 @@ export default function App() {
           />
           <SummaryTable ipfsGateway={ipfsGateway} repoSummary={repoSummary} />
         </Route>
-        <Route path="/:registry/:repo" component={RepoView} />
+        <Route path="/:registry" exact component={RegistryView} />
+        <Route path="/:registry/:repo/:version?" component={RepoView} />
       </div>
     </div>
   );

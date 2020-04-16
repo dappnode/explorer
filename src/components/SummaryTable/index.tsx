@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import "./summary-table.scss";
 import { prettyName } from "../../utils/format";
 import { RepoSummary } from "../../fetch/types";
 import { sortBy } from "lodash";
-import defaultLogo from "./defaultAvatarWhite.png";
-import { TimeDisplay } from "../TimeDisplay";
+import { TimeDisplay } from "../Generic/TimeDisplay";
+import "./summary-table.scss";
+import { joinIpfsLocation, urlJoin } from "../../utils/url";
 
 export default function SummaryTable({
   repoSummary,
@@ -41,8 +41,12 @@ export default function SummaryTable({
             >
               <td className="logo">
                 {latest && (
-                  <LogoFallback
-                    url={`${ipfsGateway}/${latest.contentUri}/avatar.png`}
+                  <img
+                    src={joinIpfsLocation(
+                      ipfsGateway,
+                      urlJoin(latest.contentUri, "avatar.png")
+                    )}
+                    alt="logo"
                   />
                 )}
               </td>
@@ -62,18 +66,6 @@ export default function SummaryTable({
       </tbody>
     </table>
   );
-}
-
-/**
- * Hide broken image if logo not available
- * @param param0
- */
-function LogoFallback({ url }: { url: string }) {
-  const [src, setSrc] = useState(url);
-  function onError() {
-    setSrc(defaultLogo);
-  }
-  return <img src={src} onError={onError} alt="logo" />;
 }
 
 /**

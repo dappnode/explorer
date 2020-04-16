@@ -1,5 +1,6 @@
 {
   "name": "dappnode-explorer",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,6 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "fetch": "ts-node src/fetch/node",
+    "predeploy": "npm run fetch && npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
