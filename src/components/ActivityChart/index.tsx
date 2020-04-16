@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from "recharts";
 import "./activity-chart.scss";
+import { Activity } from "../../fetch/types";
 
 const maxHeight = 200;
 const mainColor = "#2fbcb2";
@@ -31,7 +32,7 @@ function renderColorfulLegendText(value: string) {
 
 function CustomTooltip({
   active,
-  payload,
+  payload = [],
   label,
 }: {
   active: boolean;
@@ -62,7 +63,27 @@ interface ActivityData {
   packages: number; // 2;
 }
 
-export default function ActivityChart({ data }: { data: ActivityData[] }) {
+/**
+ * Parses a numeric month to its short english name
+ * @param month 0
+ * @returns Jan
+ */
+function monthNumToShort(month: number) {
+  const mockDate = new Date(`2020-${month + 1}-1`);
+  return new Intl.DateTimeFormat("en-US", { month: "short" }).format(mockDate);
+}
+
+function parseActivity(activity?: Activity): ActivityData[] {
+  if (!activity) return [];
+  return activity.versions.map((v, i) => ({
+    month: monthNumToShort(v.month),
+    versions: (activity.versions[i] || {}).count || 0,
+    packages: (activity.packages[i] || {}).count || 0,
+  }));
+}
+
+export default function ActivityChart({ activity }: { activity?: Activity }) {
+  const data = parseActivity(activity);
   return (
     <div className="activity-chart">
       <div className="header">

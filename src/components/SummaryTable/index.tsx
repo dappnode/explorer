@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { prettyName } from "../../utils/format";
 import { RepoSummary } from "../../fetch/types";
@@ -6,16 +6,15 @@ import { sortBy } from "lodash";
 import { TimeDisplay } from "../Generic/TimeDisplay";
 import "./summary-table.scss";
 import { joinIpfsLocation, urlJoin } from "../../utils/url";
+import SettingsContext from "../../settingsContext";
 
 export default function SummaryTable({
   repoSummary,
-  ipfsGateway,
 }: {
-  ipfsGateway: string;
   repoSummary: RepoSummary[];
 }) {
+  const { ipfsGateway } = useContext(SettingsContext);
   const history = useHistory();
-
   function goToRepoView(registry: string, repo: string) {
     history.push(`/${registry}/${repo}`);
   }

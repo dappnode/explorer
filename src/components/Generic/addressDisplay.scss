@@ -1,0 +1,11 @@
+.address-display {
+  display: flex;
+  align-items: center;
+  .blockie {
+    width: 1.5rem;
+    border-radius: 3px;
+  }
+  > *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}

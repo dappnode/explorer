@@ -6,7 +6,7 @@ interface Settings {
 }
 
 const SettingsContext = React.createContext<Settings>({
-  ipfsGateway: "https://ipfs.io",
+  ipfsGateway: "http://ipfs.infura.io",
   txViewer: "https://etherscan.io/tx",
 });
 

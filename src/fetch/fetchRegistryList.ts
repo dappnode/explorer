@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { omit } from "lodash";
 import {
   fetchNewVersions,
   fetchNewRepos,
@@ -83,6 +84,7 @@ export async function fetchRegistryList(
                 name: repo.name,
                 registry: registryName,
                 fromBlock: blockNumberNewVersions,
+                creation: omit(repo, "name"),
                 versions,
               });
             } catch (e) {

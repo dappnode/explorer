@@ -12,6 +12,16 @@ export interface RepoSummary {
   };
 }
 
+interface ActivityByMonth {
+  month: number;
+  count: number;
+}
+
+export interface Activity {
+  versions: ActivityByMonth[];
+  packages: ActivityByMonth[];
+}
+
 export interface LocalRegistry {
   registryName: string;
   fromBlock: number;
@@ -22,5 +32,6 @@ export interface LocalRepo {
   name: string;
   registry: string;
   fromBlock: number;
+  creation: Omit<NewRepo, "name">;
   versions: NewVersion[];
 }

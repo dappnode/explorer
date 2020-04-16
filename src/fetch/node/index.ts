@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ethers } from "ethers";
-import { sortBy } from "lodash";
+import { sortBy, flatten } from "lodash";
 import {
   fetchRegistryList,
   RegistryList,
@@ -15,8 +15,10 @@ import {
   rootDirFromNode,
   getRegistryFile,
   getRepoFile,
+  activityFile,
 } from "../params";
-import { RepoSummary, LocalRepo, LocalRegistry } from "../types";
+import { RepoSummary, LocalRepo, LocalRegistry, Activity } from "../types";
+import { aggregateLast12Months } from "../../utils/math";
 
 preFetchFromNode(new ethers.providers.InfuraProvider(), [
   "dnp.dappnode.eth",
@@ -92,6 +94,17 @@ export async function preFetchFromNode(
   );
 
   localFile.write<RepoSummary[]>(repoSummaryFile, repoSummary);
+
+  // Activity
+
+  const activityLast12Months = {
+    versions: aggregateLast12Months(
+      flatten(allRepos.map((repo) => repo.versions))
+    ),
+    packages: aggregateLast12Months(allRepos.map((repo) => repo.creation)),
+  };
+
+  localFile.write<Activity>(activityFile, activityLast12Months);
 }
 
 function LocalFile(rootDir: string) {

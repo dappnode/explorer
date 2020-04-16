@@ -68,6 +68,17 @@ export const RepoView: React.FC<RouteComponentProps<{
     (version) => version.versionId
   ).reverse();
 
+  // Add another "Creation" version if the creation tx is different
+  const firstVersion = sortedVersions[sortedVersions.length - 1];
+  if (firstVersion.txHash && repoData.creation.txHash !== firstVersion.txHash) {
+    sortedVersions.push({
+      version: "Creation",
+      versionId: -1,
+      contentUri: "",
+      ...repoData.creation,
+    });
+  }
+
   const latestVersion = sortedVersions[0];
   const versionDisplay =
     sortedVersions.find((v) => v.version === version) || latestVersion;
@@ -104,9 +115,11 @@ export const RepoView: React.FC<RouteComponentProps<{
                 </td>
                 <td className="content">
                   {analyze && <StatusBubble ok={isAvailable[version]} />}
-                  <ExternalLink
-                    url={joinIpfsLocation(ipfsGateway, contentUri)}
-                  />
+                  {contentUri && (
+                    <ExternalLink
+                      url={joinIpfsLocation(ipfsGateway, contentUri)}
+                    />
+                  )}
                 </td>
                 <td>
                   <AddressDisplay address={sender} />
