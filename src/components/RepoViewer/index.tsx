@@ -30,7 +30,7 @@ export const RepoView: React.FC<RouteComponentProps<{
   const [analyze, setAnalyze] = useState(false);
 
   const history = useHistory();
-  const { ipfsGateway, txViewer } = useContext(SettingsContext);
+  const { ipfsGateway, ipfsApi, txViewer } = useContext(SettingsContext);
 
   const { registry, repo, version } = match.params;
 
@@ -54,13 +54,13 @@ export const RepoView: React.FC<RouteComponentProps<{
     async function checkVersionAvailability() {
       if (repoData) {
         for (const _version of repoData.versions) {
-          const available = await isVersionAvailable(_version, ipfsGateway);
+          const available = await isVersionAvailable(_version, { ipfsApi });
           setIsAvailable((x) => ({ ...x, [_version.version]: available }));
         }
       }
     }
     if (analyze) checkVersionAvailability();
-  }, [ipfsGateway, repoData, analyze]);
+  }, [ipfsApi, repoData, analyze]);
 
   function selectVersion(_version: string) {
     history.push(`/${registry}/${repo}/${_version}`);

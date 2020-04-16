@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ethers } from "ethers";
 import { Route } from "react-router-dom";
 import Header from "./components/Header";
 import ActivityChart from "./components/ActivityChart";
@@ -13,6 +14,7 @@ import {
 import { RepoSummary, Activity } from "./fetch/types";
 import { RegistryView } from "./components/RegistryViewer";
 import { urlJoin } from "./utils/url";
+import { fetchFromBrowser } from "./fetch/browser";
 
 // fetchFromBrowser(new ethers.providers.InfuraProvider());
 

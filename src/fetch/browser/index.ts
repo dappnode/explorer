@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { fetchRegistryList, RegistryList } from "../fetchRegistryList";
 import { rootUrlFromBrowser, registriesFile } from "../params";
+import { urlJoin } from "../../utils/url";
 
 // fetch(new ethers.providers.InfuraProvider(), rootDir, [
 //   "dnp.dappnode.eth",
@@ -13,7 +14,7 @@ export async function fetchFromBrowser(provider: ethers.providers.Provider) {
   }: {
     filepath: string;
   }): Promise<T | null> {
-    const res = await fetch(`${rootUrlFromBrowser}/${filepath}`);
+    const res = await fetch(urlJoin(rootUrlFromBrowser, filepath));
     if (res.ok) return await res.json();
     else return null;
   }
