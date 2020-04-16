@@ -12,8 +12,9 @@ import { Activity } from "../../fetch/types";
 
 const maxHeight = 200;
 const mainColor = "#2fbcb2";
-const bColor = "#bc7a2f";
-const softColor = "#767e86";
+const bColor = "#bc7a2f"; // Alternative strong color
+const softColor = "#767e86"; // soft
+const borderColor = "#2c3034"; // Very very soft
 const packagesName = "new packages";
 const versionsName = "new versions";
 const fontSize = 12.8;
@@ -95,7 +96,7 @@ export default function ActivityChart({ activity }: { activity?: Activity }) {
         <BarChart data={data}>
           <XAxis
             dataKey="month"
-            stroke={softColor}
+            stroke={borderColor}
             tick={{ fill: softColor, fontSize }}
           />
           <Tooltip
