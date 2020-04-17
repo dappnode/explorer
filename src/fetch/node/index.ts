@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import { ethers } from "ethers";
 import fetch from "node-fetch";
-import { sortBy, flatten } from "lodash";
 import {
   fetchRegistryList,
   RegistryList,
@@ -12,18 +11,17 @@ import {
 } from "../fetchRegistryList";
 import {
   registriesFile,
-  repoSummaryFile,
+  summaryFile,
   rootDirFromNode,
   getRegistryFile,
   getRepoFile,
-  activityFile,
   getAvatarFile,
 } from "../params";
-import { RepoSummary, LocalRepo, LocalRegistry, Activity } from "../types";
-import { aggregateLast12Months } from "../../utils/math";
-import { NewVersion } from "../apm";
+import { RepoSummary, LocalRepo, LocalRegistry, Summary } from "../types";
 import { joinIpfsLocation } from "../../utils/url";
 import { isPng } from "./utils";
+import { getLastVersion, computeActivity } from "../utils";
+import { getTimestamp } from "../apm/apmUtils";
 
 export async function preFetchFromNode(
   provider: ethers.providers.Provider,
@@ -91,12 +89,10 @@ export async function preFetchFromNode(
           if (avatarBuffer) localFile.writeBuffer(avatarFile, avatarBuffer);
           return {
             ...baseData,
-            latest: {
-              version: latestVersion.version,
-              timestamp: latestVersion.timestamp,
-              contentUri: latestVersion.contentUri,
-              logo: avatarBuffer ? avatarFile : null,
-            },
+            version: latestVersion.version,
+            timestamp: latestVersion.timestamp,
+            contentUri: latestVersion.contentUri,
+            logo: avatarBuffer ? avatarFile : null,
           };
         } else {
           return baseData;
@@ -105,19 +101,16 @@ export async function preFetchFromNode(
     )
   );
 
-  localFile.write<RepoSummary[]>(repoSummaryFile, repoSummary);
-
   // Activity
 
   console.log(`Computing activity...`);
-  const activityLast12Months = {
-    versions: aggregateLast12Months(
-      flatten(allRepos.map((repo) => repo.versions))
-    ),
-    packages: aggregateLast12Months(allRepos.map((repo) => repo.creation)),
-  };
 
-  localFile.write<Activity>(activityFile, activityLast12Months);
+  localFile.write<Summary>(summaryFile, {
+    fromBlock: currentBlock,
+    timestamp: await getTimestamp(provider, currentBlock),
+    repos: repoSummary,
+    activity: computeActivity(allRepos),
+  });
 }
 
 /**
@@ -169,19 +162,6 @@ async function fetchAvatar(
     (await fetchAvatarDirectory(contentUri).catch(() => null)) ||
     (await fetchAvatarManifest(contentUri).catch(() => null))
   );
-}
-
-function getLastVersion(repo: LocalRepo): NewVersion {
-  const latestVersion = sortBy(repo.versions, (v) => v.versionId).reverse()[0];
-  if (latestVersion) return latestVersion;
-
-  // Return creation as latest version
-  return {
-    version: "Created",
-    versionId: -1,
-    contentUri: "",
-    ...repo.creation,
-  };
 }
 
 function LocalFile(rootDir: string) {

@@ -1,37 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { RouteComponentProps, useHistory } from "react-router-dom";
 import { sortBy } from "lodash";
 import SettingsContext from "../../settingsContext";
-import { getRegistryFile, rootUrlFromBrowser } from "../../fetch/params";
 import { LocalRegistry } from "../../fetch/types";
 import { prettyName } from "../../utils/format";
 import { TimeDisplay, AddressDisplay, ExternalLink } from "../Generic";
-import { urlJoin } from "../../utils/url";
 
-export const RegistryView: React.FC<RouteComponentProps<{
-  registry: string;
-}>> = ({ match }) => {
-  const [registryData, setRegistryData] = useState<LocalRegistry>();
-
+export const RegistryView: React.FC<
+  { registryData?: LocalRegistry } & RouteComponentProps<{
+    registry: string;
+  }>
+> = ({ registryData, match }) => {
   const history = useHistory();
   const { txViewer } = useContext(SettingsContext);
   const { registry } = match.params;
-
-  useEffect(() => {
-    const filepath = getRegistryFile(registry);
-    fetch(urlJoin(rootUrlFromBrowser, filepath))
-      .then((res) => res.json())
-      .then((_data: LocalRegistry) => {
-        // Sanitize data, and sort versions
-        if (!_data) return;
-        // Sort repos
-        _data.repos = sortBy(
-          Array.isArray(_data.repos) ? _data.repos : [],
-          (r) => r.blockNumber || 0
-        ).reverse();
-        setRegistryData(_data);
-      });
-  }, [registry]);
 
   function goToRepoView(repo: string) {
     history.push(`/${registry}/${repo}`);
@@ -40,8 +22,10 @@ export const RegistryView: React.FC<RouteComponentProps<{
   if (!registryData) return <p className="soft">Loading...</p>;
 
   // Alias
-  const repos = registryData.repos;
-
+  const repos = sortBy(
+    Array.isArray(registryData.repos) ? registryData.repos : [],
+    (r) => r.blockNumber || 0
+  ).reverse();
   return (
     <>
       <div className="repo-name">{registry}</div>

@@ -1,11 +1,71 @@
-.header_header {
+.app-header {
   background-color: var(--color-background_1);
 
-  .dappnode {
-    color: var(--color-text-main);
-  }
+  // Space out items
+  .app-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  .explorer {
-    color: var(--color-brand_0);
+    .dappnode {
+      color: var(--color-text-main);
+    }
+
+    .explorer {
+      color: var(--color-brand_0);
+    }
+
+    .status {
+      color: var(--color-text-soft);
+      text-align: right;
+
+      svg {
+        margin-right: 0.3rem;
+      }
+
+      &.loading {
+        display: flex;
+        align-items: center;
+        svg.spinner {
+          animation: rotating 2s linear infinite;
+          transform: rotate(30deg);
+        }
+      }
+
+      &.success,
+      &.error {
+        .title {
+          display: flex;
+          justify-content: flex-end;
+        }
+        .message {
+          font-size: 70%;
+        }
+        overflow: hidden;
+      }
+
+      &.error {
+        .title {
+          color: #ff3636;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

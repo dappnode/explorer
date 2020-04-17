@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { RouteComponentProps, useHistory, Link } from "react-router-dom";
 import { sortBy } from "lodash";
-import { rootUrlFromBrowser, getRepoFile } from "../../fetch/params";
 import { LocalRepo } from "../../fetch/types";
 import SettingsContext from "../../settingsContext";
 import { prettyName } from "../../utils/format";
@@ -20,12 +19,13 @@ interface VersionAvailable {
   [version: string]: boolean;
 }
 
-export const RepoView: React.FC<RouteComponentProps<{
-  registry: string;
-  repo: string;
-  version: string;
-}>> = ({ match }) => {
-  const [repoData, setRepoData] = useState<LocalRepo>();
+export const RepoView: React.FC<
+  { repoData?: LocalRepo } & RouteComponentProps<{
+    registry: string;
+    repo: string;
+    version: string;
+  }>
+> = ({ repoData, match }) => {
   const [isAvailable, setIsAvailable] = useState<VersionAvailable>({});
   const [analyze, setAnalyze] = useState(false);
 
@@ -33,22 +33,6 @@ export const RepoView: React.FC<RouteComponentProps<{
   const { ipfsGateway, ipfsApi, txViewer } = useContext(SettingsContext);
 
   const { registry, repo, version } = match.params;
-
-  useEffect(() => {
-    const filepath = getRepoFile(registry, repo);
-    fetch(urlJoin(rootUrlFromBrowser, filepath))
-      .then((res) => res.json())
-      .then((_data: LocalRepo) => {
-        // Sanitize data, and sort versions
-        if (!_data) return;
-        // Sort versions
-        _data.versions = sortBy(
-          Array.isArray(_data.versions) ? _data.versions : [],
-          (v) => v.versionId
-        ).reverse();
-        setRepoData(_data);
-      });
-  }, [registry, repo]);
 
   useEffect(() => {
     async function checkVersionAvailability() {
@@ -69,7 +53,10 @@ export const RepoView: React.FC<RouteComponentProps<{
   if (!repoData) return <p className="soft">Loading...</p>;
 
   // Alias
-  const versions = repoData.versions;
+  const versions = sortBy(
+    Array.isArray(repoData.versions) ? repoData.versions : [],
+    (v) => v.versionId
+  ).reverse();
 
   // Add another "Creation" version if the creation tx is different
   const firstVersion = versions[versions.length - 1];

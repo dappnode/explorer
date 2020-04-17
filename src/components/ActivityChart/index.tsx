@@ -40,7 +40,7 @@ function CustomTooltip({
   payload: RechartsTooltipPayload[];
   label: string;
 }) {
-  if (!active) return null;
+  if (!active || !payload) return null;
   return (
     <div className="custom-recharts-tooltip">
       <div>{label}</div>

@@ -93,6 +93,7 @@ export async function getTimestamp(
 ): Promise<number | undefined> {
   if (!blockNumber) return;
   const block = await provider.getBlock(blockNumber);
+  if (!block) return; // Block return may be null
   return block.timestamp;
 }
 

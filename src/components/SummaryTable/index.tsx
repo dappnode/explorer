@@ -30,27 +30,24 @@ export default function SummaryTable({
         </tr>
       </thead>
       <tbody>
-        {sortBy(repoSummary, (repo) => (repo.latest || {}).timestamp || 0)
+        {sortBy(repoSummary, (repo) => repo.timestamp || 0)
           .reverse()
-          .map(({ name, registry, versionCount, latest }) => (
+          .map(({ name, registry, versionCount, version, timestamp, logo }) => (
             <tr
               key={name + registry}
               onClick={() => goToRepoView(registry, name)}
             >
               <td className="logo">
-                {latest && latest.logo && (
-                  <img
-                    src={urlJoin(rootUrlFromBrowser, latest.logo)}
-                    alt="logo"
-                  />
+                {logo && (
+                  <img src={urlJoin(rootUrlFromBrowser, logo)} alt="logo" />
                 )}
               </td>
               <td>{prettyName(name)}</td>
               <td>
-                <TimeDisplay timestamp={latest?.timestamp} />
+                <TimeDisplay timestamp={timestamp} />
               </td>
               <td>
-                <div>{latest?.version}</div>
+                <div>{version || "-"}</div>
                 <div className="light">{versionCount}</div>{" "}
               </td>
               <td>

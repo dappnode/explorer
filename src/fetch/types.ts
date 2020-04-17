@@ -5,12 +5,17 @@ export interface RepoSummary {
   registry: string; // "dnp.dappnode.eth"
   versionCount: number;
   // Last version
-  latest?: {
-    version: string;
-    timestamp?: number;
-    contentUri: string;
-    logo: string | null; // To get the logo: "avatar/dnp.dappnode.eth/bitcoin"
-  };
+  version?: string;
+  timestamp?: number;
+  contentUri?: string;
+  logo?: string | null; // To get the logo: "avatar/dnp.dappnode.eth/bitcoin"
+}
+
+export interface Summary {
+  fromBlock: number;
+  timestamp?: number;
+  repos: RepoSummary[];
+  activity: Activity;
 }
 
 interface ActivityByMonth {
