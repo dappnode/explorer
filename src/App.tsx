@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { ethers } from "ethers";
+import { keyBy } from "lodash";
 import { Route } from "react-router-dom";
 import Header from "./components/Header";
 import { SummaryView } from "./components/SummaryView";
 import { RepoView } from "./components/RepoViewer";
-import { rootUrlFromBrowser, registriesFile } from "./fetch/params";
-import { LocalRegistry, LocalRepo } from "./fetch/types";
+import {
+  rootUrlFromBrowser,
+  registriesFile,
+  summaryFile,
+} from "./fetch/params";
+import { LocalRegistry, LocalRepo, Summary } from "./fetch/types";
 import { RegistryView } from "./components/RegistryViewer";
 import { urlJoin } from "./utils/url";
 import {
@@ -15,59 +20,18 @@ import {
 } from "./fetch/fetchRegistryList";
 import { AppState, FetchStatus } from "./types";
 import { getTimestamp } from "./fetch/apm/apmUtils";
-
-type ActionType =
-  | {
-      type: "update-state";
-      data: AppState;
-    }
-  | {
-      type: "update-registry";
-      registry: string;
-      data: LocalRegistry;
-    }
-  | {
-      type: "update-repo";
-      registry: string;
-      repo: string;
-      data: LocalRepo;
-    };
-
-const initialState: AppState = {
-  fromBlock: 0,
-  timestamp: undefined,
-  registries: {},
-  repos: {},
-};
-
-function reducer(state: AppState, action: ActionType): AppState {
-  switch (action.type) {
-    case "update-registry":
-      return {
-        ...state,
-        registries: {
-          ...state.registries,
-          [action.registry]: action.data,
-        },
-      };
-    case "update-repo":
-      return {
-        ...state,
-        repos: {
-          ...state.repos,
-          [action.registry + action.repo]: action.data,
-        },
-      };
-    case "update-state":
-      return action.data;
-    default:
-      throw new Error("Unknown action type");
-  }
-}
+import { stateToSummary } from "./utils/stateToSummary";
+import { reducer, initialState, ActionType, getRepoKey } from "./reducer";
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [fetchStatus, setFetchStatus] = useState<FetchStatus>({});
+  const [cacheSummary, setCacheSummary] = useState<Summary>();
+
+  /**
+   * Fetch the latest state directly from the blockchain,
+   * while fetching cached state first from the webserver
+   */
 
   useEffect(() => {
     // Agreggate state here and update latter
@@ -82,54 +46,109 @@ export default function App() {
       else return null;
     }
 
-    async function fetchFromBrowser() {
-      try {
-        setFetchStatus({ loading: true });
-        const provider = new ethers.providers.InfuraProvider();
-
-        const db: DbProvider = {
-          registry: {
-            get: async ({ registry, filepath }) => {
-              const data = await readRemoteFile<LocalRegistry>(filepath);
-              if (data) _dispatch({ type: "update-registry", registry, data });
-              return data;
-            },
-            set: async ({ registry }, data) => {
-              _dispatch({ type: "update-registry", registry, data });
-            },
-          },
-          repo: {
-            get: async ({ registry, repo, filepath }) => {
-              const data = await readRemoteFile<LocalRepo>(filepath);
-              if (data)
-                _dispatch({ type: "update-repo", registry, repo, data });
-              return data;
-            },
-            set: async ({ registry, repo }, data) => {
-              _dispatch({ type: "update-repo", registry, repo, data });
-            },
-          },
-        };
-
-        const registryList = await readRemoteFile<RegistryList>(registriesFile);
-        if (!registryList) return;
-
-        const fromBlock = await provider.getBlockNumber();
-        const timestamp = await getTimestamp(provider, fromBlock);
-        await fetchRegistryList(provider, db, registryList);
-        // Update all state at once to prevent heavy performance hits
+    async function fetchSummaryFromWebserver() {
+      //
+      const summary = await readRemoteFile<Summary>(summaryFile);
+      if (summary) {
+        setCacheSummary(summary);
+        // Store a mini version of state from summary
+        const repos: LocalRepo[] = summary.repos.map(
+          (repo): LocalRepo => {
+            const latestVersion = {
+              version: repo.version || "",
+              versionId: 0,
+              contentUri: repo.contentUri || "",
+              timestamp: repo.timestamp,
+            };
+            return {
+              name: repo.name,
+              registry: repo.registry,
+              fromBlock: summary.fromBlock,
+              creation: { ...latestVersion, repo: "" },
+              versions: [latestVersion],
+            };
+          }
+        );
         dispatch({
           type: "update-state",
-          data: { ..._state, fromBlock, timestamp },
+          data: {
+            fromBlock: 0,
+            timestamp: undefined,
+            registries: {},
+            repos: keyBy(repos, (repo) =>
+              getRepoKey({ registry: repo.registry, repo: repo.name })
+            ),
+          },
         });
+      }
+    }
+
+    async function fetchLatestStateFromBlockchain() {
+      const provider = new ethers.providers.InfuraProvider();
+
+      const db: DbProvider = {
+        registry: {
+          get: async ({ registry, filepath }) => {
+            const data = await readRemoteFile<LocalRegistry>(filepath);
+            if (data) _dispatch({ type: "update-registry", registry, data });
+            return data;
+          },
+          set: async ({ registry }, data) => {
+            _dispatch({ type: "update-registry", registry, data });
+          },
+        },
+        repo: {
+          get: async ({ registry, repo, filepath }) => {
+            const data = await readRemoteFile<LocalRepo>(filepath);
+            if (data) _dispatch({ type: "update-repo", registry, repo, data });
+            return data;
+          },
+          set: async ({ registry, repo }, data) => {
+            _dispatch({ type: "update-repo", registry, repo, data });
+          },
+        },
+      };
+
+      const registryList = await readRemoteFile<RegistryList>(registriesFile);
+      if (!registryList) return;
+
+      const fromBlock = await provider.getBlockNumber();
+      const timestamp = await getTimestamp(provider, fromBlock);
+      await fetchRegistryList(provider, db, registryList);
+      // Update all state at once to prevent heavy performance hits
+      dispatch({
+        type: "update-state",
+        data: { ..._state, fromBlock, timestamp },
+      });
+    }
+
+    async function fetchFromSummaryThenFromBlockchain() {
+      setFetchStatus({ loading: true });
+      try {
+        await fetchSummaryFromWebserver();
+      } catch (e) {
+        console.error("Error loading summary", e);
+      }
+      try {
+        await fetchLatestStateFromBlockchain();
         setFetchStatus({ success: true });
       } catch (e) {
         console.error(`Èrror loading state`, e);
         setFetchStatus({ error: e.message });
       }
     }
-    fetchFromBrowser();
+    fetchFromSummaryThenFromBlockchain();
   }, []);
+
+  /**
+   * Converge summary from state and summary cache
+   */
+  const cacheSummaryBlock = (cacheSummary || {}).fromBlock || 0;
+  const stateSummaryBlock = state.fromBlock;
+  const summary: Summary =
+    cacheSummary && cacheSummaryBlock > stateSummaryBlock
+      ? cacheSummary
+      : stateToSummary(state, cacheSummary);
 
   return (
     <div className="App">
@@ -143,7 +162,7 @@ export default function App() {
         <Route
           path="/"
           exact
-          render={(props) => <SummaryView state={state} {...props} />}
+          render={(props) => <SummaryView summary={summary} {...props} />}
         />
         <Route
           path="/:registry"
@@ -163,7 +182,10 @@ export default function App() {
           render={(props) => {
             const { registry, repo } = props.match.params;
             return (
-              <RepoView {...props} repoData={state.repos[registry + repo]} />
+              <RepoView
+                {...props}
+                repoData={state.repos[getRepoKey({ registry, repo })]}
+              />
             );
           }}
         />
