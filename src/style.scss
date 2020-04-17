@@ -52,6 +52,47 @@
   border-radius: var(--border-radius);
 }
 
+.table-container {
+  // Responsive table on small screens
+  overflow-x: auto;
+  // Nice rounded borders
+  border-radius: var(--border-radius);
+}
+table {
+  // Auto-size
+  table-layout: auto;
+  width: 100%;
+  // To not show an ugly little edge
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: var(--spacing_0);
+    text-align: left;
+  }
+
+  tr {
+    transition: background-color ease 150ms;
+    background-color: var(--color-background_1);
+  }
+  thead {
+    tr {
+      background-color: var(--color-background_15);
+    }
+    th {
+      color: var(--color-text-soft);
+    }
+  }
+  tbody {
+    tr:nth-child(even) {
+      background-color: var(--color-background_15);
+    }
+    tr:hover {
+      background-color: var(--color-background_3);
+    }
+  }
+}
+
 // Base styles
 
 body {

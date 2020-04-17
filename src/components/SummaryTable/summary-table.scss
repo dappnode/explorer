@@ -1,45 +1,13 @@
 table.summary-table {
-  table-layout: auto;
-  width: 100%;
-  // To not show an ugly little edge
-  border-collapse: collapse;
-  // Hide overflow to show border-radius
-  border-radius: var(--border-radius);
-  overflow: hidden;
-
-  --logo-size: 2rem;
-
-  th,
-  td {
-    padding: var(--spacing_0);
-    text-align: left;
-  }
-
-  tr {
-    transition: background-color ease 150ms;
-    background-color: var(--color-background_1);
-  }
-  thead {
-    tr {
-      background-color: var(--color-background_15);
-    }
-    th {
-      color: var(--color-text-soft);
-    }
-  }
-  tbody {
-    tr:nth-child(even) {
-      background-color: var(--color-background_15);
-    }
-    tr:hover {
-      background-color: var(--color-background_3);
-    }
-  }
-
   .logo {
-    width: var(--logo-size);
+    width: 2rem;
     padding: calc(var(--spacing_0) / 3) var(--spacing_0);
   }
+
+  $breakpoint: 33rem;
+  $registry-dnp: #76cfb8;
+  $registry-public: #a376cf;
+  $registry-unknown: #a1a1a1;
 
   img {
     // Add some extra room to grow
@@ -58,18 +26,41 @@ table.summary-table {
     font-size: 80%;
   }
 
-  .registry {
+  .registry-badge {
     span {
       padding: 6px 10px;
       border-radius: 8px;
       color: black;
-      background-color: #a1a1a1;
+      background-color: $registry-unknown;
       &.dnp {
-        background-color: #76cfb8;
+        background-color: $registry-dnp;
       }
       &.public {
-        background-color: #a376cf;
+        background-color: $registry-public;
       }
+    }
+    &.small {
+      span {
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-size: 80%;
+      }
+    }
+  }
+
+  .registry-under-name {
+    display: none;
+    margin-top: 3px;
+  }
+
+  // Hide unnecesary columns on small screens
+  @media (max-width: $breakpoint) {
+    .logo,
+    .registry {
+      display: none;
+    }
+    .registry-under-name {
+      display: block;
     }
   }
 }

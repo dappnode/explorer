@@ -85,43 +85,45 @@ export const RepoView: React.FC<
 
       <VersionDisplay version={versionDisplay} isLatest={isLatest} />
 
-      <table className="summary-table">
-        <thead>
-          <tr>
-            <th>Version</th>
-            <th>Age</th>
-            <th onClick={() => setAnalyze(true)}>Content</th>
-            <th>From</th>
-            <th>Txn</th>
-          </tr>
-        </thead>
-        <tbody>
-          {versions.map(
-            ({ version, contentUri, txHash, timestamp, sender }) => (
-              <tr key={version} onClick={() => selectVersion(version)}>
-                <td>{version}</td>
-                <td>
-                  <TimeDisplay timestamp={timestamp} />
-                </td>
-                <td className="content">
-                  {analyze && <StatusBubble ok={isAvailable[version]} />}
-                  {contentUri && (
-                    <ExternalLink
-                      url={joinIpfsLocation(ipfsGateway, contentUri)}
-                    />
-                  )}
-                </td>
-                <td>
-                  <AddressDisplay address={sender} />
-                </td>
-                <td className="txn">
-                  {txHash && <ExternalLink url={urlJoin(txViewer, txHash)} />}
-                </td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table className="summary-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Age</th>
+              <th onClick={() => setAnalyze(true)}>Content</th>
+              <th>From</th>
+              <th>Txn</th>
+            </tr>
+          </thead>
+          <tbody>
+            {versions.map(
+              ({ version, contentUri, txHash, timestamp, sender }) => (
+                <tr key={version} onClick={() => selectVersion(version)}>
+                  <td>{version}</td>
+                  <td>
+                    <TimeDisplay timestamp={timestamp} />
+                  </td>
+                  <td className="content">
+                    {analyze && <StatusBubble ok={isAvailable[version]} />}
+                    {contentUri && (
+                      <ExternalLink
+                        url={joinIpfsLocation(ipfsGateway, contentUri)}
+                      />
+                    )}
+                  </td>
+                  <td>
+                    <AddressDisplay address={sender} />
+                  </td>
+                  <td className="txn">
+                    {txHash && <ExternalLink url={urlJoin(txViewer, txHash)} />}
+                  </td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

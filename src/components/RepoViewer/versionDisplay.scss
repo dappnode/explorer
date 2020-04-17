@@ -10,6 +10,10 @@
     .contentUri {
       color: var(--color-text-soft);
       font-size: 80%;
+      // IPFS hashes are long, trim them on small screens
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 

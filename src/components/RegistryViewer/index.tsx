@@ -29,32 +29,35 @@ export const RegistryView: React.FC<
   return (
     <>
       <div className="repo-name">{registry}</div>
-      <table className="summary-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Created</th>
-            <th>Owner</th>
-            <th>Txn</th>
-          </tr>
-        </thead>
-        <tbody>
-          {repos.map(({ name, timestamp, sender, txHash }) => (
-            <tr key={name} onClick={() => goToRepoView(name)}>
-              <td>{prettyName(name)}</td>
-              <td>
-                <TimeDisplay timestamp={timestamp} />
-              </td>
-              <td>
-                <AddressDisplay address={sender} />
-              </td>
-              <td>
-                <ExternalLink url={`${txViewer}/${txHash}`} />
-              </td>
+
+      <div className="table-container">
+        <table className="summary-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Created</th>
+              <th>Owner</th>
+              <th>Txn</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {repos.map(({ name, timestamp, sender, txHash }) => (
+              <tr key={name} onClick={() => goToRepoView(name)}>
+                <td>{prettyName(name)}</td>
+                <td>
+                  <TimeDisplay timestamp={timestamp} />
+                </td>
+                <td>
+                  <AddressDisplay address={sender} />
+                </td>
+                <td>
+                  <ExternalLink url={`${txViewer}/${txHash}`} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

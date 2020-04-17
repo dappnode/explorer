@@ -9,6 +9,11 @@
 
     .dappnode {
       color: var(--color-text-main);
+      // Add a 0px space to break the text in small screens
+      &::after {
+        content: " ";
+        font-size: 0;
+      }
     }
 
     .explorer {
