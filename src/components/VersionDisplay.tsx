@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import { NewVersion } from "../../fetch/apm";
-import SettingsContext from "../../settingsContext";
-import { joinIpfsLocation } from "../../utils/url";
+import { ApmVersion } from "types";
+import SettingsContext from "settingsContext";
+import { joinIpfsLocation } from "utils/url";
 import "./versionDisplay.scss";
 
-export default function VersionDisplay({
+export function VersionDisplay({
   version,
   isLatest,
 }: {
-  version: NewVersion;
+  version: ApmVersion;
   isLatest: boolean;
 }) {
   const { ipfsGateway } = useContext(SettingsContext);
@@ -18,7 +18,7 @@ export default function VersionDisplay({
     <div className="version-display">
       <div className="header">
         <div className="title">
-          {version.version} {isLatest ? "(latest)" : ""}
+          {version.semanticVersion} {isLatest ? "(latest)" : ""}
         </div>
         <div className="contentUri">{contentUri}</div>
       </div>

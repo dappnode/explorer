@@ -8,7 +8,6 @@ import {
   Tooltip,
 } from "recharts";
 import "./activity-chart.scss";
-import { Activity } from "../../fetch/types";
 
 const maxHeight = 200;
 const mainColor = "#2fbcb2";
@@ -58,10 +57,20 @@ function CustomTooltip({
   );
 }
 
+interface ActivityByMonth {
+  month: number;
+  count: number;
+}
+
 interface ActivityData {
   month: string; // "Jan";
   versions: number; // 13;
   packages: number; // 2;
+}
+
+interface Activity {
+  versions: ActivityByMonth[];
+  packages: ActivityByMonth[];
 }
 
 /**

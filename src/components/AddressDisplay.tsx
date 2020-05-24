@@ -1,6 +1,6 @@
 import React from "react";
-import { prettyAddress } from "../RepoViewer/utils";
 import makeBlockie from "ethereum-blockies-base64";
+import { prettyAddress } from "utils/format";
 import "./addressDisplay.scss";
 
 export function AddressDisplay({ address }: { address?: string }) {

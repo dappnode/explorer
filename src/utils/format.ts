@@ -47,3 +47,21 @@ export function parseRepoName(
     registry,
   };
 }
+
+/**
+ * Returns a shortened address
+ * @param address "0x12345678901234567890123456789"
+ * @returns "0x1234...6789"
+ */
+export function prettyAddress(address: string) {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
+
+/**
+ * TheGraph sends the version concatenated by comma ","
+ * @param semanticVersion "0,1,18"
+ * @returns "0.1.18"
+ */
+export function semanticVersionDots(semanticVersion: string): string {
+  return semanticVersion.replace(/,/g, ".");
+}
