@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import SettingsContext from "settingsContext";
 import { prettyName, semanticVersionDots } from "utils/format";
@@ -7,10 +7,30 @@ import { TimeDisplay } from "components/TimeDisplay";
 import { useReposQuery } from "generated/graphql";
 import "./summary-table.scss";
 
+const showInterval = 20;
+
 export default function SummaryTable() {
+  const [showIndex, setShowIndex] = useState(showInterval);
   const history = useHistory();
   const { ipfsGateway } = useContext(SettingsContext);
   const reposSummary = useReposQuery();
+
+  // Detect bottom scroll event
+  useEffect(() => {
+    function onScroll() {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >
+        document.documentElement.offsetHeight * 0.99
+      )
+        setShowIndex((x) => x + showInterval);
+    }
+    if (reposSummary.data && reposSummary.data.repos.length > showIndex)
+      document.addEventListener("scroll", onScroll);
+
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+    };
+  }, [showIndex, reposSummary.data]);
 
   if (reposSummary.data) {
     const { repos } = reposSummary.data;
@@ -33,6 +53,7 @@ export default function SummaryTable() {
                   (b.lastVersion?.timestamp || 0) -
                   (a.lastVersion?.timestamp || 0)
               )
+              .slice(0, showIndex)
               .map(({ id, name, registryName, versionCount, lastVersion }) => (
                 <tr key={id} onClick={() => history.push(`/repo/${id}`)}>
                   <td className="logo">
