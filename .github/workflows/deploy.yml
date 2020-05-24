@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-  schedule:
-    - cron: "0 */4 * * *"
 
 jobs:
   deploy:
@@ -28,18 +26,6 @@ jobs:
 
       - name: Install
         run: yarn
-
-      - name: Copy previous pre-fetched content
-        run: |
-          git clone $(git config --get remote.origin.url) -b gh-pages dn-explorer-gh-pages
-          cp -r dn-explorer-gh-pages/data public/data
-
-      - name: Pre-fetch content
-        run: |
-          sudo apt-get install tree -qq
-          tree public 
-          yarn fetch
-          tree public
 
       - name: Build
         run: yarn build
