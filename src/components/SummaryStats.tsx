@@ -1,15 +1,22 @@
 import React from "react";
 import { GoPackage } from "react-icons/go";
 import { MdUpdate } from "react-icons/md";
+import { useCountQuery } from "generated/graphql";
 import "./summary-stats.scss";
 
-export default function SummaryStats({
-  packageCount,
-  versionCount,
-}: {
-  packageCount: number;
-  versionCount: number;
-}) {
+export default function SummaryStats() {
+  const { data } = useCountQuery();
+
+  const registries = data?.registries || [];
+  const packageCount = registries.reduce(
+    (total, reg) => total + reg.repoCount,
+    0
+  );
+  const versionCount = registries.reduce(
+    (total, reg) => total + reg.versionCount,
+    0
+  );
+
   const cards = [
     { title: "Published packages", stat: packageCount, Icon: GoPackage },
     { title: "Published versions", stat: versionCount, Icon: MdUpdate },

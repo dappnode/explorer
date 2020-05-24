@@ -1,14 +1,5 @@
 import ky from "ky";
-import { NewVersion } from "../../fetch/apm";
-
-/**
- * Returns a shortened address
- * @param address "0x12345678901234567890123456789"
- * @returns "0x1234...6789"
- */
-export function prettyAddress(address: string) {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}
+import { ApmVersion } from "types";
 
 interface ObjectStat {
   Hash: string; // "QmUPJwSa867iJW2MQxrUY8Y72jaFkj7wk2RVMiPtWEotsy"
@@ -25,7 +16,7 @@ interface ObjectStat {
  * @param ipfsApi
  */
 export async function isVersionAvailable(
-  version: NewVersion,
+  version: ApmVersion,
   { ipfsApi }: { ipfsApi: string }
 ): Promise<boolean> {
   try {
@@ -34,7 +25,7 @@ export async function isVersionAvailable(
     return Boolean(stat.CumulativeSize);
   } catch (e) {
     console.log(
-      `Version ${version.version} ${version.contentUri} not available: ${e.message}`
+      `Version ${version.semanticVersion} ${version.contentUri} not available: ${e.message}`
     );
     return false;
   }
