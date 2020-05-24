@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const QUERY_REPOS = gql`
   query Repos {
-    repos {
+    repos(first: 1000) {
       id
       name
       registryName

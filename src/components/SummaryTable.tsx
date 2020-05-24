@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { sortBy } from "lodash";
 import { useHistory } from "react-router-dom";
 import SettingsContext from "settingsContext";
 import { prettyName, semanticVersionDots } from "utils/format";
@@ -28,8 +27,12 @@ export default function SummaryTable() {
             </tr>
           </thead>
           <tbody>
-            {sortBy(repos, (repo) => repo.lastVersion?.timestamp || 0)
-              .reverse()
+            {repos
+              .sort(
+                (a, b) =>
+                  (b.lastVersion?.timestamp || 0) -
+                  (a.lastVersion?.timestamp || 0)
+              )
               .map(({ id, name, registryName, versionCount, lastVersion }) => (
                 <tr key={id} onClick={() => history.push(`/repo/${id}`)}>
                   <td className="logo">

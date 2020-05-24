@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { RouteComponentProps, useHistory } from "react-router-dom";
-import { sortBy } from "lodash";
 import SettingsContext from "settingsContext";
 import { prettyName, semanticVersionDots } from "utils/format";
 import { urlJoin, joinIpfsLocation } from "utils/url";
@@ -52,13 +51,13 @@ export const Repo: React.FC<RouteComponentProps<{
 
   if (repoQuery.data && repoData) {
     // Alias
-    const versions = sortBy(repoData.versions || [], (version) => version.index)
+    const versions = (repoData.versions || [])
+      .sort((a, b) => b.index - a.index)
       .map((version) => ({
         ...version,
         // TheGraph sends the version concatenated by comma ","
         semanticVersion: semanticVersionDots(version.semanticVersion),
-      }))
-      .reverse();
+      }));
 
     // Add another "Creation" version if the creation tx is different
     const firstVersion = versions[versions.length - 1];

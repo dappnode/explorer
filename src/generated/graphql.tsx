@@ -658,7 +658,7 @@ export type ActivityQuery = (
 
 export const ReposDocument = gql`
     query Repos {
-  repos {
+  repos(first: 1000) {
     id
     name
     registryName
