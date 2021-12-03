@@ -79,7 +79,7 @@ interface Activity {
  * @returns Jan
  */
 function monthNumToShort(month: number) {
-  const mockDate = new Date(`2020-${month + 1}-1`);
+  const mockDate = new Date(new Date(`2020/${month + 1}/1`).getTime()); // UTC date - Safari bug /-
   return new Intl.DateTimeFormat("en-US", { month: "short" }).format(mockDate);
 }
 
