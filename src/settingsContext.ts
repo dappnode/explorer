@@ -7,7 +7,7 @@ interface Settings {
 }
 
 const SettingsContext = React.createContext<Settings>({
-  ipfsGateway: "https://ipfs.infura.io",
+  ipfsGateway: "https://gateway.ipfs.dappnode.io",
   ipfsApi: "https://ipfs.infura.io:5001",
   txViewer: "https://etherscan.io/tx",
 });
