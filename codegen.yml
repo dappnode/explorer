@@ -1,5 +1,5 @@
 overwrite: true
-schema: "https://api.thegraph.com/subgraphs/name/dapplion/apm-dappnode-registries"
+schema: "https://api.studio.thegraph.com/query/90626/dappnode-explorer/version/latest"
 documents: "src/**/*.ts"
 generates:
   src/generated/graphql.tsx:
