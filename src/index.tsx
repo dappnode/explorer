@@ -11,7 +11,7 @@ import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
   uri:
-    "https://api.studio.thegraph.com/query/90626/dappnode-explorer/v0.1.0/",
+    "https://api.studio.thegraph.com/query/90626/dappnode-explorer/version/latest/",
 });
 
 ReactDOM.render(
