@@ -29,7 +29,7 @@ export const QUERY_REPO = gql`
       lastVersion {
         index
       }
-      versions {
+      versions(first: 1000)  {
         index
         semanticVersion
         contentUri
