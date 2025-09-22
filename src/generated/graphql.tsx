@@ -728,7 +728,7 @@ export const RepoDocument = gql`
     lastVersion {
       index
     }
-    versions {
+    versions(first: 1000) {
       index
       semanticVersion
       contentUri
