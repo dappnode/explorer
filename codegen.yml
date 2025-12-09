@@ -1,5 +1,5 @@
 overwrite: true
-schema: "https://subgraph.satsuma-prod.com/e5007231a1eb/noteam--129139/dappnode-explorer/version/v0.1.2/api"
+schema: "https://api.studio.thegraph.com/query/90626/dapp-explorer/version/latest"
 documents: "src/**/*.ts"
 generates:
   src/generated/graphql.tsx:
