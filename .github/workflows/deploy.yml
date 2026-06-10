@@ -34,6 +34,10 @@ jobs:
 
       - name: Build
         env:
+          # Webpack 4 (bundled with CRA 3) uses MD4 hashes, which OpenSSL 3
+          # in Node 18+ disables by default. The legacy provider brings them
+          # back. Safe to remove once react-scripts is upgraded to v5.
+          NODE_OPTIONS: --openssl-legacy-provider
           # Repo variable — non-secret, visible in workflow logs.
           REACT_APP_SUBGRAPH_URI: ${{ vars.REACT_APP_SUBGRAPH_URI }}
           # Repo secret — used to authorize against The Graph gateway.
