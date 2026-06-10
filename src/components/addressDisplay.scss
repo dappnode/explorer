@@ -1,11 +1,15 @@
 .address-display {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-soft);
+
   .blockie {
-    width: 1.5rem;
-    border-radius: 3px;
-  }
-  > *:not(:last-child) {
-    margin-right: 0.5rem;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px var(--color-border-soft);
   }
 }

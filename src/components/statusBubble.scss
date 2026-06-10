@@ -1,11 +1,9 @@
 .status-bubble {
-  display: flex;
-  transition: color ease 150ms;
-  color: var(--color-text-soft);
-  &.ok {
-    color: green;
-  }
-  &.nok {
-    color: red;
-  }
+  display: inline-flex;
+  font-size: 0.7rem;
+  color: var(--color-text-faint);
+  transition: color 150ms ease;
+
+  &.ok  { color: var(--color-success); }
+  &.nok { color: var(--color-danger); }
 }

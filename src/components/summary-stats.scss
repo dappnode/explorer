@@ -1,32 +1,71 @@
 .summary-stats {
   display: grid;
-  // Use auto-fit to prevent emptyness in the right area
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-gap: var(--spacing_0);
+  gap: 1rem;
+}
 
-  .card {
-    display: grid;
-    grid-gap: 0.25rem;
-    grid-template:
-      "title icon" auto
-      "stat  icon" auto / auto min-content;
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)),
+    var(--color-background_1);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 
-    .title {
-      grid-area: title;
-      color: var(--color-text-soft);
-      font-size: 80%;
-    }
-    .stat {
-      grid-area: stat;
-      font-size: 200%;
-      font-weight: 600;
-    }
-    .icon {
-      grid-area: icon;
-      font-size: 3.5rem;
-      color: var(--color-text-soft);
-      // Center svg icon
-      display: flex;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      160px 100px at 0% 0%,
+      var(--card-glow, transparent),
+      transparent 60%
+    );
+    pointer-events: none;
+    opacity: 0.7;
   }
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: var(--color-border-medium);
+    box-shadow: var(--shadow);
+  }
+
+  &__icon {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--icon-bg, rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--color-border-soft);
+    color: var(--icon-color, var(--color-text-soft));
+    font-size: 1.4rem;
+  }
+
+  &__body { display: flex; flex-direction: column; line-height: 1.2; }
+  &__title {
+    color: var(--color-text-soft);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  &__stat {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-top: 0.2rem;
+  }
+
+  &--brand  { --icon-bg: rgba(47, 188, 178, 0.12);  --icon-color: #5ad6cd; --card-glow: rgba(47, 188, 178, 0.10); }
+  &--accent { --icon-bg: rgba(124, 92, 255, 0.12);  --icon-color: #a08fff; --card-glow: rgba(124, 92, 255, 0.10); }
+  &--muted  { --icon-bg: rgba(255, 255, 255, 0.05); --icon-color: var(--color-text-soft); --card-glow: transparent; }
 }

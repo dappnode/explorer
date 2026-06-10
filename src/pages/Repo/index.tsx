@@ -82,9 +82,14 @@ export const Repo: React.FC<RouteComponentProps<{
 
     return (
       <>
-        <div>
-          <div className="repo-name">{prettyName(repoData.name)}</div>
-          <div className="registry">{repoData.registryName}</div>
+        <div className="repo-header">
+          <div>
+            <div className="repo-header__title">{prettyName(repoData.name)}</div>
+            <div className="repo-header__registry">
+              <span className="registry-badge">{repoData.registryName}</span>
+              <span>{repoData.versions?.length || 0} versions</span>
+            </div>
+          </div>
         </div>
 
         {versionDisplay && (
@@ -119,7 +124,7 @@ export const Repo: React.FC<RouteComponentProps<{
                     <td>
                       <TimeDisplay timestamp={timestamp} />
                     </td>
-                    <td className="content">
+                    <td className="content-cell">
                       {analyze && (
                         <StatusBubble ok={isAvailable[semanticVersion]} />
                       )}
@@ -132,7 +137,7 @@ export const Repo: React.FC<RouteComponentProps<{
                     <td>
                       <AddressDisplay address={sender} />
                     </td>
-                    <td className="txn">
+                    <td className="tx-cell">
                       {txHash && (
                         <ExternalLink url={urlJoin(txViewer, txHash)} />
                       )}

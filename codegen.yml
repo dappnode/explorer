@@ -1,5 +1,5 @@
 overwrite: true
-schema: "https://api.studio.thegraph.com/query/90626/dapp-explorer/version/latest"
+schema: "https://gateway.thegraph.com/api/subgraphs/id/AnR9aNC4rEFzoCy44wcLHr3CmSpoCrKizPT8GMkKb8z5"
 documents: "src/**/*.ts"
 generates:
   src/generated/graphql.tsx:

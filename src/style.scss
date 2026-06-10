@@ -1,42 +1,134 @@
+/* =============================================================================
+   DAppNode Explorer — design tokens
+   Nexus-inspired dark, glassy aesthetic with teal accent.
+   ========================================================================== */
+
 :root {
-  // Colors
-  // Background
-  --color-background_3: #363b40; // Card level 2
-  --color-background_2: #2c3034; // Card level 2
-  --color-background_15: #2a2e32; // Card level 1.5
-  --color-background_1: #282c30; // Card level 1
-  --color-background_0: #202326; // Lowest level of the page
-  --color-background_-1: #1b1d20; // Darker color for hero section
-  // Test
-  --color-text-main: #ffffff;
-  --color-text-soft: #767e86;
-  // Brand
-  --color-brand_0: #2fbcb2;
+  /* ---- Surfaces --------------------------------------------------------- */
+  --color-background_-1: #0b0d10;   /* page edge, hero backdrop       */
+  --color-background_0:  #0f1216;   /* page base                      */
+  --color-background_1:  #151a20;   /* card                           */
+  --color-background_15: #1b2128;   /* card hover, table zebra         */
+  --color-background_2:  #222932;   /* nested card                    */
+  --color-background_3:  #2a323d;   /* hover/active                   */
 
-  // Spacing
-  --spacing_0: 1rem;
-  --border-radius: 8px;
+  /* ---- Borders / dividers ---------------------------------------------- */
+  --color-border-soft:    rgba(255, 255, 255, 0.06);
+  --color-border-medium:  rgba(255, 255, 255, 0.10);
+  --color-border-strong:  rgba(255, 255, 255, 0.18);
 
-  // Sizes
-  h1 {
+  /* ---- Text ------------------------------------------------------------- */
+  --color-text-main: #e9eef5;
+  --color-text-soft: #8b97a6;
+  --color-text-faint: #5b6573;
+
+  /* ---- Brand / accent --------------------------------------------------- */
+  --color-brand-0: #2fbcb2;          /* primary teal                   */
+  --color-brand-1: #5ad6cd;          /* hover teal                     */
+  --color-brand-glow: rgba(47, 188, 178, 0.35);
+
+  /* ---- Semantic --------------------------------------------------------- */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger:  #f87171;
+
+  /* ---- Charts ----------------------------------------------------------- */
+  --chart-color-1: #2fbcb2;
+  --chart-color-2: #7c5cff;
+
+  /* ---- Spacing / radii ------------------------------------------------- */
+  --spacing-0: 1rem;
+  --spacing-1: 0.5rem;
+  --spacing-2: 1.5rem;
+  --spacing-3: 2rem;
+
+  --radius-sm: 6px;
+  --radius:    12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation (soft, Nexus-like) ------------------------------------ */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow:    0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  /* ---- Typography ------------------------------------------------------ */
+  --font-sans: "Inter", "Manrope", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 }
 
-// Layout
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 70% -10%, rgba(47, 188, 178, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(124, 92, 255, 0.08), transparent 60%),
+    var(--color-background_0);
+  background-attachment: fixed;
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-brand-1);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+a:hover { color: var(--color-brand-0); }
+
+::selection {
+  background: var(--color-brand-glow);
+  color: var(--color-text-main);
+}
+
+.soft  { color: var(--color-text-soft); }
+.faint { color: var(--color-text-faint); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* =============================================================================
+   Layout
+   ========================================================================== */
 
 @mixin layout-container {
-  max-width: 52rem;
+  max-width: 72rem;
   margin: 0 auto;
-  padding: var(--spacing_0);
+  padding: 0 var(--spacing-2);
 }
 
 .app-body {
   @include layout-container;
-
-  margin-top: 2rem;
+  margin-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
   > *:not(:last-child) {
-    margin-bottom: calc(2 * var(--spacing_0));
+    margin-bottom: var(--spacing-2);
   }
 }
 
@@ -44,67 +136,117 @@
   @include layout-container;
 }
 
-// Component styles
+/* =============================================================================
+   Card
+   ========================================================================== */
 
 .card {
-  background-color: var(--color-background_1);
-  padding: var(--spacing_0);
-  border-radius: var(--border-radius);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    var(--color-background_1);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius);
+  padding: var(--spacing-2);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
 }
+
+.card.is-hoverable:hover {
+  border-color: var(--color-border-medium);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
 
 .table-container {
-  // Responsive table on small screens
-  overflow-x: auto;
-  // Nice rounded borders
-  border-radius: var(--border-radius);
+  background: var(--color-background_1);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
+
 table {
-  // Auto-size
   table-layout: auto;
   width: 100%;
-  // To not show an ugly little edge
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 
-  th,
-  td {
-    padding: var(--spacing_0);
+  th, td {
+    padding: 0.85rem 1rem;
     text-align: left;
+    border-bottom: 1px solid var(--color-border-soft);
   }
-
-  tr {
-    transition: background-color ease 150ms;
+  th {
+    color: var(--color-text-soft);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--color-background_15);
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr {
     background-color: var(--color-background_1);
+    transition: background-color 140ms ease;
+    cursor: pointer;
   }
-  thead {
-    tr {
-      background-color: var(--color-background_15);
-    }
-    th {
-      color: var(--color-text-soft);
-    }
-  }
-  tbody {
-    tr:nth-child(even) {
-      background-color: var(--color-background_15);
-    }
-    tr:hover {
-      background-color: var(--color-background_3);
-    }
+  tbody tr:hover {
+    background-color: var(--color-background_15);
   }
 }
 
-// Base styles
+/* =============================================================================
+   Buttons / chips (utility)
+   ========================================================================== */
 
-body {
-  background-color: var(--color-background_0);
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition: all 140ms ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-brand-0);
+  color: #051614;
+  box-shadow: 0 6px 18px var(--color-brand-glow);
+}
+.btn-primary:hover {
+  background: var(--color-brand-1);
+  color: #051614;
+}
+
+.btn-ghost {
+  background: transparent;
   color: var(--color-text-main);
+  border-color: var(--color-border-medium);
+}
+.btn-ghost:hover {
+  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-a {
-  color: #2c7be5;
-  text-decoration: none;
-}
-
-.soft {
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-soft);
   color: var(--color-text-soft);
 }

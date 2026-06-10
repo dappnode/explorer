@@ -1,4 +1,22 @@
 .external-link {
-  font-size: 1.6rem;
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  color: var(--color-text-soft);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-soft);
+  transition:
+    color 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+
+  &:hover {
+    color: var(--color-brand-1);
+    background: rgba(47, 188, 178, 0.08);
+    border-color: rgba(47, 188, 178, 0.35);
+  }
 }

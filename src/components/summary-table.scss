@@ -1,59 +1,42 @@
+/* =============================================================================
+   Summary table
+   ========================================================================== */
+
 table.summary-table {
   .logo {
-    width: 2rem;
-    padding: calc(var(--spacing_0) / 3) var(--spacing_0);
+    width: 3rem;
+    padding: 0.4rem 0.85rem;
   }
 
   $breakpoint: 33rem;
-  $registry-dnp: #76cfb8;
-  $registry-public: #a376cf;
-  $registry-unknown: #a1a1a1;
 
   img {
-    // Add some extra room to grow
-    max-width: 120%;
-    max-height: 120%;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--color-background_2);
+    box-shadow: 0 0 0 1px var(--color-border-soft);
   }
 
-  .last-update {
-    .ago {
-      color: var(--color-text-soft);
-      font-size: 80%;
-    }
-  }
   .light {
     color: var(--color-text-soft);
-    font-size: 80%;
+    font-size: 0.78rem;
   }
 
-  .registry-badge {
-    span {
-      padding: 6px 10px;
-      border-radius: 8px;
-      color: black;
-      background-color: $registry-unknown;
-      &.dnp {
-        background-color: $registry-dnp;
-      }
-      &.public {
-        background-color: $registry-public;
-      }
-    }
-    &.small {
-      span {
-        padding: 2px 5px;
-        border-radius: 4px;
-        font-size: 80%;
-      }
-    }
+  .name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    .name { font-weight: 600; color: var(--color-text-main); }
+    .meta { color: var(--color-text-soft); font-size: 0.8rem; }
   }
 
   .registry-under-name {
     display: none;
-    margin-top: 3px;
+    margin-top: 0.35rem;
   }
 
-  // Hide unnecesary columns on small screens
   @media (max-width: $breakpoint) {
     .logo,
     .registry {
@@ -62,5 +45,59 @@ table.summary-table {
     .registry-under-name {
       display: block;
     }
+  }
+}
+
+/* =============================================================================
+   Registry pill — soft tinted chip with a colored dot.
+   Rules are top-level (not nested in `table`) so they always apply
+   regardless of where the badge is rendered.
+   ========================================================================== */
+
+.registry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.65rem 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-soft);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border-soft);
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5b6573;
+  }
+
+  &.dnp {
+    color: #5ad6cd;
+    background: rgba(47, 188, 178, 0.14);
+    border-color: rgba(47, 188, 178, 0.45);
+    &::before { background: #2fbcb2; box-shadow: 0 0 6px rgba(47, 188, 178, 0.7); }
+  }
+
+  &.public {
+    color: #c4b8ff;
+    background: rgba(124, 92, 255, 0.16);
+    border-color: rgba(124, 92, 255, 0.45);
+    &::before { background: #7c5cff; box-shadow: 0 0 6px rgba(124, 92, 255, 0.7); }
+  }
+
+  &.dappnode {
+    color: #ffd28a;
+    background: rgba(245, 167, 66, 0.14);
+    border-color: rgba(245, 167, 66, 0.45);
+    &::before { background: #f5a742; box-shadow: 0 0 6px rgba(245, 167, 66, 0.7); }
+  }
+
+  &.small {
+    padding: 0.1rem 0.55rem 0.1rem 0.45rem;
+    font-size: 0.68rem;
   }
 }

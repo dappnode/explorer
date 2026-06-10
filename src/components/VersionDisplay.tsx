@@ -18,9 +18,12 @@ export function VersionDisplay({
     <div className="version-display">
       <div className="header">
         <div className="title">
-          {version.semanticVersion} {isLatest ? "(latest)" : ""}
+          {version.semanticVersion}
+          {isLatest && <span className="badge-latest">latest</span>}
         </div>
-        <div className="contentUri">{contentUri}</div>
+        <div className="contentUri" title={contentUri}>
+          {contentUri}
+        </div>
       </div>
       <iframe
         className="content-preview"

@@ -69,9 +69,11 @@ export default function SummaryTable() {
                     )}{" "}
                   </td>
                   <td>
-                    <div>{prettyName(name)}</div>
-                    <div className="registry-under-name">
-                      <RegistryDisplay registry={registryName} small />
+                    <div className="name-cell">
+                      <span className="name">{prettyName(name)}</span>
+                      <div className="registry-under-name">
+                        <RegistryDisplay registry={registryName} small />
+                      </div>
                     </div>
                   </td>
                   <td>
@@ -106,15 +108,16 @@ export default function SummaryTable() {
 }
 
 function prettyRegistry(registry: string) {
-  return registry === "dnp.dappnode.eth"
-    ? "dnp"
-    : registry === "public.dappnode.eth"
-    ? "public"
-    : undefined;
+  const r = registry.toLowerCase();
+  if (r.includes("dnp.dappnode")) return "dnp";
+  if (r.includes("public.dappnode")) return "public";
+  if (r.includes("dappnode")) return "dappnode";
+  return undefined;
 }
 
 /**
- * Display registry as a colored pill by name
+ * Display registry as a colored pill by name.
+ * The modifier class goes on the wrapper so the dot + chip colors apply.
  */
 function RegistryDisplay({
   registry,
@@ -124,9 +127,13 @@ function RegistryDisplay({
   small?: boolean;
 }) {
   const shortName = prettyRegistry(registry);
+  const variant = shortName || "other";
+  const classes = ["registry-badge", variant, small ? "small" : ""]
+    .filter(Boolean)
+    .join(" ");
   return (
-    <div className={`registry-badge ${small ? "small" : ""}`}>
-      <span className={shortName}>{shortName || registry}</span>
+    <div className={classes}>
+      <span>{shortName || registry}</span>
     </div>
   );
 }

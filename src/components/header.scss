@@ -1,76 +1,85 @@
 .app-header {
-  background-color: var(--color-background_1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 13, 16, 0.72);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--color-border-soft);
 
-  // Space out items
-  .app-container {
+  &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.5rem;
+    height: 64px;
+  }
 
-    .dappnode {
-      color: var(--color-text-main);
-      // Add a 0px space to break the text in small screens
-      &::after {
-        content: " ";
-        font-size: 0;
-      }
-    }
-
-    .explorer {
-      color: var(--color-brand_0);
-    }
-
-    .status {
-      color: var(--color-text-soft);
-      text-align: right;
-
-      svg {
-        margin-right: 0.3rem;
-      }
-
-      &.loading {
-        display: flex;
-        align-items: center;
-        svg.spinner {
-          animation: rotating 2s linear infinite;
-          transform: rotate(30deg);
-        }
-      }
-
-      &.success,
-      &.error {
-        .title {
-          display: flex;
-          justify-content: flex-end;
-        }
-        .message {
-          font-size: 70%;
-        }
-        overflow: hidden;
-      }
-
-      &.error {
-        .title {
-          color: #ff3636;
-        }
-      }
-    }
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
 
-@-webkit-keyframes rotating {
-  from {
-    transform: rotate(0deg);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+
+  &__mark {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
   }
-  to {
-    transform: rotate(360deg);
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  &__name {
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+  &__sub {
+    font-size: 0.7rem;
+    color: var(--color-text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
   }
 }
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-soft);
+  transition: color 120ms ease, background 120ms ease;
+
+  &:hover {
+    color: var(--color-text-main);
+    background: rgba(255, 255, 255, 0.04);
   }
-  to {
-    transform: rotate(360deg);
+
+  &.active {
+    color: var(--color-text-main);
+    background: rgba(47, 188, 178, 0.10);
   }
+}
+
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 540px) {
+  .brand__sub { display: none; }
+  .nav-link span { display: none; }
 }

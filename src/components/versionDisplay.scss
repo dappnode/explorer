@@ -1,16 +1,47 @@
 .version-display {
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-background_1);
+  box-shadow: var(--shadow-sm);
+
   .header {
-    padding: var(--spacing_0);
-    background-color: var(--color-background_1);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--color-border-soft);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+
     .title {
       font-weight: 600;
-      font-size: 120%;
+      font-size: 1rem;
+      color: var(--color-text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .badge-latest {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.1rem 0.55rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--color-brand-0);
+      color: #0b0d10;
     }
     .contentUri {
       color: var(--color-text-soft);
-      font-size: 80%;
-      // IPFS hashes are long, trim them on small screens
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      max-width: 60%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -19,8 +50,9 @@
 
   iframe {
     width: 100%;
-    min-height: 22rem;
-    background-color: white;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    min-height: 28rem;
+    background: white;
+    border: 0;
+    display: block;
   }
 }
