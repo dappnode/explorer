@@ -107,7 +107,7 @@ export default function SummaryTable() {
   return null;
 }
 
-function prettyRegistry(registry: string) {
+export function prettyRegistry(registry: string) {
   const r = registry.toLowerCase();
   if (r.includes("dnp.dappnode")) return "dnp";
   if (r.includes("public.dappnode")) return "public";
@@ -119,7 +119,7 @@ function prettyRegistry(registry: string) {
  * Display registry as a colored pill by name.
  * The modifier class goes on the wrapper so the dot + chip colors apply.
  */
-function RegistryDisplay({
+export function RegistryDisplay({
   registry,
   small,
 }: {

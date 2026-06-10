@@ -9,6 +9,7 @@ import { TimeDisplay } from "components/TimeDisplay";
 import { ExternalLink } from "components/ExternalLink";
 import { AddressDisplay } from "components/AddressDisplay";
 import { VersionDisplay } from "components/VersionDisplay";
+import { RegistryDisplay } from "components/SummaryTable";
 import { useRepoQuery } from "generated/graphql";
 import "./repoViewer.scss";
 
@@ -86,7 +87,7 @@ export const Repo: React.FC<RouteComponentProps<{
           <div>
             <div className="repo-header__title">{prettyName(repoData.name)}</div>
             <div className="repo-header__registry">
-              <span className="registry-badge">{repoData.registryName}</span>
+              <RegistryDisplay registry={repoData.registryName} />
               <span>{repoData.versions?.length || 0} versions</span>
             </div>
           </div>

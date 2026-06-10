@@ -3,7 +3,6 @@ import {
   BarChart,
   Bar,
   XAxis,
-  Legend,
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
@@ -11,9 +10,9 @@ import "./activity-chart.scss";
 
 const maxHeight = 200;
 const mainColor = "#2fbcb2";
-const bColor = "#bc7a2f"; // Alternative strong color
-const softColor = "#767e86"; // soft
-const borderColor = "#2c3034"; // Very very soft
+const bColor = "#7c5cff";
+const softColor = "#8b97a6";
+const borderColor = "#2a323d";
 const packagesName = "new packages";
 const versionsName = "new versions";
 const fontSize = 12.8;
@@ -24,10 +23,6 @@ interface RechartsTooltipPayload {
   name: string; // "packages";
   color: string; // "#bc7a2f";
   value: number; // 0;
-}
-
-function renderColorfulLegendText(value: string) {
-  return <span style={{ color: softColor, fontSize }}>{value}</span>;
 }
 
 function CustomTooltip({
@@ -42,13 +37,13 @@ function CustomTooltip({
   if (!active || !payload) return null;
   return (
     <div className="custom-recharts-tooltip">
-      <div>{label}</div>
+      <div className="tooltip-label">{label}</div>
       <table>
         <tbody>
-          {payload.reverse().map(({ name, color, value }) => (
+          {[...payload].reverse().map(({ name, color, value }) => (
             <tr key={name} style={{ color }}>
-              <td>{value}</td>
-              <td>{name}</td>
+              <td className="tooltip-value">{value}</td>
+              <td className="tooltip-name">{name}</td>
             </tr>
           ))}
         </tbody>
@@ -96,9 +91,17 @@ export default function ActivityChart({ activity }: { activity?: Activity }) {
   const data = parseActivity(activity);
   return (
     <div className="activity-chart">
-      <div className="header">
-        <div className="time">LAST 12 MONTHS</div>
-        <div className="name">ACTIVITY</div>
+      <div className="activity-chart__header">
+        <div>
+          <div className="activity-chart__eyebrow">Last 12 months</div>
+          <div className="activity-chart__title">Activity</div>
+        </div>
+        <div className="activity-chart__legend-hint" aria-hidden="true">
+          <span className="dot dot--accent" />
+          <span>{packagesName}</span>
+          <span className="dot dot--brand" />
+          <span>{versionsName}</span>
+        </div>
       </div>
 
       <ResponsiveContainer height={maxHeight}>
@@ -113,7 +116,6 @@ export default function ActivityChart({ activity }: { activity?: Activity }) {
             cursor={{ fill: "transparent" }}
             content={CustomTooltip}
           />
-          <Legend formatter={renderColorfulLegendText} />
           <Bar
             isAnimationActive={false}
             maxBarSize={20}

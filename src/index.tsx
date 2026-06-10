@@ -13,9 +13,14 @@ const SUBGRAPH_URI =
   process.env.REACT_APP_SUBGRAPH_URI ||
   "https://gateway.thegraph.com/api/subgraphs/id/AnR9aNC4rEFzoCy44wcLHr3CmSpoCrKizPT8GMkKb8z5";
 
-const GATEWAY_TOKEN = process.env.REACT_APP_GATEWAY_TOKEN;
+const GATEWAY_TOKEN = (process.env.REACT_APP_GATEWAY_TOKEN || "").trim();
+const AUTHORIZATION_HEADER = GATEWAY_TOKEN
+  ? GATEWAY_TOKEN.toLowerCase().startsWith("bearer ")
+    ? GATEWAY_TOKEN
+    : `Bearer ${GATEWAY_TOKEN}`
+  : undefined;
 
-if (!GATEWAY_TOKEN) {
+if (!AUTHORIZATION_HEADER) {
   // eslint-disable-next-line no-console
   console.warn(
     "[dappnode-explorer] REACT_APP_GATEWAY_TOKEN is not set. " +
@@ -25,13 +30,9 @@ if (!GATEWAY_TOKEN) {
 
 const client = new ApolloClient({
   uri: SUBGRAPH_URI,
-  request: async (operation) => {
-    operation.setContext({
-      headers: GATEWAY_TOKEN
-        ? { Authorization: `Bearer ${GATEWAY_TOKEN}` }
-        : {},
-    });
-  },
+  headers: AUTHORIZATION_HEADER
+    ? { Authorization: AUTHORIZATION_HEADER }
+    : undefined,
 });
 
 ReactDOM.render(
