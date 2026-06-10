@@ -77,20 +77,37 @@
 html, body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
 }
 
 body {
-  background:
-    radial-gradient(1200px 600px at 70% -10%, rgba(47, 188, 178, 0.10), transparent 60%),
-    radial-gradient(900px 500px at 0% 10%, rgba(124, 92, 255, 0.08), transparent 60%),
-    var(--color-background_0);
-  background-attachment: fixed;
+  position: relative;
+  background: var(--color-background_0);
   color: var(--color-text-main);
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 70% -10%, rgba(47, 188, 178, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(124, 92, 255, 0.08), transparent 60%),
+    var(--color-background_0);
+  transform: translateZ(0);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 
 a {
