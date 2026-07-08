@@ -641,7 +641,9 @@ export type CountQuery = (
   )> }
 );
 
-export type ActivityQueryVariables = {};
+export type ActivityQueryVariables = {
+  timestampGte: Scalars['Int'];
+};
 
 
 export type ActivityQuery = (
@@ -838,11 +840,11 @@ export type CountQueryHookResult = ReturnType<typeof useCountQuery>;
 export type CountLazyQueryHookResult = ReturnType<typeof useCountLazyQuery>;
 export type CountQueryResult = ApolloReactCommon.QueryResult<CountQuery, CountQueryVariables>;
 export const ActivityDocument = gql`
-    query Activity {
-  versions(first: 1000) {
+    query Activity($timestampGte: Int!) {
+  versions(first: 1000, orderBy: timestamp, orderDirection: desc, where: { timestamp_gte: $timestampGte }) {
     timestamp
   }
-  repos(first: 1000) {
+  repos(first: 1000, orderBy: timestamp, orderDirection: desc, where: { timestamp_gte: $timestampGte }) {
     timestamp
   }
 }
@@ -879,6 +881,7 @@ export function withActivity<TProps, TChildProps = {}, TDataName extends string 
  * @example
  * const { data, loading, error } = useActivityQuery({
  *   variables: {
+ *      timestampGte: // value for 'timestampGte'
  *   },
  * });
  */

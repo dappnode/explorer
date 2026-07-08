@@ -52,11 +52,11 @@ export const QUERY_COUNT = gql`
 `;
 
 export const QUERY_ACTIVITY = gql`
-  query Activity {
-    versions(first: 1000) {
+  query Activity($timestampGte: Int!) {
+    versions(first: 1000, orderBy: timestamp, orderDirection: desc, where: { timestamp_gte: $timestampGte }) {
       timestamp
     }
-    repos(first: 1000) {
+    repos(first: 1000, orderBy: timestamp, orderDirection: desc, where: { timestamp_gte: $timestampGte }) {
       timestamp
     }
   }
