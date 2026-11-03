@@ -35,6 +35,8 @@
 .dashboard-bump.patch { color: var(--color-info); }
 .dashboard-bump.minor { color: var(--color-minor); }
 .dashboard-bump.major { color: var(--color-danger); }
+.dashboard-bump.downgrade { color: var(--color-warning); }
+.dashboard-bump.package { color: var(--color-text-soft); }
 .dashboard-stat.warning > strong { color: var(--color-warning); }
 .dashboard-stat.purple > strong { color: #b7a4ff; }
 
@@ -103,6 +105,10 @@
 .dashboard-status.bump-patch { color: var(--color-info); background: rgba(96, 165, 250, 0.12); }
 .dashboard-status.bump-minor { color: var(--color-minor); background: rgba(183, 164, 255, 0.12); }
 .dashboard-status.bump-major { color: var(--color-danger); background: rgba(248, 113, 113, 0.12); box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.3); }
+.dashboard-status.bump-downgrade { color: var(--color-warning); background: rgba(251, 191, 36, 0.07); box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.3); }
+/* Package-only releases stay quiet: soft text, a blue dot and hairline say "pending, nothing upstream". */
+.dashboard-status.bump-package { color: var(--color-text-soft); background: rgba(96, 165, 250, 0.05); box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.2); }
+.dashboard-status.bump-package .dashboard-status-dot { background: var(--color-info); }
 .dashboard-gateway { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.58rem; white-space: nowrap; color: var(--color-text-soft); }
 .dashboard-gateway:hover { color: var(--color-text-main); }
 .dashboard-gateway.available { color: var(--color-success); }
@@ -113,6 +119,8 @@
 .dashboard-upstream.patch > .dashboard-version { color: var(--color-info); }
 .dashboard-upstream.minor > .dashboard-version { color: var(--color-minor); }
 .dashboard-upstream.major > .dashboard-version { color: var(--color-danger); }
+.dashboard-upstream.downgrade > .dashboard-version { color: var(--color-warning); }
+.dashboard-upstream.package > .dashboard-version { color: var(--color-text-soft); font-style: italic; }
 .dashboard-upstream small { color: var(--color-text-soft); font-size: 0.63rem; }
 .dashboard-source-note { display: inline-block; font-size: 0.61rem; color: var(--color-warning); margin-right: 0.2rem; }
 .dashboard-source-note.error, .dashboard-source-note.unavailable { color: var(--color-danger); }

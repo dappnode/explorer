@@ -7,8 +7,8 @@ import { gatewayUrl, recheckUnavailable, useGatewayAvailability } from "dashboar
 import {
   dataIssues, dateFor, DEFAULT_FILTERS, filterPackages, Filters, githubFreshness, hasPrIssues,
   matrixColumn, matrixColumns, matrixGroups, isArchivedPackage, classificationValues, UNCLASSIFIED,
-  onchainFreshness, packageRows, PackageRow, PERIOD_LABELS, pullRequestsFor, readFilters, releaseBump, releaseStatus, upstreamChanges, UpstreamChange,
-  rootTag, STATUS_LABELS, BUMP_LABELS, tagHierarchy, writeFilters,
+  onchainFreshness, packageRows, PackageRow, PERIOD_LABELS, pullRequestsFor, readFilters, releaseChange, releaseStatus, upstreamChanges, UpstreamChange,
+  rootTag, STATUS_LABELS, BUMP_LABELS, CHANGE_ORDER, tagHierarchy, writeFilters,
 } from "dashboard/model";
 import { DashboardSnapshot } from "dashboard/types";
 import "./dashboard.scss";
@@ -59,7 +59,7 @@ const changeLabel = (change: UpstreamChange) => `${change.repo || "Upstream"} ${
 function ReleaseStatus({ pkg, context }: { pkg: PackageRow; context: DataContext }) {
   const status = releaseStatus(pkg);
   const changes = upstreamChanges(pkg);
-  const bump = releaseBump(pkg);
+  const bump = releaseChange(pkg);
   const { chain, github } = sources(pkg, context);
   const stale = chain === "stale" || github === "stale";
   const title = status !== "release_available" ? undefined : !changes ? "Upstream versions unknown" :
@@ -110,10 +110,20 @@ function GatewayStatus({ contentUri, compact = false }: { contentUri?: string | 
   </a>;
 }
 
-/** The largest upstream change of a pending release, e.g. "hyperledger/besu 25.10.0 → 26.7.1". */
+/**
+ * The largest upstream change of a pending release, e.g. "hyperledger/besu 25.10.0 → 26.7.1",
+ * or "unchanged" with the pinned versions when only the package itself changed.
+ */
 function UpstreamSummary({ pkg }: { pkg: PackageRow }) {
   const changes = upstreamChanges(pkg);
-  if (!changes?.length) return null;
+  if (!changes) return null;
+  if (!changes.length) {
+    const pins = pkg.latestRelease?.upstreams || [];
+    return <div className="dashboard-upstream package" title={pins.map((pin) => `${pin.repo || "Upstream"} ${pin.version}`).join("\n") || undefined}>
+      <span className="dashboard-version-label">Upstream</span>
+      <span className="dashboard-version">{pins.length ? "unchanged" : "none declared"}</span>
+    </div>;
+  }
   const [largest, ...rest] = changes;
   return <div className={`dashboard-upstream ${largest.bump}`} title={changes.map(changeLabel).join("\n")}>
     <span className="dashboard-version-label">Upstream</span>
@@ -280,8 +290,8 @@ export function Dashboard() {
   const packages = useMemo(() => snapshot ? filterPackages(snapshot, filters, now, failed) : [], [snapshot, filters, now, failed]);
   const issues = useMemo(() => snapshot ? dataIssues(packages, snapshot, now, failed) : [], [packages, snapshot, now, failed]);
   const prs = useMemo(() => pullRequestsFor(packages), [packages]);
-  const bumps = (["major", "minor", "patch"] as const)
-    .map((bump) => [bump, packages.filter((pkg) => releaseBump(pkg) === bump).length] as const)
+  const bumps = CHANGE_ORDER
+    .map((bump) => [bump, packages.filter((pkg) => releaseChange(pkg) === bump).length] as const)
     .filter(([, count]) => count > 0);
   const allRows = useMemo(() => snapshot ? packageRows(snapshot) : [], [snapshot]);
   const update = (patch: Partial<Filters>) => history.replace({
@@ -347,7 +357,7 @@ export function Dashboard() {
           ["Packages", packages.length, `${allRows.length} in catalog`, "neutral"],
           ["Release available", packages.filter((pkg) => releaseStatus(pkg) === "release_available").length,
             bumps.length ? bumps.map(([bump, count], index) => <React.Fragment key={bump}>
-              {index > 0 && " · "}<span className={`dashboard-bump ${bump}`}>{count} {bump}</span>
+              {index > 0 && " · "}<span className={`dashboard-bump ${bump}`}>{count} {bump === "package" ? "package-only" : bump}</span>
             </React.Fragment>) : "Newer than on-chain", "info"],
           ["Unpublished", packages.filter((pkg) => releaseStatus(pkg) === "unpublished").length, "Ready for first publication", "warning"],
           ["Bump PRs", prs.filter((pr) => pr.kind === "bump").length, "Unique open pull requests", "purple"],

@@ -3,7 +3,7 @@ import { DashboardPackage, DashboardSnapshot, Upstream } from "./types";
 import { fixture, HOODI_ID, MAINNET_ID, NOW, REPO_ID, repository } from "./fixtures";
 import {
   dataIssues, DEFAULT_FILTERS, filterPackages, hasPrIssues, localDate, matrixColumn, matrixColumns, matrixGroups,
-  NON_GENERIC, packageRows, periodStart, pullRequestsFor, readFilters, releaseBump, rootTag, upstreamChanges, versionBump, tagHierarchy, UNCLASSIFIED, writeFilters,
+  NON_GENERIC, packageRows, periodStart, pullRequestsFor, readFilters, releaseBump, releaseChange, rootTag, upstreamChanges, versionBump, tagHierarchy, UNCLASSIFIED, writeFilters,
 } from "./model";
 
 const all = { archived: "include" as const, unpublishable: "include" as const };
@@ -220,7 +220,16 @@ test("sizes a version change by its first differing component", () => {
   expect(versionBump("v1.0.0-rc.1", "v1.0.0")).toBe("patch");
   expect(versionBump("2.7", "3.0.2")).toBe("major");
   expect(versionBump("v1.2.3", "v1.2.3")).toBeNull();
-  expect(versionBump("release27932", "release28000")).toBeNull();
+  expect(versionBump("v1.2.3", "1.2.3")).toBeNull();
+  // Prefixed tags are sized by their version, not reported as unchanged.
+  expect(versionBump("n8n@2.29.8", "n8n@2.39.8")).toBe("minor");
+  expect(versionBump("RC-0.9.2", "RC-0.12.0")).toBe("minor");
+  expect(versionBump("v1.9rc3", "v1.12")).toBe("minor");
+  // Older upstreams are downgrades at any component, never updates.
+  expect(versionBump("v26.10.0", "v24.8.0")).toBe("downgrade");
+  expect(versionBump("v3.6.0", "v3.0.2")).toBe("downgrade");
+  expect(versionBump("v1.2.3", "v1.2.2")).toBe("downgrade");
+  expect(versionBump("release27932", "release28000")).toBe("changed");
 });
 
 test("classifies a pending release by its largest third-party upstream change", () => {
@@ -240,12 +249,22 @@ test("classifies a pending release by its largest third-party upstream change", 
   );
   expect(upstreamChanges(geth)!.map((c) => [c.repo, c.bump])).toEqual([["obolnetwork/charon", "major"], ["ethereum/go-ethereum", "patch"]]);
   expect(releaseBump(geth)).toBe("major");
+  // A downgrade outranks any update in the same release.
+  expect(releaseBump(pending(
+    [pin("ethereum/go-ethereum", "v1.14.12"), pin("ObolNetwork/charon", "v1.1.0")],
+    [pin("ethereum/go-ethereum", "v1.14.11"), pin("ObolNetwork/charon", "v2.0.0")],
+  ))).toBe("downgrade");
   // DAppNode helper repositories count only when nothing else is pinned.
   expect(releaseBump(pending([pin("ethereum/go-ethereum", "v1.14.12"), scripts("v0.1.2")], [pin("ethereum/go-ethereum", "v1.14.12"), scripts("v0.2.0")]))).toBeNull();
   expect(releaseBump(pending([scripts("v0.1.2")], [scripts("v0.2.0")]))).toBe("minor");
   // Version-only legacy manifests pair when each side pins one upstream.
   expect(releaseBump(pending([pin(null, "2.1.5")], [pin("isc/bind", "2.2.0")]))).toBe("minor");
   expect(upstreamChanges(pending([], []))).toEqual([]);
+  // Known but unchanged upstreams mark a package-only release; unknown ones stay unsized.
+  expect(releaseChange(pending([pin("prysmaticlabs/prysm", "v7.1.2")], [pin("prysmaticlabs/prysm", "v7.1.2")]))).toBe("package");
+  expect(releaseChange(pending([], []))).toBe("package");
+  expect(releaseChange(geth)).toBe("major");
+  expect(releaseChange(mainnet)).toBeNull();
   expect(releaseBump(row(snapshot, HOODI_ID))).toBeNull();
 });
 
