@@ -12,6 +12,8 @@ The existing Packages page remains the default. Open `/#/dashboard` for all-pack
 
 Set the GitHub Actions **repository variable** `REACT_APP_DASHBOARD_API_URL` to `https://tropibot.dappnode.net/v1/explorer/dashboard`. The deployment workflow passes it into the build. For local development, set the same variable in `.env.development.local` (see `.env.example`). Without a value, the app uses `/v1/explorer/dashboard` on its own origin for same-origin/proxy setups.
 
+Pending releases are sized by their largest upstream version change (patch, minor or major); DAppNode's own helper repositories count only when a package pins nothing else, and a release whose upstreams are unknown or unchanged stays unsized. Each release's IPFS hash is checked from the browser against the dev gateway (`REACT_APP_IPFS_DEV_GATEWAY`, default `https://ipfs-gateway-dev.dappnode.net`); Refresh re-checks hashes that were missing.
+
 Run `yarn start` and open `http://localhost:3000/#/dashboard`. The development server proxies dashboard requests to the configured endpoint, so Tropibot does not need to allow localhost through CORS. Production builds call the configured endpoint directly.
 
 The URL is public configuration, so it belongs in Variables rather than Secrets; React embeds it in the browser bundle. Rebuild after changing it. Tropibot must allow the Explorer origin through CORS and expose `ETag`. No GitHub or GraphQL credentials are used by this page.
