@@ -47,6 +47,10 @@
 .dashboard-type-switch button { padding: 0.45rem 0.65rem; border: 1px solid transparent; border-radius: var(--radius-sm); background: transparent; color: var(--color-text-soft); cursor: pointer; font-size: 0.78rem; }
 .dashboard-type-switch button:hover { color: var(--color-text-main); background: var(--color-background_15); }
 .dashboard-type-switch button[aria-pressed="true"] { color: var(--color-brand-1); background: rgba(47, 188, 178, 0.1); border-color: rgba(47, 188, 178, 0.25); }
+.dashboard-quick-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; }
+.dashboard-switch-count { margin-left: 0.4rem; color: var(--color-text-soft); font-size: 0.68rem; font-variant-numeric: tabular-nums; }
+.dashboard-type-switch button[aria-pressed="true"] .dashboard-switch-count { color: inherit; opacity: 0.8; }
+.dashboard-subtag-switch { padding-left: 0.75rem; border-left: 2px solid rgba(47, 188, 178, 0.25); }
 .dashboard-filter-actions { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
 .dashboard-advanced-toggle { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0; border: 0; background: transparent; color: var(--color-text-soft); cursor: pointer; font-size: 0.78rem !important; }
 .dashboard-advanced-toggle:hover, .dashboard-advanced-toggle[aria-expanded="true"] { color: var(--color-text-main); }

@@ -3,7 +3,7 @@ import { DashboardPackage, DashboardSnapshot } from "./types";
 import { fixture, HOODI_ID, MAINNET_ID, NOW, REPO_ID, repository } from "./fixtures";
 import {
   dataIssues, DEFAULT_FILTERS, filterPackages, hasPrIssues, localDate, matrixColumn, matrixColumns, matrixGroups,
-  NON_GENERIC, packageRows, periodStart, pullRequestsFor, readFilters, UNCLASSIFIED, writeFilters,
+  NON_GENERIC, packageRows, periodStart, pullRequestsFor, readFilters, rootTag, tagHierarchy, UNCLASSIFIED, writeFilters,
 } from "./model";
 
 const all = { archived: "include" as const, unpublishable: "include" as const };
@@ -18,11 +18,38 @@ test("filters by manifest type, category, and curated tag, including unclassifie
   expect(ids(snapshot, { ...all, type: UNCLASSIFIED })).toEqual(["legacy.dnp.dappnode.eth"]);
   expect(ids(snapshot, { category: "Blockchain" })).toEqual([MAINNET_ID, HOODI_ID]);
   expect(ids(snapshot, { ...all, category: UNCLASSIFIED })).toEqual(["application.public.dappnode.eth", "legacy.dnp.dappnode.eth"]);
-  expect(ids(snapshot, { tag: "execution" })).toEqual([MAINNET_ID, HOODI_ID]);
+  expect(ids(snapshot, { tag: "execution" })).toEqual([MAINNET_ID]);
+  expect(ids(snapshot, { tag: "staking" })).toEqual([MAINNET_ID, HOODI_ID]);
   expect(ids(snapshot, { ...all, tag: UNCLASSIFIED })).toEqual(["application.public.dappnode.eth", "legacy.dnp.dappnode.eth"]);
   expect(ids(snapshot, { q: "ETH2.0" })).toEqual([]);
   expect(ids(snapshot, { q: "blockchain" })).toEqual([MAINNET_ID, HOODI_ID]);
   expect(ids(snapshot, { ...all, q: "dappnodepackage-app" })).toEqual(["application.public.dappnode.eth"]);
+});
+
+test("tag hierarchy nests tags whose packages always carry another tag", () => {
+  const snapshot = fixture();
+  geth(snapshot).packages.push({
+    ...geth(snapshot).packages[1], id: "op-geth.dnp.dappnode.eth", variant: null,
+    classification: { type: "service", categories: [], tags: ["l2"] },
+  });
+  const hierarchy = tagHierarchy(packageRows(snapshot));
+  expect(hierarchy.top).toEqual(["staking", "l2"]);
+  expect(hierarchy.children).toEqual({ staking: ["execution"] });
+  expect(hierarchy.counts).toEqual({ execution: 1, staking: 2, l2: 1 });
+  expect(rootTag("execution", hierarchy)).toBe("staking");
+  expect(rootTag("l2", hierarchy)).toBe("l2");
+  // Tags with identical members are peers, not parent and child.
+  geth(snapshot).packages[1].classification.tags = ["execution", "staking"];
+  expect(tagHierarchy(packageRows(snapshot)).top).toEqual(["execution", "staking", "l2"]);
+});
+
+test("generic switch separates variant packages from plain ones", () => {
+  const snapshot = fixture();
+  expect(ids(snapshot, { ...all, generic: "generic" })).toEqual([MAINNET_ID, HOODI_ID]);
+  expect(ids(snapshot, { ...all, generic: "nongeneric" })).toEqual(["application.public.dappnode.eth", "legacy.dnp.dappnode.eth"]);
+  expect(readFilters("?generic=nongeneric").generic).toBe("nongeneric");
+  expect(readFilters("?generic=maybe").generic).toBe("all");
+  expect(writeFilters({ ...DEFAULT_FILTERS, generic: "generic" })).toBe("?generic=generic");
 });
 
 test("deduplicates repository PRs while respecting package-specific scope", () => {

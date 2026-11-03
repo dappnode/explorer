@@ -7,7 +7,7 @@ import {
   dataIssues, dateFor, DEFAULT_FILTERS, filterPackages, Filters, githubFreshness, hasPrIssues,
   matrixColumn, matrixColumns, matrixGroups, isArchivedPackage, classificationValues, UNCLASSIFIED,
   onchainFreshness, packageRows, PackageRow, PERIOD_LABELS, pullRequestsFor, readFilters, releaseStatus,
-  STATUS_LABELS, writeFilters,
+  rootTag, STATUS_LABELS, tagHierarchy, writeFilters,
 } from "dashboard/model";
 import { DashboardSnapshot } from "dashboard/types";
 import "./dashboard.scss";
@@ -22,6 +22,11 @@ function dateLabel(value: string | null, includeTime = false): string {
 
 function label(value: string): string {
   return value.replace(/[_-]/g, " ").replace(/^./, (character) => character.toUpperCase());
+}
+
+/** Short tags are acronyms: mev, dvt, l2. */
+function tagLabel(tag: string): string {
+  return tag.length <= 3 ? tag.toUpperCase() : label(tag);
 }
 
 interface DataContext {
@@ -156,7 +161,7 @@ function PackageName({ pkg }: { pkg: PackageRow }) {
     <div className="dashboard-package-tags">
       {pkg.classification.type && <span>{label(pkg.classification.type)}</span>}
       {pkg.classification.type === null && pkg.classification.categories.length === 0 && <span>Unclassified</span>}
-      {pkg.classification.tags.map((tag) => <span key={tag}>{label(tag)}</span>)}
+      {pkg.classification.tags.map((tag) => <span key={tag}>{tagLabel(tag)}</span>)}
       {archived && <span>Archived</span>}
       {!chain && <span>No on-chain version</span>}
     </div>
@@ -168,7 +173,7 @@ function MatrixPackageName({ pkg }: { pkg: PackageRow }) {
   const chain = pkg.onchain;
   const tags = [
     pkg.classification.type ? label(pkg.classification.type) : null,
-    ...pkg.classification.tags.map(label),
+    ...pkg.classification.tags.map(tagLabel),
     !chain ? "No on-chain version" : null,
     isArchivedPackage(pkg) ? "Archived" : null,
   ].filter(Boolean) as string[];
@@ -249,13 +254,22 @@ export function Dashboard() {
   const reset = () => update({ ...DEFAULT_FILTERS, view: filters.view });
   const filterCount = (Object.keys(filters) as Array<keyof Filters>).filter((key) =>
     !["view", "from", "to"].includes(key) && filters[key] !== DEFAULT_FILTERS[key]).length;
-  const advancedCount = (["variant", "type", "category", "tag", "status", "prs", "archived", "unpublishable", "dateField", "sort", "direction"] as Array<keyof Filters>)
+  const advancedCount = (["variant", "type", "category", "status", "prs", "archived", "unpublishable", "dateField", "sort", "direction"] as Array<keyof Filters>)
     .filter((key) => filters[key] !== DEFAULT_FILTERS[key]).length + (filters.period === "custom" ? 1 : 0);
   const context = snapshot ? { snapshot, now, failed } : undefined;
   const variants = matrixColumns(allRows);
   const types = classificationValues(allRows, "type");
   const categories = classificationValues(allRows, "categories");
-  const tags = classificationValues(allRows, "tags");
+  const hierarchy = useMemo(() => tagHierarchy(allRows), [allRows]);
+  // Switch counts apply every other filter, so they match what a click would show.
+  const tagBase = useMemo(() => snapshot ? filterPackages(snapshot, { ...filters, tag: "all" }, now, failed) : [],
+    [snapshot, filters, now, failed]);
+  const genericBase = useMemo(() => snapshot ? filterPackages(snapshot, { ...filters, generic: "all" }, now, failed) : [],
+    [snapshot, filters, now, failed]);
+  const tagged = (tag: string) => tagBase.filter((pkg) => tag === UNCLASSIFIED ?
+    pkg.classification.tags.length === 0 : pkg.classification.tags.includes(tag)).length;
+  const selectedRoot = filters.tag !== "all" && filters.tag !== UNCLASSIFIED ? rootTag(filters.tag, hierarchy) : null;
+  const subTags = selectedRoot ? hierarchy.children[selectedRoot] || [] : [];
   const unclassifiedTypes = allRows.filter((pkg) => pkg.classification.type === null).length;
   const unclassifiedCategories = allRows.filter((pkg) => pkg.classification.categories.length === 0).length;
   const unclassifiedTags = allRows.filter((pkg) => pkg.classification.tags.length === 0).length;
@@ -318,10 +332,22 @@ export function Dashboard() {
           </label>
         </div>
         <div className="dashboard-filter-toolbar">
-          <div className="dashboard-type-switch" role="group" aria-label="Package type">
-            {([["all", `All${types.length ? " types" : " packages"}`], ...(types.length > 1 ? types.map((value): [string, string] => [value, label(value)]) : []),
-              ...(unclassifiedTypes > 0 ? [[UNCLASSIFIED, "Unclassified"]] : [])] as Array<[string, string]>)
-              .map(([value, text]) => <button key={value} aria-pressed={filters.type === value} onClick={() => update({ type: value })}>{text}</button>)}
+          <div className="dashboard-quick-filters">
+            <div className="dashboard-type-switch" role="group" aria-label="Package tag">
+              {([["all", "All", tagBase.length], ...hierarchy.top.map((tag): [string, string, number] => [tag, tagLabel(tag), tagged(tag)]),
+                ...(unclassifiedTags > 0 ? [[UNCLASSIFIED, "No tags", tagged(UNCLASSIFIED)]] : [])] as Array<[string, string, number]>)
+                .map(([value, text, count]) => <button key={value} onClick={() => update({ tag: value })}
+                  aria-pressed={value === "all" || value === UNCLASSIFIED ? filters.tag === value : selectedRoot === value}>
+                  {text}<span className="dashboard-switch-count" aria-hidden="true">{count}</span>
+                </button>)}
+            </div>
+            <div className="dashboard-type-switch" role="group" aria-label="Package layout">
+              {([["all", "Any layout"], ["generic", "Generic"], ["nongeneric", "Non-generic"]] as Array<[Filters["generic"], string]>)
+                .map(([value, text]) => <button key={value} aria-pressed={filters.generic === value} onClick={() => update({ generic: value })}>
+                  {text}<span className="dashboard-switch-count" aria-hidden="true">{value === "all" ? genericBase.length :
+                    genericBase.filter((pkg) => (pkg.variant !== null) === (value === "generic")).length}</span>
+                </button>)}
+            </div>
           </div>
           <div className="dashboard-filter-actions">
             {filterCount > 0 && <button className="dashboard-text-button" onClick={reset}>Clear filters</button>}
@@ -330,13 +356,18 @@ export function Dashboard() {
             </button>
           </div>
         </div>
+        {selectedRoot && subTags.length > 0 && <div className="dashboard-type-switch dashboard-subtag-switch" role="group" aria-label={`${tagLabel(selectedRoot)} roles`}>
+          {[selectedRoot, ...subTags].map((tag) => <button key={tag} aria-pressed={filters.tag === tag} onClick={() => update({ tag })}>
+            {tag === selectedRoot ? `All ${tagLabel(tag).toLowerCase()}` : tagLabel(tag)}<span className="dashboard-switch-count" aria-hidden="true">{tagged(tag)}</span>
+          </button>)}
+        </div>}
         <div className="dashboard-advanced-filters" id="dashboard-advanced-filters" hidden={!advancedOpen}>
           <div className="dashboard-filter-grid">
             {select("variant", "Variant", [["all", "All variants"], ...withFallback(variants, filters.variant).sort().map((value): [string, string] => [value, label(value)])])}
             {select("category", "Category", [["all", "All categories"], ...withFallback(categories, filters.category).map((value): [string, string] => [value, value]),
               ...(unclassifiedCategories > 0 ? [[UNCLASSIFIED, "Unclassified"]] as Array<[string, string]> : [])])}
-            {select("tag", "Tag", [["all", "All tags"], ...withFallback(tags, filters.tag).map((value): [string, string] => [value, label(value)]),
-              ...(unclassifiedTags > 0 ? [[UNCLASSIFIED, "No tags"]] as Array<[string, string]> : [])])}
+            {select("type", "Type", [["all", "All types"], ...withFallback(types, filters.type).map((value): [string, string] => [value, label(value)]),
+              ...(unclassifiedTypes > 0 ? [[UNCLASSIFIED, "Unclassified"]] as Array<[string, string]> : [])])}
             {select("status", "Release status", [["all", "All release statuses"], ...Object.entries(STATUS_LABELS)])}
             {select("prs", "Pull requests", [["all", "All PR states"], ["bump", "Has bump PRs"], ["other", "Has other PRs"], ["none", "No open PRs"], ["unknown", "Incomplete PR data"]])}
           </div>

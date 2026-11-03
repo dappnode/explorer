@@ -35,6 +35,7 @@ export function fixture(): DashboardSnapshot {
   };
   const hoodi: DashboardPackage = {
     ...mainnet, id: HOODI_ID, displayName: "Hoodi Geth", variant: "hoodi",
+    classification: { ...mainnet.classification, tags: ["staking"] },
     onchain: { ...mainnet.onchain!, address: "0x456", version: "0.1.7", rawVersion: "0.1.7", publishedAt: "2026-10-25T14:00:00Z" },
     latestRelease: { ...mainnet.latestRelease!, version: "0.1.7" },
     releaseStatus: "current", lastActivityAt: "2026-11-02T12:00:00Z",

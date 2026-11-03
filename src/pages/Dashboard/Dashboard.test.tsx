@@ -32,7 +32,7 @@ test("loads the dashboard, filters via the URL, and switches to a matrix", async
   expect(page.getByLabelText("Filtered dashboard summary")).toHaveTextContent("Other PRs1");
   expect(page.getByText("Application", { selector: "strong" })).toBeInTheDocument();
   // Only the package whose manifest declares no type is unclassified.
-  fireEvent.click(page.getByRole("button", { name: "Unclassified" }));
+  fireEvent.change(page.getByLabelText("Type"), { target: { value: "unclassified" } });
   expect(history.location.search).toContain("type=unclassified");
   expect(page.queryByText("Hoodi Geth")).toBeNull();
   expect(page.queryByText("Application", { selector: "strong" })).toBeNull();
@@ -45,13 +45,38 @@ test("loads the dashboard, filters via the URL, and switches to a matrix", async
   expect(page.getByText("Hoodi Geth")).toBeInTheDocument();
 });
 
+test("tag and layout switches filter at a glance and reveal sub-tags", async () => {
+  const history = createMemoryHistory({ initialEntries: ["/dashboard?unpublishable=include"] });
+  const page = render(<Router history={history}><Dashboard /></Router>);
+  await page.findByText("Hoodi Geth");
+  const tags = page.getByRole("group", { name: "Package tag" });
+  expect(tags).toHaveTextContent("All4Staking2No tags2");
+  expect(page.queryByRole("group", { name: "Staking roles" })).toBeNull();
+  fireEvent.click(page.getByRole("button", { name: "Staking" }));
+  expect(history.location.search).toContain("tag=staking");
+  expect(page.queryByText("Application", { selector: "strong" })).toBeNull();
+  const roles = page.getByRole("group", { name: "Staking roles" });
+  expect(roles).toHaveTextContent("All staking2Execution1");
+  fireEvent.click(page.getByRole("button", { name: "Execution" }));
+  expect(history.location.search).toContain("tag=execution");
+  expect(page.queryByText("Hoodi Geth")).toBeNull();
+  // The parent stays highlighted while a sub-tag is selected.
+  expect(page.getByRole("button", { name: "Staking" })).toHaveAttribute("aria-pressed", "true");
+  fireEvent.click(page.getByRole("button", { name: "All" }));
+  fireEvent.click(page.getByRole("button", { name: "Non-generic" }));
+  expect(history.location.search).toContain("generic=nongeneric");
+  expect(page.queryByText("Hoodi Geth")).toBeNull();
+  expect(page.getByText("Application", { selector: "strong" })).toBeInTheDocument();
+  expect(page.getByRole("group", { name: "Package layout" })).toHaveTextContent("Any layout4Generic2Non-generic2");
+});
+
 test("matrix columns only show variants present in the filtered packages", async () => {
   const history = createMemoryHistory({ initialEntries: ["/dashboard?view=matrix&unpublishable=include"] });
   const page = render(<Router history={history}><Dashboard /></Router>);
   await page.findByText("Hoodi Geth");
   const headers = () => Array.from(page.getByLabelText("Package variant matrix").querySelectorAll("thead th")).map((th) => th.textContent);
   expect(headers()).toEqual(["Package / Repository", "Nongeneric", "Mainnet", "Hoodi"]);
-  fireEvent.click(page.getByRole("button", { name: "Unclassified" }));
+  fireEvent.change(page.getByLabelText("Type"), { target: { value: "unclassified" } });
   expect(headers()).toEqual(["Package / Repository", "Nongeneric"]);
   expect(page.queryByText("Hoodi Geth")).toBeNull();
 });

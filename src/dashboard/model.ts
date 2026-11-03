@@ -24,6 +24,7 @@ export interface Filters {
   variant: string;
   category: string;
   tag: string;
+  generic: "all" | "generic" | "nongeneric";
   status: string;
   prs: "all" | "bump" | "other" | "none" | "unknown";
   archived: "exclude" | "include" | "only";
@@ -41,7 +42,7 @@ export interface Filters {
 export const UNCLASSIFIED = "unclassified";
 
 export const DEFAULT_FILTERS: Filters = {
-  q: "", type: "all", variant: "all", category: "all", tag: "all", status: "all", prs: "all",
+  q: "", type: "all", variant: "all", category: "all", tag: "all", generic: "all", status: "all", prs: "all",
   archived: "exclude", unpublishable: "exclude",
   dateField: "activity", period: "all", from: "", to: "", sort: "activity",
   direction: "desc", view: "table",
@@ -67,6 +68,7 @@ export function readFilters(search: string): Filters {
   if (legacyVariant && !params.has("variant")) filters.variant = legacyVariant;
   const choices: { [key: string]: string[] } = {
     status: ["all", ...Object.keys(STATUS_LABELS)], prs: ["all", "bump", "other", "none", "unknown"],
+    generic: ["all", "generic", "nongeneric"],
     dateField: ["activity", "onchain", "release"],
     archived: ["exclude", "include", "only"], unpublishable: ["exclude", "include"],
     period: Object.keys(PERIOD_LABELS),
@@ -145,6 +147,48 @@ export function classificationValues(
   return Array.from(values).sort((a, b) => a.localeCompare(b));
 }
 
+export interface TagHierarchy {
+  /** Tags not implied by another tag, most packages first. */
+  top: string[];
+  /** Sub-tags by parent: every package with a sub-tag also has its parent. */
+  children: { [parent: string]: string[] };
+  parent: { [tag: string]: string };
+  counts: { [tag: string]: number };
+}
+
+/** Derive tag nesting from the data, e.g. execution and mev sit under staking. */
+export function tagHierarchy(rows: PackageRow[]): TagHierarchy {
+  const members: { [tag: string]: Set<string> } = {};
+  rows.forEach((row) => row.classification.tags.forEach((tag) => {
+    (members[tag] = members[tag] || new Set()).add(row.key);
+  }));
+  const tags = Object.keys(members);
+  const counts: TagHierarchy["counts"] = {};
+  tags.forEach((tag) => { counts[tag] = members[tag].size; });
+  const contains = (outer: string, inner: string) =>
+    counts[outer] > counts[inner] && Array.from(members[inner]).every((key) => members[outer].has(key));
+  const parent: TagHierarchy["parent"] = {};
+  tags.forEach((tag) => {
+    // The closest strict superset is the parent.
+    const candidates = tags.filter((other) => other !== tag && contains(other, tag))
+      .sort((a, b) => counts[a] - counts[b] || a.localeCompare(b));
+    if (candidates.length) parent[tag] = candidates[0];
+  });
+  const byCount = (a: string, b: string) => counts[b] - counts[a] || a.localeCompare(b);
+  const children: TagHierarchy["children"] = {};
+  Object.keys(parent).sort(byCount).forEach((tag) => {
+    (children[parent[tag]] = children[parent[tag]] || []).push(tag);
+  });
+  return { top: tags.filter((tag) => !parent[tag]).sort(byCount), children, parent, counts };
+}
+
+/** The top-level tag a selection belongs to, e.g. staking for execution. */
+export function rootTag(tag: string, hierarchy: TagHierarchy): string {
+  let current = tag;
+  while (hierarchy.parent[current]) current = hierarchy.parent[current];
+  return current;
+}
+
 export function pullRequestsFor(rows: PackageRow[]): DashboardPullRequest[] {
   const prs = new Map<string, DashboardPullRequest>();
   rows.forEach((row) => row.repository.pullRequests.forEach((pr) => {
@@ -187,6 +231,7 @@ export function filterPackages(snapshot: DashboardSnapshot, filters: Filters, no
       (filters.type === "all" || (filters.type === UNCLASSIFIED ?
         classification.type === null : classification.type === filters.type)) &&
       (filters.variant === "all" || matrixColumn(row) === filters.variant) &&
+      (filters.generic === "all" || (filters.generic === "generic") === (row.variant !== null)) &&
       (filters.category === "all" || (filters.category === UNCLASSIFIED ? classification.categories.length === 0 :
         classification.categories.includes(filters.category))) &&
       (filters.tag === "all" || (filters.tag === UNCLASSIFIED ? classification.tags.length === 0 :
