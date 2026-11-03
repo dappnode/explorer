@@ -1,5 +1,5 @@
 import { freshness, Freshness } from "./api";
-import { DashboardPackage, DashboardPullRequest, DashboardRepository, DashboardSnapshot, SourceState } from "./types";
+import { DashboardPackage, DashboardPullRequest, DashboardRepository, DashboardSnapshot, SourceState, Upstream } from "./types";
 
 /** One package as declared by one repository; the same ENS name can appear in several. */
 export interface PackageRow extends DashboardPackage {
@@ -205,6 +205,59 @@ export function hasPrIssues(row: PackageRow, snapshot: DashboardSnapshot, now: n
 export function releaseStatus(row: PackageRow): DashboardPackage["releaseStatus"] {
   return row.releaseStatus;
 }
+
+export type ReleaseBump = "major" | "minor" | "patch";
+const BUMP_ORDER: ReleaseBump[] = ["major", "minor", "patch"];
+
+export interface UpstreamChange {
+  repo: string | null;
+  from: string;
+  to: string;
+  bump: ReleaseBump;
+}
+
+/** Size of a version change, e.g. v1.14.12 → v1.15.0 is minor; null if equal or not numeric. */
+export function versionBump(from: string, to: string): ReleaseBump | null {
+  if (from === to) return null;
+  const parse = (version: string) => /^v?(\d+)(?:\.(\d+))?(?:\.(\d+))?/i.exec(version.trim())?.slice(1).map((n) => Number(n || 0));
+  const a = parse(from);
+  const b = parse(to);
+  if (!a || !b) return null;
+  return a[0] !== b[0] ? "major" : a[1] !== b[1] ? "minor" : "patch";
+}
+
+/**
+ * Upstream versions that change between the on-chain package and the pending release, largest first;
+ * null when either side's upstreams are unknown. DAppNode's own helper repositories (dappnode/*)
+ * count only when a package pins nothing else.
+ */
+export function upstreamChanges(row: PackageRow): UpstreamChange[] | null {
+  const before = row.onchain?.upstreams;
+  const after = row.latestRelease?.upstreams;
+  if (row.releaseStatus !== "release_available" || !before || !after) return null;
+  const key = (upstream: Upstream) => upstream.repo?.toLowerCase();
+  let pairs: [Upstream, Upstream][] = after.flatMap((next) => {
+    const previous = before.find((item) => key(item) !== undefined && key(item) === key(next));
+    return previous ? [[previous, next] as [Upstream, Upstream]] : [];
+  });
+  // A version-only legacy manifest still pairs when each side pins exactly one upstream.
+  if (!pairs.length && before.length === 1 && after.length === 1) pairs = [[before[0], after[0]]];
+  const own = (pair: [Upstream, Upstream]) => !!key(pair[1])?.startsWith("dappnode/");
+  if (pairs.some((pair) => !own(pair))) pairs = pairs.filter((pair) => !own(pair));
+  return pairs
+    .map(([previous, next]) => ({ repo: next.repo, from: previous.version, to: next.version, bump: versionBump(previous.version, next.version) }))
+    .filter((change): change is UpstreamChange => change.bump !== null)
+    .sort((a, b) => BUMP_ORDER.indexOf(a.bump) - BUMP_ORDER.indexOf(b.bump));
+}
+
+/** Largest upstream bump of a pending release; null when upstreams are unknown or unchanged. */
+export function releaseBump(row: PackageRow): ReleaseBump | null {
+  return upstreamChanges(row)?.[0]?.bump || null;
+}
+
+export const BUMP_LABELS: { [key in ReleaseBump]: string } = {
+  major: "Major upstream update", minor: "Minor upstream update", patch: "Patch upstream update",
+};
 
 export function dateFor(row: PackageRow, field: Filters["dateField"]): string | null {
   if (field === "onchain") return row.onchain?.publishedAt || null;

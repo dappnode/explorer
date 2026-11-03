@@ -18,13 +18,18 @@ const date: Check = (v) => string(v) && Number.isFinite(Date.parse(v));
 const url: Check = (v) => string(v) && /^https?:\/\//i.test(v);
 const fields = (shape: { [key: string]: Check }): Check => (v) =>
   object(v) && Object.keys(shape).every((key) => shape[key](v[key]));
+const optional = (check: Check): Check => (v) => v === undefined || v === null || check(v);
 const problem = fields({ code: string, message: string });
+const upstreams = optional(array(fields({ repo: nullable(string), version: string })));
 const source = fields({ observedAt: nullable(date), problem: nullable(problem) });
 
 const onchain = fields({
-  address: string, version: string, rawVersion: string, contentUri: string, publishedAt: date,
+  address: string, version: string, rawVersion: string, contentUri: string, publishedAt: date, upstreams,
 });
-const release = fields({ version: string, tag: string, url, publishedAt: date, prerelease: boolean });
+const release = fields({
+  version: string, tag: string, url, publishedAt: date, prerelease: boolean,
+  contentUri: optional((v) => string(v) && /^\/ipfs\/[A-Za-z0-9]+$/.test(v)), upstreams,
+});
 const pr = fields({
   id: string, number: (v) => number(v) && Number.isInteger(v) && v > 0,
   title: string, url, author: string, headRef: string, draft: boolean,

@@ -84,6 +84,17 @@ export interface PackageRelease {
   url: string;
   publishedAt: string;
   prerelease: boolean;
+  /** IPFS content URI of the release's content-hash asset; null if not read. Absent from older services. */
+  contentUri?: string | null;
+  /** Upstreams of the release manifest; null unless it differs from on-chain and was read. */
+  upstreams?: Upstream[] | null;
+}
+
+/** One upstream dependency pinned by a package manifest. */
+export interface Upstream {
+  /** owner/repository slug; null when the manifest names only a version. */
+  repo: string | null;
+  version: string;
 }
 
 export interface OnchainVersion {
@@ -93,6 +104,8 @@ export interface OnchainVersion {
   rawVersion: string;
   contentUri: string;
   publishedAt: string;
+  /** Upstreams of the published manifest; null unless a newer release exists and it was read. */
+  upstreams?: Upstream[] | null;
 }
 
 export interface DashboardPullRequest {

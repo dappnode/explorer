@@ -30,8 +30,11 @@
 .dashboard-stat > span { color: var(--color-text-soft); font-size: 0.76rem; }
 .dashboard-stat > strong { font-size: 2rem; font-weight: 600; letter-spacing: -0.045em; margin: 0.3rem 0; line-height: 1.25; }
 .dashboard-stat small { font-size: 0.66rem; }
-.dashboard-stat.accent { border-top-color: var(--color-brand-0); background: linear-gradient(155deg, rgba(47, 188, 178, 0.09), transparent), var(--color-background_1); }
-.dashboard-stat.accent > strong { color: var(--color-brand-1); }
+.dashboard-stat.info { background: linear-gradient(155deg, rgba(96, 165, 250, 0.09), transparent), var(--color-background_1); }
+.dashboard-stat.info > strong { color: var(--color-info); }
+.dashboard-bump.patch { color: var(--color-info); }
+.dashboard-bump.minor { color: var(--color-minor); }
+.dashboard-bump.major { color: var(--color-danger); }
 .dashboard-stat.warning > strong { color: var(--color-warning); }
 .dashboard-stat.purple > strong { color: #b7a4ff; }
 
@@ -92,10 +95,25 @@
 .dashboard-date { white-space: nowrap; color: var(--color-text-soft); font-size: 0.75rem; }
 .dashboard-status { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; border-radius: 5px; padding: 0.27rem 0.5rem; color: var(--color-text-soft); background: rgba(255, 255, 255, 0.04); white-space: nowrap; }
 .dashboard-status-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.dashboard-status.current { color: var(--color-success); background: rgba(52, 211, 153, 0.07); }
-.dashboard-status.release_available { color: var(--color-brand-1); background: rgba(47, 188, 178, 0.12); }
+.dashboard-status.current { color: var(--color-success); background: rgba(52, 211, 153, 0.1); }
+.dashboard-status.release_available { color: var(--color-info); background: rgba(96, 165, 250, 0.12); }
 .dashboard-status.unpublished, .dashboard-status.onchain_ahead { color: var(--color-warning); background: rgba(251, 191, 36, 0.07); }
 .dashboard-status.is-stale { color: var(--color-warning); background: rgba(251, 191, 36, 0.07); }
+/* Pending releases keep their bump colour on stale data; the label still says stale. Patch keeps the base blue. */
+.dashboard-status.bump-patch { color: var(--color-info); background: rgba(96, 165, 250, 0.12); }
+.dashboard-status.bump-minor { color: var(--color-minor); background: rgba(183, 164, 255, 0.12); }
+.dashboard-status.bump-major { color: var(--color-danger); background: rgba(248, 113, 113, 0.12); box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.3); }
+.dashboard-gateway { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.58rem; white-space: nowrap; color: var(--color-text-soft); }
+.dashboard-gateway:hover { color: var(--color-text-main); }
+.dashboard-gateway.available { color: var(--color-success); }
+.dashboard-gateway.unavailable { color: var(--color-danger); }
+.dashboard-gateway.checking .dashboard-status-dot { animation: dashboard-pulse 1s ease-in-out infinite alternate; }
+.dashboard-upstream { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+.dashboard-upstream > .dashboard-version { font-size: 0.72rem; }
+.dashboard-upstream.patch > .dashboard-version { color: var(--color-info); }
+.dashboard-upstream.minor > .dashboard-version { color: var(--color-minor); }
+.dashboard-upstream.major > .dashboard-version { color: var(--color-danger); }
+.dashboard-upstream small { color: var(--color-text-soft); font-size: 0.63rem; }
 .dashboard-source-note { display: inline-block; font-size: 0.61rem; color: var(--color-warning); margin-right: 0.2rem; }
 .dashboard-source-note.error, .dashboard-source-note.unavailable { color: var(--color-danger); }
 .dashboard-prs { min-width: 7rem; font-size: 0.75rem; }

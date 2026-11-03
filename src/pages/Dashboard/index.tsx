@@ -3,11 +3,12 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { FaArrowDown, FaArrowUp, FaExternalLinkAlt, FaSyncAlt, FaTh, FaList } from "react-icons/fa";
 import { freshness, Freshness } from "dashboard/api";
 import { useDashboard } from "dashboard/useDashboard";
+import { gatewayUrl, recheckUnavailable, useGatewayAvailability } from "dashboard/gateway";
 import {
   dataIssues, dateFor, DEFAULT_FILTERS, filterPackages, Filters, githubFreshness, hasPrIssues,
   matrixColumn, matrixColumns, matrixGroups, isArchivedPackage, classificationValues, UNCLASSIFIED,
-  onchainFreshness, packageRows, PackageRow, PERIOD_LABELS, pullRequestsFor, readFilters, releaseStatus,
-  rootTag, STATUS_LABELS, tagHierarchy, writeFilters,
+  onchainFreshness, packageRows, PackageRow, PERIOD_LABELS, pullRequestsFor, readFilters, releaseBump, releaseStatus, upstreamChanges, UpstreamChange,
+  rootTag, STATUS_LABELS, BUMP_LABELS, tagHierarchy, writeFilters,
 } from "dashboard/model";
 import { DashboardSnapshot } from "dashboard/types";
 import "./dashboard.scss";
@@ -53,13 +54,19 @@ function sources(pkg: PackageRow, context: DataContext) {
   };
 }
 
+const changeLabel = (change: UpstreamChange) => `${change.repo || "Upstream"} ${change.from} → ${change.to}`;
+
 function ReleaseStatus({ pkg, context }: { pkg: PackageRow; context: DataContext }) {
   const status = releaseStatus(pkg);
+  const changes = upstreamChanges(pkg);
+  const bump = releaseBump(pkg);
   const { chain, github } = sources(pkg, context);
   const stale = chain === "stale" || github === "stale";
-  return <span className={`dashboard-status ${status}${stale ? " is-stale" : ""}`}>
+  const title = status !== "release_available" ? undefined : !changes ? "Upstream versions unknown" :
+    changes.length ? changes.map(changeLabel).join("\n") : "No upstream version change";
+  return <span className={`dashboard-status ${status}${bump ? ` bump-${bump}` : ""}${stale ? " is-stale" : ""}`} title={title}>
     <span aria-hidden="true" className="dashboard-status-dot" />
-    {STATUS_LABELS[status]}{stale ? " · stale" : ""}
+    {bump ? BUMP_LABELS[bump] : STATUS_LABELS[status]}{stale ? " · stale" : ""}
   </span>;
 }
 
@@ -84,9 +91,34 @@ function PackageVersions({ pkg, context, showDates = false, matrix = false }: {
         {release.version} <FaExternalLinkAlt aria-label="Open release on GitHub" />
       </a> : <span className="soft">{state.github !== "unavailable" ? "No release" : "Unknown"}</span>}
       {release?.prerelease && <span className="dashboard-prerelease">Pre-release</span>}
+      <GatewayStatus contentUri={release?.contentUri} />
       {showDates && release && <small>{dateLabel(release.publishedAt)}</small>}
       <SourceNote status={state.github} message={state.githubMessage} />
     </div>
+    <UpstreamSummary pkg={pkg} />
+  </div>;
+}
+
+/** Whether the release's IPFS hash resolves on the dev gateway, checked from the browser. */
+function GatewayStatus({ contentUri, compact = false }: { contentUri?: string | null; compact?: boolean }) {
+  const state = useGatewayAvailability(contentUri);
+  if (!contentUri || !state) return null;
+  const label = state === "checking" ? "Checking dev gateway…" : state === "available" ? "On dev gateway" : "Not on dev gateway";
+  return <a className={`dashboard-gateway ${state}`} href={gatewayUrl(contentUri)} target="_blank" rel="noopener noreferrer"
+    title={`${label}: ${contentUri}`} aria-label={label}>
+    <span aria-hidden="true" className="dashboard-status-dot" />{!compact && label}
+  </a>;
+}
+
+/** The largest upstream change of a pending release, e.g. "hyperledger/besu 25.10.0 → 26.7.1". */
+function UpstreamSummary({ pkg }: { pkg: PackageRow }) {
+  const changes = upstreamChanges(pkg);
+  if (!changes?.length) return null;
+  const [largest, ...rest] = changes;
+  return <div className={`dashboard-upstream ${largest.bump}`} title={changes.map(changeLabel).join("\n")}>
+    <span className="dashboard-version-label">Upstream</span>
+    <span className="dashboard-version">{changeLabel(largest)}</span>
+    {rest.length > 0 && <small>+{rest.length} more</small>}
   </div>;
 }
 
@@ -110,15 +142,16 @@ function MatrixVersions({ pkg, context }: { pkg: PackageRow; context: DataContex
         <dt>Version</dt>
         <dd><a className="dashboard-version" href={release!.url} target="_blank" rel="noopener noreferrer" title={release!.tag}>
           {chain!.version} <FaExternalLinkAlt aria-label="Open release on GitHub" />
-        </a></dd>
+        </a> <GatewayStatus contentUri={release!.contentUri} compact /></dd>
       </> : <>
         <dt>On-chain</dt>
         <dd>{chain ? <Link className="dashboard-version" to={`/repo/${encodeURIComponent(chain.address)}`}>{chain.version}</Link> :
           <span className="soft">{published(chainState === "ok" || chainState === "stale")}</span>}</dd>
         <dt>GitHub</dt>
-        <dd>{release ? <a className="dashboard-version" href={release.url} target="_blank" rel="noopener noreferrer" title={release.tag}>
+        <dd>{release ? <><a className="dashboard-version" href={release.url} target="_blank" rel="noopener noreferrer" title={release.tag}>
           {release.version} <FaExternalLinkAlt aria-label="Open release on GitHub" />
-        </a> : <span className="soft">{published(releaseState === "ok" || releaseState === "stale")}</span>}</dd>
+        </a> <GatewayStatus contentUri={release.contentUri} compact /></> :
+          <span className="soft">{published(releaseState === "ok" || releaseState === "stale")}</span>}</dd>
       </>}
     </dl>
     {problems.length > 0 && <p className="dashboard-matrix-note">{problems.join(" · ")}</p>}
@@ -247,6 +280,9 @@ export function Dashboard() {
   const packages = useMemo(() => snapshot ? filterPackages(snapshot, filters, now, failed) : [], [snapshot, filters, now, failed]);
   const issues = useMemo(() => snapshot ? dataIssues(packages, snapshot, now, failed) : [], [packages, snapshot, now, failed]);
   const prs = useMemo(() => pullRequestsFor(packages), [packages]);
+  const bumps = (["major", "minor", "patch"] as const)
+    .map((bump) => [bump, packages.filter((pkg) => releaseBump(pkg) === bump).length] as const)
+    .filter(([, count]) => count > 0);
   const allRows = useMemo(() => snapshot ? packageRows(snapshot) : [], [snapshot]);
   const update = (patch: Partial<Filters>) => history.replace({
     pathname: location.pathname, search: writeFilters({ ...filters, ...patch }),
@@ -293,7 +329,7 @@ export function Dashboard() {
       <div><p className="dashboard-eyebrow">Package operations</p><h1>Release dashboard</h1>
         <p className="soft">Track package releases, on-chain versions, and open pull requests.</p></div>
       <div className="dashboard-refresh">
-        <button className="btn btn-ghost" onClick={() => refresh()} disabled={loading}>
+        <button className="btn btn-ghost" onClick={() => { recheckUnavailable(); refresh(); }} disabled={loading}>
           <FaSyncAlt className={loading ? "is-spinning" : ""} aria-hidden="true" />{loading ? "Refreshing…" : "Refresh"}
         </button>
         {snapshot && <small title={snapshot.generatedAt}>{globalStale || failed ? "Last snapshot" : "Updated"} {dateLabel(snapshot.generatedAt, true)}</small>}
@@ -307,14 +343,17 @@ export function Dashboard() {
     {!snapshot ? loading ? <div className="dashboard-skeleton" role="status" aria-label="Loading dashboard"><div /><div /><div /><p>Loading package dashboard…</p></div> :
       <section className="card dashboard-empty"><h2>Dashboard unavailable</h2><p className="soft">Package data is not available right now.</p><button className="btn btn-primary" onClick={() => refresh()}>Try again</button></section> : context && <>
       <div className="dashboard-stats" aria-label="Filtered dashboard summary">
-        {[
+        {([
           ["Packages", packages.length, `${allRows.length} in catalog`, "neutral"],
-          ["Release available", packages.filter((pkg) => releaseStatus(pkg) === "release_available").length, "Newer than on-chain", "accent"],
+          ["Release available", packages.filter((pkg) => releaseStatus(pkg) === "release_available").length,
+            bumps.length ? bumps.map(([bump, count], index) => <React.Fragment key={bump}>
+              {index > 0 && " · "}<span className={`dashboard-bump ${bump}`}>{count} {bump}</span>
+            </React.Fragment>) : "Newer than on-chain", "info"],
           ["Unpublished", packages.filter((pkg) => releaseStatus(pkg) === "unpublished").length, "Ready for first publication", "warning"],
           ["Bump PRs", prs.filter((pr) => pr.kind === "bump").length, "Unique open pull requests", "purple"],
           ["Other PRs", prs.filter((pr) => pr.kind !== "bump").length, "Includes unclassified PRs", "neutral"],
           ["Data issues", issues.length, incomplete ? "Some data needs attention" : "All filtered sources checked", issues.length ? "warning" : "neutral"],
-        ].map(([title, count, description, tone]) => <div className={`dashboard-stat ${tone}`} key={title}>
+        ] as [string, number, React.ReactNode, string][]).map(([title, count, description, tone]) => <div className={`dashboard-stat ${tone}`} key={title}>
           <span>{title}</span><strong>{count}</strong><small>{description}</small>
         </div>)}
       </div>

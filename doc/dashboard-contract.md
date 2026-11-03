@@ -42,6 +42,10 @@ The snapshot is repository-first. `repositories` lists every public package repo
 
 `onchain` is the subgraph's latest version for the ENS name, or null when the name has no published version or cannot be resolved.
 
+`latestRelease.contentUri` comes from the release's `content-hash` asset (`<short name>_content-hash` in multi-package releases, where the short name is the ENS name's first label). Clients can use it to check availability on an IPFS gateway. It is null until the asset was read, or when the release has none.
+
+`upstreams` lists the upstream dependencies a manifest pins, in manifest order, from either the `upstream` array or the legacy `upstreamRepo`/`upstreamVersion` fields; `repo` is null when a legacy manifest names only versions. They are read only where `latestRelease.version` differs from `onchain.version`: from the release's `dappnode_package.json` asset and from the published manifest at `onchain.contentUri` (configured IPFS gateways, in order). Null means not read: no such asset, a failed read (retried on the next run), or versions that do not differ. An empty array means the manifest declares no upstream. Every source is immutable, so successful reads are cached until no package needs them.
+
 | releaseStatus | Rule |
 | --- | --- |
 | `release_available` | The GitHub release version is greater than the on-chain version. |

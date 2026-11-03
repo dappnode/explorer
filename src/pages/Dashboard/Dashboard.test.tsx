@@ -3,7 +3,7 @@ import { act, fireEvent, render } from "@testing-library/react";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import type { Mock } from "vitest";
-import { fixture, NOW } from "dashboard/fixtures";
+import { fixture, HOODI_ID, MAINNET_ID, NOW, REPO_ID } from "dashboard/fixtures";
 import { Dashboard } from "./index";
 
 function response(body: any, status = 200, etag: string | null = "snapshot-1") {
@@ -156,4 +156,22 @@ test("retains custom-date links and clears custom bounds when selecting a recent
   fireEvent.click(page.getByText("Clear filters"));
   expect(page.getByLabelText("Period")).toHaveValue("all");
   expect(history.location.search).toBe("");
+});
+
+test("checks release hashes on the dev gateway and shows the largest upstream change", async () => {
+  const snapshot = fixture();
+  const [mainnet, hoodi] = snapshot.repositories.find((repo) => repo.id === REPO_ID)!.packages
+    .filter((pkg) => pkg.id === MAINNET_ID || pkg.id === HOODI_ID);
+  mainnet.latestRelease = { ...mainnet.latestRelease!, contentUri: "/ipfs/QmPinned", upstreams: [{ repo: "ethereum/go-ethereum", version: "v1.15.0" }] };
+  mainnet.onchain = { ...mainnet.onchain!, upstreams: [{ repo: "ethereum/go-ethereum", version: "v1.14.12" }] };
+  hoodi.latestRelease = { ...hoodi.latestRelease!, contentUri: "/ipfs/QmMissing" };
+  fetchMock.mockImplementation(async (url: string) => url.includes("/ipfs/QmMissing") ? Promise.reject(new TypeError("Failed to fetch")) :
+    url.includes("/ipfs/") ? response({ name: MAINNET_ID }) : response(snapshot));
+  const page = render(<Router history={createMemoryHistory({ initialEntries: ["/dashboard?unpublishable=include"] })}><Dashboard /></Router>);
+  await page.findByText("Hoodi Geth");
+  expect(await page.findByLabelText("On dev gateway")).toHaveAttribute("href", "https://ipfs-gateway-dev.dappnode.net/ipfs/QmPinned");
+  expect(await page.findByLabelText("Not on dev gateway")).toBeInTheDocument();
+  expect(fetchMock).toHaveBeenCalledWith("https://ipfs-gateway-dev.dappnode.net/ipfs/QmPinned/dappnode_package.json", expect.anything());
+  expect(page.getByText("Minor upstream update")).toBeInTheDocument();
+  expect(page.getByText("ethereum/go-ethereum v1.14.12 → v1.15.0")).toBeInTheDocument();
 });

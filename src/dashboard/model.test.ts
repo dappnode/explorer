@@ -1,9 +1,9 @@
 import { freshness, parseSnapshot } from "./api";
-import { DashboardPackage, DashboardSnapshot } from "./types";
+import { DashboardPackage, DashboardSnapshot, Upstream } from "./types";
 import { fixture, HOODI_ID, MAINNET_ID, NOW, REPO_ID, repository } from "./fixtures";
 import {
   dataIssues, DEFAULT_FILTERS, filterPackages, hasPrIssues, localDate, matrixColumn, matrixColumns, matrixGroups,
-  NON_GENERIC, packageRows, periodStart, pullRequestsFor, readFilters, rootTag, tagHierarchy, UNCLASSIFIED, writeFilters,
+  NON_GENERIC, packageRows, periodStart, pullRequestsFor, readFilters, releaseBump, rootTag, upstreamChanges, versionBump, tagHierarchy, UNCLASSIFIED, writeFilters,
 } from "./model";
 
 const all = { archived: "include" as const, unpublishable: "include" as const };
@@ -211,4 +211,52 @@ test("API validation accepts additive fields and rejects bad shapes, references,
   const badPrs: any = fixture();
   badPrs.repositories[0].pullRequests = null;
   expect(() => parseSnapshot(badPrs)).toThrow(/unsupported/);
+});
+
+test("sizes a version change by its first differing component", () => {
+  expect(versionBump("v1.14.12", "v1.14.13")).toBe("patch");
+  expect(versionBump("25.10.0", "26.7.1")).toBe("major");
+  expect(versionBump("v2.60.8", "v2.61.0")).toBe("minor");
+  expect(versionBump("v1.0.0-rc.1", "v1.0.0")).toBe("patch");
+  expect(versionBump("2.7", "3.0.2")).toBe("major");
+  expect(versionBump("v1.2.3", "v1.2.3")).toBeNull();
+  expect(versionBump("release27932", "release28000")).toBeNull();
+});
+
+test("classifies a pending release by its largest third-party upstream change", () => {
+  const snapshot = fixture();
+  const mainnet = row(snapshot, MAINNET_ID);
+  const pin = (repo: string | null, version: string) => ({ repo, version });
+  const scripts = (version: string) => pin("dappnode/staker-package-scripts", version);
+  const pending = (before: Upstream[] | null, after: Upstream[] | null) => ({
+    ...mainnet, onchain: { ...mainnet.onchain!, upstreams: before }, latestRelease: { ...mainnet.latestRelease!, upstreams: after },
+  });
+  // The package's own version jump no longer decides; unknown upstreams leave it unsized.
+  expect(releaseBump(mainnet)).toBeNull();
+  expect(upstreamChanges(mainnet)).toBeNull();
+  const geth = pending(
+    [pin("ethereum/go-ethereum", "v1.14.12"), pin("ObolNetwork/charon", "v1.1.0"), scripts("v0.1.2")],
+    [pin("ethereum/go-ethereum", "v1.14.13"), pin("obolnetwork/charon", "v2.0.0"), scripts("v0.2.0")],
+  );
+  expect(upstreamChanges(geth)!.map((c) => [c.repo, c.bump])).toEqual([["obolnetwork/charon", "major"], ["ethereum/go-ethereum", "patch"]]);
+  expect(releaseBump(geth)).toBe("major");
+  // DAppNode helper repositories count only when nothing else is pinned.
+  expect(releaseBump(pending([pin("ethereum/go-ethereum", "v1.14.12"), scripts("v0.1.2")], [pin("ethereum/go-ethereum", "v1.14.12"), scripts("v0.2.0")]))).toBeNull();
+  expect(releaseBump(pending([scripts("v0.1.2")], [scripts("v0.2.0")]))).toBe("minor");
+  // Version-only legacy manifests pair when each side pins one upstream.
+  expect(releaseBump(pending([pin(null, "2.1.5")], [pin("isc/bind", "2.2.0")]))).toBe("minor");
+  expect(upstreamChanges(pending([], []))).toEqual([]);
+  expect(releaseBump(row(snapshot, HOODI_ID))).toBeNull();
+});
+
+test("accepts optional release artifacts and rejects malformed ones", () => {
+  const withRelease = (patch: object) => {
+    const snapshot = fixture();
+    Object.assign(geth(snapshot).packages.find((pkg) => pkg.id === MAINNET_ID)!.latestRelease!, patch);
+    return snapshot;
+  };
+  expect(() => parseSnapshot(withRelease({ contentUri: "/ipfs/QmHash", upstreams: [{ repo: null, version: "1.0.0" }] }))).not.toThrow();
+  expect(() => parseSnapshot(withRelease({ contentUri: null, upstreams: null }))).not.toThrow();
+  expect(() => parseSnapshot(withRelease({ contentUri: "javascript:alert(1)" }))).toThrow(/unsupported/);
+  expect(() => parseSnapshot(withRelease({ upstreams: [{ repo: 1, version: "1.0.0" }] }))).toThrow(/unsupported/);
 });
