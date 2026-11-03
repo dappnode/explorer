@@ -15,7 +15,7 @@
  *  { month: 3, value: 12 }
  * ]
  */
-export function aggregateLast12Months<T extends { timestamp?: number }>(
+export function aggregateLast12Months<T extends { timestamp?: number | string }>(
   items: T[]
 ) {
   const getFullMonth = (date: Date) =>
@@ -24,7 +24,7 @@ export function aggregateLast12Months<T extends { timestamp?: number }>(
   const byTime: { [fullMonth: number]: number } = {};
   for (const item of items)
     if (item.timestamp) {
-      const fullMonth = getFullMonth(new Date(item.timestamp * 1000));
+      const fullMonth = getFullMonth(new Date(Number(item.timestamp) * 1000));
       byTime[fullMonth] = (byTime[fullMonth] || 0) + 1;
     }
 

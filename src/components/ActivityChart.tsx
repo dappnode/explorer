@@ -5,6 +5,7 @@ import {
   XAxis,
   ResponsiveContainer,
   Tooltip,
+  TooltipContentProps,
 } from "recharts";
 import "./activity-chart.scss";
 
@@ -17,23 +18,11 @@ const packagesName = "new packages";
 const versionsName = "new versions";
 const fontSize = 12.8;
 
-interface RechartsTooltipPayload {
-  fill: string; // "#bc7a2f";
-  dataKey: string; // "packages";
-  name: string; // "packages";
-  color: string; // "#bc7a2f";
-  value: number; // 0;
-}
-
 function CustomTooltip({
   active,
   payload = [],
   label,
-}: {
-  active: boolean;
-  payload: RechartsTooltipPayload[];
-  label: string;
-}) {
+}: TooltipContentProps) {
   if (!active || !payload) return null;
   return (
     <div className="custom-recharts-tooltip">

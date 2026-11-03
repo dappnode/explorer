@@ -10,7 +10,8 @@ import { ExternalLink } from "components/ExternalLink";
 import { AddressDisplay } from "components/AddressDisplay";
 import { VersionDisplay } from "components/VersionDisplay";
 import { RegistryDisplay } from "components/SummaryTable";
-import { useRepoQuery } from "generated/graphql";
+import { useQuery } from "@apollo/client/react";
+import { RepoDocument } from "generated/graphql";
 import "./repoViewer.scss";
 
 interface VersionAvailable {
@@ -28,13 +29,14 @@ export const Repo: React.FC<RouteComponentProps<{
   const { ipfsGateway, ipfsApi, txViewer } = useContext(SettingsContext);
 
   const { repoId, versionId } = match.params;
-  const repoQuery = useRepoQuery({ variables: { id: repoId } });
+  const repoQuery = useQuery(RepoDocument, { variables: { id: repoId } });
   const repoData = repoQuery.data?.repo;
 
   useEffect(() => {
     async function checkVersionAvailability() {
       if (repoData && repoData.versions) {
         for (const _version of repoData.versions) {
+          if (!_version) continue;
           const available = await isVersionAvailable(_version, { ipfsApi });
           setIsAvailable((x) => ({
             ...x,
@@ -53,12 +55,14 @@ export const Repo: React.FC<RouteComponentProps<{
   if (repoQuery.data && repoData) {
     // Alias
     const versions = (repoData.versions || [])
-      .sort((a, b) => b.index - a.index)
+      .filter((version) => version !== null)
       .map((version) => ({
         ...version,
+        index: Number(version.index),
         // TheGraph sends the version concatenated by comma ","
         semanticVersion: semanticVersionDots(version.semanticVersion),
-      }));
+      }))
+      .sort((a, b) => b.index - a.index);
 
     // Add another "Creation" version if the creation tx is different
     const firstVersion = versions[versions.length - 1];
@@ -73,7 +77,7 @@ export const Repo: React.FC<RouteComponentProps<{
       });
     }
 
-    const latestVersionIndex = repoData.lastVersion?.index;
+    const latestVersionIndex = Number(repoData.lastVersion?.index);
     const versionDisplay =
       versions.find((v) => v.semanticVersion === versionId) ||
       versions[0] ||

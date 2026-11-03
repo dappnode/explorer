@@ -52,7 +52,7 @@ export const QUERY_COUNT = gql`
 `;
 
 export const QUERY_ACTIVITY = gql`
-  query Activity($timestampGte: Int!) {
+  query Activity($timestampGte: BigInt!) {
     versions(first: 1000, orderBy: timestamp, orderDirection: desc, where: { timestamp_gte: $timestampGte }) {
       timestamp
     }

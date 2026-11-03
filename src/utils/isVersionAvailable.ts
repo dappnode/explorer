@@ -25,7 +25,7 @@ export async function isVersionAvailable(
     return Boolean(stat.CumulativeSize);
   } catch (e) {
     console.log(
-      `Version ${version.semanticVersion} ${version.contentUri} not available: ${e.message}`
+      `Version ${version.semanticVersion} ${version.contentUri} not available: ${e instanceof Error ? e.message : e}`
     );
     return false;
   }
