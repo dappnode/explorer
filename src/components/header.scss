@@ -83,3 +83,11 @@
   .brand__sub { display: none; }
   .nav-link span { display: none; }
 }
+
+@media (max-width: 460px) {
+  .app-header__inner { height: auto; min-height: 64px; flex-wrap: wrap; gap: 0.5rem; padding: 0.65rem 0.75rem; }
+  .app-header__nav { gap: 0.15rem; flex-wrap: wrap; }
+  .app-header__nav .nav-link { padding: 0.45rem 0.55rem; font-size: 0.78rem; }
+  .brand { gap: 0.4rem; }
+  .brand__name { font-size: 0.85rem; }
+}

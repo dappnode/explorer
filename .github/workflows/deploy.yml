@@ -40,6 +40,7 @@ jobs:
           NODE_OPTIONS: --openssl-legacy-provider
           # Repo variable — non-secret, visible in workflow logs.
           REACT_APP_SUBGRAPH_URI: ${{ vars.REACT_APP_SUBGRAPH_URI }}
+          REACT_APP_DASHBOARD_API_URL: ${{ vars.REACT_APP_DASHBOARD_API_URL }}
           # Repo secret — used to authorize against The Graph gateway.
           # Anyone can extract this from the published bundle; rotate
           # if it leaks. Long-term, proxy the request through a server.
