@@ -20,6 +20,9 @@ export default function Header() {
           <NavLink exact to="/" className="nav-link">
             Packages
           </NavLink>
+          <NavLink to="/dashboard" className="nav-link">
+            Dashboard
+          </NavLink>
           <a
             className="nav-link"
             href="https://github.com/dappnode"
