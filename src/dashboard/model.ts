@@ -206,8 +206,9 @@ export function releaseStatus(row: PackageRow): DashboardPackage["releaseStatus"
   return row.releaseStatus;
 }
 
-export type ReleaseBump = "major" | "minor" | "patch";
-const BUMP_ORDER: ReleaseBump[] = ["major", "minor", "patch"];
+/** `changed` is a version change that cannot be sized, e.g. two build numbers. */
+export type ReleaseBump = "downgrade" | "major" | "minor" | "patch" | "changed";
+export const BUMP_ORDER: ReleaseBump[] = ["downgrade", "major", "minor", "patch", "changed"];
 
 export interface UpstreamChange {
   repo: string | null;
@@ -216,14 +217,25 @@ export interface UpstreamChange {
   bump: ReleaseBump;
 }
 
-/** Size of a version change, e.g. v1.14.12 → v1.15.0 is minor; null if equal or not numeric. */
+/** Leading version (`v1.2.3`), else the first dotted one after a prefix (`n8n@2.29.8`, `RC-0.9.2`). */
+function versionNumbers(version: string): number[] | null {
+  const match = /^v?(\d+)(?:\.(\d+))?(?:\.(\d+))?/i.exec(version) || /(?:^|[^\d.])(\d+)\.(\d+)(?:\.(\d+))?/.exec(version);
+  return match ? match.slice(1).map((n) => Number(n || 0)) : null;
+}
+
+/**
+ * Size of a version change, e.g. v1.14.12 → v1.15.0 is minor and v26.10.0 → v24.8.0 a downgrade;
+ * null if equal apart from a leading "v". Equal numbers with another suffix (rc → final) are a patch.
+ */
 export function versionBump(from: string, to: string): ReleaseBump | null {
-  if (from === to) return null;
-  const parse = (version: string) => /^v?(\d+)(?:\.(\d+))?(?:\.(\d+))?/i.exec(version.trim())?.slice(1).map((n) => Number(n || 0));
-  const a = parse(from);
-  const b = parse(to);
-  if (!a || !b) return null;
-  return a[0] !== b[0] ? "major" : a[1] !== b[1] ? "minor" : "patch";
+  const bare = (version: string) => version.trim().replace(/^v(?=\d)/i, "");
+  if (bare(from) === bare(to)) return null;
+  const a = versionNumbers(from.trim());
+  const b = versionNumbers(to.trim());
+  if (!a || !b) return "changed";
+  const index = a.findIndex((n, i) => n !== b[i]);
+  if (index === -1) return "patch";
+  return b[index] < a[index] ? "downgrade" : (["major", "minor", "patch"] as const)[index];
 }
 
 /**
@@ -255,8 +267,18 @@ export function releaseBump(row: PackageRow): ReleaseBump | null {
   return upstreamChanges(row)?.[0]?.bump || null;
 }
 
-export const BUMP_LABELS: { [key in ReleaseBump]: string } = {
-  major: "Major upstream update", minor: "Minor upstream update", patch: "Patch upstream update",
+/** A pending release's largest upstream bump, `package` when it pins the same upstreams; null when unknown. */
+export type ReleaseChange = ReleaseBump | "package";
+export const CHANGE_ORDER: ReleaseChange[] = [...BUMP_ORDER, "package"];
+
+export function releaseChange(row: PackageRow): ReleaseChange | null {
+  const changes = upstreamChanges(row);
+  return changes ? changes[0]?.bump || "package" : null;
+}
+
+export const BUMP_LABELS: { [key in ReleaseChange]: string } = {
+  downgrade: "Upstream downgrade", major: "Major upstream update", minor: "Minor upstream update",
+  patch: "Patch upstream update", changed: "Upstream changed", package: "Package-only update",
 };
 
 export function dateFor(row: PackageRow, field: Filters["dateField"]): string | null {
