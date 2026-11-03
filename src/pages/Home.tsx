@@ -2,7 +2,8 @@ import React from "react";
 import ActivityChart from "components/ActivityChart";
 import SummaryStats from "components/SummaryStats";
 import SummaryTable from "components/SummaryTable";
-import { useActivityQuery } from "generated/graphql";
+import { useQuery } from "@apollo/client/react";
+import { ActivityDocument } from "generated/graphql";
 import { aggregateLast12Months } from "utils/math";
 
 /** Unix timestamp (seconds) for 12 months ago */
@@ -13,7 +14,7 @@ function getTimestamp12MonthsAgo(): number {
 }
 
 export function Home() {
-  const activityQuery = useActivityQuery({
+  const activityQuery = useQuery(ActivityDocument, {
     variables: { timestampGte: getTimestamp12MonthsAgo() },
   });
 

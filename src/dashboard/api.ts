@@ -1,8 +1,8 @@
 import { DashboardSnapshot, SourceState } from "./types";
 
-const configuredUrl = process.env.REACT_APP_DASHBOARD_API_URL?.trim() || "";
+const configuredUrl = import.meta.env.REACT_APP_DASHBOARD_API_URL?.trim() || "";
 // The development server forwards this path to the configured public endpoint.
-export const DASHBOARD_API_URL = process.env.NODE_ENV === "development" && /^https?:\/\//i.test(configuredUrl)
+export const DASHBOARD_API_URL = import.meta.env.DEV && /^https?:\/\//i.test(configuredUrl)
   ? "/v1/explorer/dashboard"
   : configuredUrl || "/v1/explorer/dashboard";
 

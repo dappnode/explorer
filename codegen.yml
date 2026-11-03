@@ -1,11 +1,20 @@
 overwrite: true
-schema: "https://gateway.thegraph.com/api/subgraphs/id/AnR9aNC4rEFzoCy44wcLHr3CmSpoCrKizPT8GMkKb8z5"
-documents: "src/**/*.ts"
+schema:
+  - "https://gateway.thegraph.com/api/subgraphs/id/AnR9aNC4rEFzoCy44wcLHr3CmSpoCrKizPT8GMkKb8z5":
+      headers:
+        Authorization: "Bearer ${REACT_APP_GATEWAY_TOKEN}"
+documents: "src/query.ts"
 generates:
-  src/generated/graphql.tsx:
+  src/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
-      - "typescript-react-apollo"
+      - "typed-document-node"
     config:
-      withHooks: true
+      # The subgraph serializes these scalars as JSON strings.
+      scalars:
+        BigInt:
+          input: "string | number"
+          output: "string"
+        BigDecimal: "string"
+        Bytes: "string"

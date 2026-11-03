@@ -12,32 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js 18
+      - name: Set up Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: '24'
+          cache: yarn
 
       - name: Install
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       - name: Build
         env:
-          # Webpack 4 (bundled with CRA 3) uses MD4 hashes, which OpenSSL 3
-          # in Node 18+ disables by default. The legacy provider brings them
-          # back. Safe to remove once react-scripts is upgraded to v5.
-          NODE_OPTIONS: --openssl-legacy-provider
           # Repo variable — non-secret, visible in workflow logs.
           REACT_APP_SUBGRAPH_URI: ${{ vars.REACT_APP_SUBGRAPH_URI }}
           REACT_APP_DASHBOARD_API_URL: ${{ vars.REACT_APP_DASHBOARD_API_URL }}

@@ -4,7 +4,8 @@ import SettingsContext from "settingsContext";
 import { prettyName, semanticVersionDots } from "utils/format";
 import { urlJoin } from "utils/url";
 import { TimeDisplay } from "components/TimeDisplay";
-import { useReposQuery } from "generated/graphql";
+import { useQuery } from "@apollo/client/react";
+import { ReposDocument } from "generated/graphql";
 import "./summary-table.scss";
 
 const showInterval = 20;
@@ -13,7 +14,7 @@ export default function SummaryTable() {
   const [showIndex, setShowIndex] = useState(showInterval);
   const history = useHistory();
   const { ipfsGateway } = useContext(SettingsContext);
-  const reposSummary = useReposQuery();
+  const reposSummary = useQuery(ReposDocument);
 
   // Detect bottom scroll event
   useEffect(() => {
@@ -47,11 +48,11 @@ export default function SummaryTable() {
             </tr>
           </thead>
           <tbody>
-            {repos
+            {[...repos]
               .sort(
                 (a, b) =>
-                  (b.lastVersion?.timestamp || 0) -
-                  (a.lastVersion?.timestamp || 0)
+                  Number(b.lastVersion?.timestamp || 0) -
+                  Number(a.lastVersion?.timestamp || 0)
               )
               .slice(0, showIndex)
               .map(({ id, name, registryName, versionCount, lastVersion }) => (

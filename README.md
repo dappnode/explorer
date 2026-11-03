@@ -18,4 +18,4 @@ The URL is public configuration, so it belongs in Variables rather than Secrets;
 
 The dashboard consumes [schema 2 of the contract](doc/dashboard-contract.md); the [wire types](doc/dashboard-api-v2.ts) are mirrored verbatim in `src/dashboard/types.ts`. The snapshot is repository-first: each package row is one package as declared by one GitHub repository, so a package still named by an archived former repository appears once more, hidden with other archived rows by default. The page validates incoming snapshots, polls at the advertised interval, uses conditional requests, and retains cached data after refresh failures. A repository or source is shown as stale when it reports a problem, its last successful read exceeds the freshness limit, or the page's own refresh failed. Source errors, stale data, and unclassified packages remain visible. A missing service displays an unavailable state; no sample data is substituted.
 
-Run `yarn test --watchAll=false` and `yarn build` to verify the frontend.
+Run `yarn test --run` and `yarn build` to verify the frontend. The toolchain (Vite, Vitest) needs Node.js 22.12 or newer.

@@ -1,19 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { HashRouter as Router } from "react-router-dom";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
-import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
 import "./index.css";
 import "./style.scss";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 
 const SUBGRAPH_URI =
-  process.env.REACT_APP_SUBGRAPH_URI ||
+  import.meta.env.REACT_APP_SUBGRAPH_URI ||
   "https://gateway.thegraph.com/api/subgraphs/id/AnR9aNC4rEFzoCy44wcLHr3CmSpoCrKizPT8GMkKb8z5";
 
-const GATEWAY_TOKEN = (process.env.REACT_APP_GATEWAY_TOKEN || "").trim();
+const GATEWAY_TOKEN = (import.meta.env.REACT_APP_GATEWAY_TOKEN || "").trim();
 const AUTHORIZATION_HEADER = GATEWAY_TOKEN
   ? GATEWAY_TOKEN.toLowerCase().startsWith("bearer ")
     ? GATEWAY_TOKEN
@@ -29,24 +27,19 @@ if (!AUTHORIZATION_HEADER) {
 }
 
 const client = new ApolloClient({
-  uri: SUBGRAPH_URI,
-  headers: AUTHORIZATION_HEADER
-    ? { Authorization: AUTHORIZATION_HEADER }
-    : undefined,
+  link: new HttpLink({
+    uri: SUBGRAPH_URI,
+    headers: AUTHORIZATION_HEADER
+      ? { Authorization: AUTHORIZATION_HEADER }
+      : undefined,
+  }),
+  cache: new InMemoryCache(),
 });
 
-ReactDOM.render(
+createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
-    <ApolloHooksProvider client={client}>
-      <Router>
-        <App />
-      </Router>
-    </ApolloHooksProvider>
-  </ApolloProvider>,
-  document.getElementById("root")
+    <Router>
+      <App />
+    </Router>
+  </ApolloProvider>
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

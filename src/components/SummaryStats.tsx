@@ -1,11 +1,12 @@
 import React from "react";
 import { GoPackage } from "react-icons/go";
 import { MdLayers, MdUpdate } from "react-icons/md";
-import { useCountQuery } from "generated/graphql";
+import { useQuery } from "@apollo/client/react";
+import { CountDocument } from "generated/graphql";
 import "./summary-stats.scss";
 
 export default function SummaryStats() {
-  const { data } = useCountQuery();
+  const { data } = useQuery(CountDocument);
 
   const registries = data?.registries || [];
   const packageCount = registries.reduce(
